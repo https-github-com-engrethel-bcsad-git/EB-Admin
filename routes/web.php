@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Models\DocuRequest;
+use App\Models\user;
 
 Route::get('/', function () {
     $docuRequests = DocuRequest::all();
@@ -29,5 +30,12 @@ Route::post('/docurequests/{id}/update-status', function($id) {
       'message' => 'Status updated successfully'
     ]);
   });
+
+  Route::get('/user_approval', function () {
+    $users = user::all();
+    return view('user_approval', compact('users'));
+});
+
+
   
 
