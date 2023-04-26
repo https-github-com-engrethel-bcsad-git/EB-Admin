@@ -17,8 +17,8 @@ class EmailController extends Controller
             return response()->json(['error' => 'User not found.'], 404);
         }
 
-        // Update user status to accepted
-        // $user->account_status = 1;
+        // Update user status to 1 = accepted
+        $user->account_status = 1;
         $user->save();
 
         // Send email to user
@@ -33,11 +33,7 @@ class EmailController extends Controller
         if (!$user) {
             return response()->json(['error' => 'User not found.'], 404);
         }
-
-        // Update user status to accepted
-        // $user->account_status = 1;
-        $user->save();
-
+        
         // Send email to user
         Mail::to($user->email)->send(new UserDenied($user));
 
