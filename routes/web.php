@@ -31,9 +31,14 @@ Route::post('/docurequests/{id}/update-status', function($id) {
     ]);
   });
 
-  Route::get('/user_approval', function () {
+Route::get('/user_approval', function () {
     $users = user::all();
     return view('user_approval', compact('users'));
+});
+
+Route::get('/user_account', function () {
+  $users = user::all();
+  return view('user_account', compact('users'));
 });
 
 

@@ -14,6 +14,7 @@
     </thead>
     <tbody>
     @foreach($users as $user)
+      @if ($user->account_status == 0)
       <tr>
         <td>{{ $user->id }}</td>
         <td>{{ $user->firstname }} {{ $user->middlename }} {{ $user->lastname }}</td>
@@ -26,6 +27,7 @@
           <button type="button" class="btn btn-danger">Deny</button>
         </td>
       </tr>
+      @endif
       @endforeach
     </tbody>
   </table>
