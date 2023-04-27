@@ -35,7 +35,7 @@
         <td>{{ $docuRequest->rhowner }}</td>
         <td>{{ $docuRequest->roa }}</td>
         <td>
-          <p><a href="{{ $docuRequest->signature }}">HIDDEN</a></p>
+          <p><a href="{{ asset('storage/' . $docuRequest->signature) }}">HIDDEN</a></p>
         </td>
         <td>
           @if ($docuRequest->status == 'Pending')

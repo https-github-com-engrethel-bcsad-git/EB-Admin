@@ -368,6 +368,7 @@ logout</span>Logout</a>
          <th>ID</th>
          <th>Full Name</th>
          <th>Sitio Clearance</th>
+         <th>Sitio Clearance Image</th>
          <th>Contact</th>
          <th>Email Address</th>
          <th>Date Created</th>
@@ -399,12 +400,13 @@ logout</span>Logout</a>
                     </button>
                     </div>
                     <div class="modal-body">
-                    <img src={{ $user->image }} class="img-fluid" alt="Sitio Image">
+                      <img src="{{ asset('storage/' . $user->image) }}" class="img-fluid">
                     </div>
                 </div>
                 </div>
             </div>
         </td>
+        <td><img src="{{ asset('storage/' . $user->image) }}" class="img-thumbnail"></td>
         <td>{{ $user->phone }}</td>
         <td>{{ $user->email }}</td>
         <td>{{ $user->created_at }}</td>
