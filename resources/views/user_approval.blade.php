@@ -368,7 +368,6 @@ logout</span>Logout</a>
          <th>ID</th>
          <th>Full Name</th>
          <th>Sitio Clearance</th>
-         <th>Sitio Clearance Image</th>
          <th>Contact</th>
          <th>Email Address</th>
          <th>Date Created</th>
@@ -380,33 +379,32 @@ logout</span>Logout</a>
     @if ($user->account_status == 0)
       <tr>
          <td><span class="custom-checkbox">
-            <input type="checkbox" id="checkbox1" name="option[]" value="1">
-            <label for="checkbox1"></label>
+            <input type="checkbox" id="checkbox{{ $user->id }}" name="option[]" value="1">
+            <label for="checkbox{{ $user->id }}"></label>
          </td>
          <td>{{ $user->id }}</td>
          <td>{{ $user->firstname }} {{ $user->middlename }} {{ $user->lastname }}</td>
          <td>
-            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#viewImageModal">
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#viewImageModal{{ $user->id }}">
             View
             </button>
             <!-- View Image Modal -->
-            <div class="modal modal1 fade" id="viewImageModal" tabindex="-1" role="dialog" aria-labelledby="viewImageModalLabel" aria-hidden="true">
+            <div class="modal modal1 fade" id="viewImageModal{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="viewImageModalLabel{{ $user->id }}" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h5 class="modal-title" id="viewImageModalLabel">Sitio Image</h5>
+                    <h5 class="modal-title" id="viewImageModalLabel{{ $user->id }}">Sitio Image</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     </div>
                     <div class="modal-body">
-                      <img src="{{ asset('storage/' . $user->image) }}" class="img-fluid">
+                      <img src="{{ Storage::disk('s3')->url($user->image) }}" class="img-fluid">
                     </div>
                 </div>
                 </div>
             </div>
         </td>
-        <td><img src="{{ asset('storage/' . $user->image) }}" class="img-thumbnail"></td>
         <td>{{ $user->phone }}</td>
         <td>{{ $user->email }}</td>
         <td>{{ $user->created_at }}</td>
@@ -414,11 +412,11 @@ logout</span>Logout</a>
         <div class="btn-group">
             <form action="{{ route('user_approval.accept', $user->id) }}" method="POST">
                 @csrf
-                <button type="submit" class="btn btn-success accept-btn" data-toggle="modal" data-target="#acceptModal">Accept</button>
+                <button type="submit" class="btn btn-success accept-btn" data-toggle="modal" data-target="#acceptModal{{ $user->id }}">Accept</button>
             </form>
             <form action="{{ route('user_approval.deny', $user->id) }}" method="POST">
                 @csrf
-                <button type="submit" class="btn btn-danger deny-btn" data-toggle="modal" data-target="#denyModal">Deny</button>
+                <button type="submit" class="btn btn-danger deny-btn" data-toggle="modal" data-target="#denyModal{{ $user->id }}">Deny</button>
             </form>
         </div>
         </td>

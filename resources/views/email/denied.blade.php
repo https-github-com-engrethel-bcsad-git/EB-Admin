@@ -131,8 +131,7 @@ margin-top: 40px;
 </head>
 <body>
 <div class="container">
-<img src="{{ asset('img/mail.png') }}" alt="Logo" class="logo">
-<h1 class="name">EBarangay</h1>
+{{-- <h1 class="name">EBarangay</h1> --}}
 <div class="content">
 <br>
 <div class="inner">
