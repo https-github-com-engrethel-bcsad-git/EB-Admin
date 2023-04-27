@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AnnouncementController;
 use App\Models\DocuRequest;
 use App\Models\User;
+use App\Models\Announcement;
 
 Route::get('/', function () {
   return view('home');
@@ -44,6 +46,21 @@ Route::get('/user_account', function () {
 Route::get('/user/{user}/edit', [UserController::class, 'edit']);
 Route::put('/user/{user}', [UserController::class, 'update']);
 Route::delete('/user_account/{id}', [UserController::class, 'delete'])->name('user_account.delete');
+
+//Certifacate Route
+Route::get('/certificate/bcf', function () {
+  return view('certificate/bcf');
+})->name('certificate/bcf');
+
+//Announcement Route
+Route::get('/announcement', function () {
+  $announcement = announcement::all();
+  return view('announcement', compact('announcement'));
+})->name('announcement');
+
+Route::get('/update/{announcement}/edit_announcement', [AnnouncementController::class, 'edit']);
+Route::put('/update/{announcement}', [AnnouncementController::class, 'update']);
+
 
 
 

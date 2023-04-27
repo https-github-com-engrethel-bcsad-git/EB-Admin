@@ -1,118 +1,149 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400&display=swap" rel="stylesheet">
-	<title>My Webpage</title>
-	<style>
-
-        body{
-            font-family: 'Nunito', sans-serif;
-            display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		height: 100vh;
-		margin-top:20px;
-        }
-      
-        .container {
+<title>My Webpage</title>
+<style>
+body {
+  font-family: 'Nunito', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 400px;
-  width: 40%;
-  border: 2px solid #ccc;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  padding-bottom: 100px;
-  border-radius: 25px;
- 
+  margin: 0;
+  padding: 0;
+}
+.container {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+max-width: 800px;
+width: 90%;
+border: 2px solid #ccc;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+padding: 40px;
+border-radius: 25px;
+margin: 20px;
 }
 
-		.logo {
-			max-width: 200px;
-			margin-bottom: 10px;
-		}
+.logo {
+max-width: 200px;
+margin-bottom: 20px;
+}
 
-		.name {
-			font-size: 24px;
-			font-weight: bold;
-			text-align: center;
-			margin-bottom: 10px;
-		}
+.name {
+font-size: 30px;
+font-weight: bold;
+text-align: center;
+margin-bottom: 10px;
+}
 
-		.content {
-          
-			text-align: center;
-			font-size: 18px;
-			line-height: 1.5;
-			max-width: 800px;
-			margin: 20px;
-           
-		}
-   .inner{
-    height: 250px;
-    border-radius: 25px;
-    background-color: whitesmoke;
-    margin-right: 20px;
-    margin-left: 20px;
-    margin-bottom: 20px;
-    padding-bottom: 50px;
-   }
-		.footer {
-            margin-top: 40px;
-			background-color:#031C30;
-			color: #fff;
-			padding: 20px;
-			text-align: center;
-            width: 900px;
-		}
+.content {
+text-align: center;
+font-size: 18px;
+line-height: 1.5;
+margin: 0px;
+width:80%;
+}
 
-        button {
-        margin-top: 50px;
-  background-color:#031C30 ; /* Green background color */
-  border: none; /* Remove border */
-  color: white; /* White text color */
-  padding: 15px 32px; /* Padding */
-  text-align: center; /* Center text */
-  text-decoration: none; /* Remove underline */
-  display: inline-block; /* Make button inline */
-  font-size: 16px; /* Font size */
-  margin: 4px 2px; /* Margin */
-  cursor: pointer; /* Add cursor pointer */
-  border-radius: 25px; /* Add border radius */
+.inner {
+height: 250px;
+border-radius: 25px;
+background-color: whitesmoke;
+margin-bottom: 20px;
+padding-bottom: 50px;
+}
+
+.footer {
+margin-top: 40px;
+background-color: #031C30;
+color: #fff;
+padding: 20px;
+text-align: center;
+width: 90%;
+max-width: 900px;
+margin-bottom: 20px;
+}
+
+button {
+margin-top: 50px;
+background-color: #031C30;
+border: none;
+color: white;
+padding: 15px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 4px 2px;
+cursor: pointer;
+border-radius: 25px;
 }
 
 button:hover {
-  background-color: #1c3550; /* Darker green background color on hover */
+background-color: #1c3550;
+}
+
+/* Media queries */
+
+/* For screens smaller than 600px */
+@media (max-width: 600px) {
+.container {
+padding: 20px;
+}
+.name {
+font-size: 20px;
+}
+.content {
+font-size: 16px;
+}
+.inner {
+height: 200px;
+}
+button {
+margin-top: 30px;
+}
+}
+
+/* For screens between 600px and 900px */
+@media (min-width: 600px) and (max-width: 900px) {
+.container {
+padding: 30px;
+}
+.name {
+font-size: 22px;
+}
+.content {
+font-size: 17px;
+}
+.inner {
+height: 225px;
+width:50%;
+}
+button {
+margin-top: 40px;
+}
 }
 </style>
-	</style>
 </head>
 <body>
-	<section class="container">
-		<img src="img/mail.png" alt="Logo" class="logo">
-		<h1 class="name">EBarangay</h1>
-        <div class="inner">
-		<p class="content">
-			Hello User {{ $user->firstname }},
-            Youre account has been approved
-			Weclome to EBarangay 
-            
-		</p>
+<div class="container">
+<img src="{{ asset('img/mail.png') }}" alt="Logo" class="logo">
+<h1 class="name">EBarangay</h1>
+<div class="content">
+<br>
+<div class="inner">
+    <br>
+<h1 style="font-size:25px";>Hello {{ $user->firstname }},</h1>
+<p>Your registration has been approved. Welcome to EBarangay</p>
+<button>Sign in</button>
+</div>
+</div>
+</div>
 
-        <p class="content">
-            Thank you for Using EBarangay
-
-</p>
-    </div>
-
-    <button> Sign in </button>
-	</section>
-
-	
 </body>
 </html>

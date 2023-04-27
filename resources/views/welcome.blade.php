@@ -45,9 +45,9 @@
           @endif 
         </td>
         <td class="text-center">
-          <i class="bi bi-check" data-id="{{ $docuRequest->id }}"></i>
+          <button type="button" class="btn btn-link">Approved</button>
           <br>
-          <i class="bi bi-printer-fill" id="print-table"></i>
+          <button type="button" class="btn btn-link">Print</button>
         </td>
       </tr>
       @endforeach
@@ -56,31 +56,4 @@
 </div>
 
 <script>
-  // Add a click event listener to the icon
-  document.querySelector('.bi-check').addEventListener('click', function() {
-    // Get the record ID and new status from the data attributes
-    const id = this.dataset.id;
-    const status = 'Approved';
-
-    // Send an AJAX request to update the record in the database
-    fetch(`/docurequests/${id}/update-status`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-      },
-      body: JSON.stringify({ status })
-    })
-    .then(response => {
-      if (response.ok) {
-        // Reload the page to show the updated status
-        location.reload();
-      } else {
-        console.error('Failed to update status');
-      }
-    })
-    .catch(error => {
-      console.error(error);
-    });
-  });
 </script>
