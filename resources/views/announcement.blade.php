@@ -170,28 +170,27 @@ padding: 3px 8px;
                 <h3><img src="img/logo.png" class="img-fluid"/><span>EBarangay</span></h3>
             </div>
             <ul class="list-unstyled components">
-            <li  >
-                    <a href="home.html" class="dashboard"><i class="material-icons">home</i>
+                <li  >
+                    <a href="/" class="dashboard"><i class="material-icons">home</i>
                     <span>Dashboard</span></a>
                 </li>
         
-
                 <li class="dropdown">
-                    <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" 
-                    class="dropdown-toggle">
-                    <i class="material-icons">people</i>User Management</a>
-                    <ul id="homeSubmenu1">
-                        <li>
-                            <a href="#">User Account Approval</a>
-                        </li>
-                        <li>
-                            <a href="#">User Account</a>
-                        </li>
-                        <li>
-                            <a href="#">Admin Account</a>
-                        </li>
-                    </ul>
-                </li>
+                  <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" 
+                  class="dropdown-toggle">
+                  <i class="material-icons">people</i>User Management</a>
+                  <ul class="collapse list-unstyled menu" id="homeSubmenu1">
+                      <li>
+                          <a href="{{ route('user_approval') }}">User Approval</a>
+                      </li>
+                      <li>
+                          <a href="{{ route('user_account') }}">User Account</a>
+                      </li>
+                      <li>
+                          <a href="#">Admin Account</a>
+                      </li>
+                  </ul>
+              </li>
                 
                 <li class="dropdown">
                     <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" 
@@ -230,8 +229,8 @@ padding: 3px 8px;
                 
                 
                  <li  class="active">
-                    <a href="#"><i class="material-icons">edit</i><span>News and Announcements
-                    </span></a>
+                  <a href="{{ route('announcement')}}"><i class="material-icons">edit</i><span>News and Announcements
+                  </span></a>
                 </li>
                 <li  class="">
                     <a href="#"><i class="material-icons">settings</i><span>Settings
@@ -509,7 +508,7 @@ logout</span>Logout</a>
                        
                        
                      <!----delete-modal start--------->
-        <div class="modal fade" tabindex="-1" id="deleteEmployeeModal" role="dialog">
+<div class="modal fade" tabindex="-1" id="deleteEmployeeModal" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">

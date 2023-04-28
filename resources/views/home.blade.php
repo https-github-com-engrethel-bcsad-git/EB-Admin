@@ -109,7 +109,7 @@ max-width: 100%;
         </div>
         <ul class="list-unstyled components">
         <li  class="active">
-                <a href="#" class="dashboard"><i class="material-icons">home</i>
+                <a href="/" class="dashboard"><i class="material-icons">home</i>
                 <span>Dashboard</span></a>
             </li>
     
@@ -167,8 +167,8 @@ max-width: 100%;
             </li>
             
             
-                <li  class="">
-                <a href="#"><i class="material-icons">edit</i><span>News and Announcements
+            <li  class="">
+                <a href="{{ route('announcement')}}"><i class="material-icons">edit</i><span>News and Announcements
                 </span></a>
             </li>
             <li  class="">

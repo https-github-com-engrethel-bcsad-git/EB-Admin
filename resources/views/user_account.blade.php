@@ -171,7 +171,7 @@ padding: 3px 8px;
             </div>
             <ul class="list-unstyled components">
             <li  >
-                    <a href="home.html" class="dashboard"><i class="material-icons">home</i>
+                    <a href="/" class="dashboard"><i class="material-icons">home</i>
                     <span>Dashboard</span></a>
                 </li>
         
@@ -182,10 +182,10 @@ padding: 3px 8px;
                     <i class="material-icons">people</i>User Management</a>
                     <ul id="homeSubmenu1">
                         <li >
-                            <a href="#">User Account Approval</a>
+                          <a href="{{ route('user_approval')}}">User Approval</a>
                         </li>
                         <li class="active">
-                            <a href="#">User Account</a>
+                          <a href="{{ route('user_account')}}">User Account</a>
                         </li>
                         <li>
                             <a href="#">Admin Account</a>
@@ -230,8 +230,8 @@ padding: 3px 8px;
                 
                 
                  <li  class="">
-                    <a href="#"><i class="material-icons">edit</i><span>News and Announcements
-                    </span></a>
+                  <a href="{{ route('announcement')}}"><i class="material-icons">edit</i><span>News and Announcements
+                  </span></a>
                 </li>
                 <li  class="">
                     <a href="#"><i class="material-icons">settings</i><span>Settings
