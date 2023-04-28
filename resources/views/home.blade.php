@@ -36,7 +36,7 @@ flex: 1 1 20%;
 max-width: 20%;
 height: auto;
 margin-bottom: 20px;
-background-color: whitesmoke;
+background-color: #FFFFFF;
 text-align: center;
 padding: 20px;
 box-sizing: border-box;
@@ -54,17 +54,23 @@ margin-bottom: 10px;
 .box .caption {
 font-weight: bold;
 margin-bottom: 10px;
+color:#031C30;
+font-size:20px;
+text-transform:uppercase;
+text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
 .box button {
-background-color: #4CAF50;
+background-color: #031C30;
 color: white;
 border: none;
-padding: 10px;
-border-radius: 5px;
+padding: 20px 30px;
+border-radius: 35px;
 cursor: pointer;
 }
-
+.box button:hover {
+background-color: #2196F3;
+}
 @media screen and (max-width: 960px) {
 .box {
 flex: 1 1 30%;
@@ -301,23 +307,23 @@ logout</span>Logout</a>
 </div><section class="boxes">
 <div class="box">
 <img src="img/resident.png" alt="Image 1">
-<div class="caption">Caption 1</div>
-<button>Button 1</button>
+<div class="caption">User Counts</div>
+<button class="button1">87</button>
 </div>
 <div class="box">
-<img src="image2.jpg" alt="Image 2">
-<div class="caption">Caption 2</div>
-<button>Button 2</button>
+<img src="img/Group1.png" alt="Image 2">
+<div class="caption">Appointments</div>
+<button class="button1">12</button>
 </div>
 <div class="box">
-<img src="image3.jpg" alt="Image 3">
-<div class="caption">Caption 3</div>
-<button>Button 3</button>
+<img src="img/Group2.png" alt="Image 3">
+<div class="caption">Complaints</div>
+<button class="button1">5</button>
 </div>
 <div class="box">
-<img src="image4.jpg" alt="Image 4">
-<div class="caption">Caption 4</div>
-<button>Button 4</button>
+<img src="img/Group3.png" alt="Image 4">
+<div class="caption">Posted Announcements</div>
+<button class="button1">3</button>
 </div>
 </section>
 
