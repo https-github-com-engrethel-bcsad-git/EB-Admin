@@ -48,7 +48,7 @@
         background-color: #0069d9;
     }
 </style>
-<h1 style="text-align: center;">EDIT ANNOUNCMENT</h1>
+<h1 style="text-align: center;">EDIT ANNOUNCEMENT</h1>
 <div class="container">
     <form method="POST" action="/update/{{ $announcement->id }}" enctype="multipart/form-data">
         @csrf
