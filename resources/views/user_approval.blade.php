@@ -29,10 +29,11 @@
 
     .btn-info {
   
-padding: 3px 8px;
+  padding: 3px 8px;
   text-shadow: 1px 1px 1px #000;
    border-radius: 15px;
-   font-size: 14px;
+   font-size: 12px;
+   text-transform:uppercase;
 }
 
 .btn-info:hover {
@@ -40,17 +41,7 @@ padding: 3px 8px;
   color: #fff;
 }
 .accept-btn, .deny-btn {
-  display: inline-block;
-  padding: 3px 8px;
-  border-radius: 10px;
-  font-size: 14px;
-/*  font-weight: bold;*/
-  color: #fff;
-  text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
-  background-color: #2ecc71;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
+
 }
 
 .accept-btn:hover, .deny-btn:hover {
@@ -58,11 +49,43 @@ padding: 3px 8px;
 }
 
 .accept-btn {
-  margin-right: 10px;
+  margin-right:6px;
+   margin-top:10px;
+    height:24px;
+    text-transform:uppercase;
+    padding-top: 0px ;
+    border-radius: 15px;
+    padding-bottom:0px;
+    padding-right:10px;
+    padding-left:10px;
+    font-size: 14px;
+    font-weight:normal;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    background-color: #198754;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
 }
 
 .deny-btn {
-  background-color: #e74c3c;
+  margin-top:10px;
+    height:24px;
+    text-transform:uppercase;
+    padding-top: 0px ;
+    border-radius: 15px;
+    padding-bottom:0px;
+    padding-right:17px;
+    padding-left:17px;
+    font-size: 14px;
+    font-weight:normal;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    background-color: #E90C0C;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .deny-btn:hover {
@@ -135,6 +158,12 @@ padding: 3px 8px;
     max-width: 100%;
   }
 }
+
+
+
+th {
+      border-right: 1px solid #ccc;
+   }
 
 </style>
   <body>
