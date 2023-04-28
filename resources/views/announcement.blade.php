@@ -153,6 +153,77 @@ padding: 3px 8px;
     max-width: 100%;
   }
 }
+/* table Announcements */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+}
+
+td {
+  padding: 20px;
+  vertical-align: top;
+}
+
+img {
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  td {
+    display: block;
+  }
+  td:first-child {
+    margin-bottom: 20px;
+  }
+}
+.title {
+  margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+  .title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    z-index: 1;
+  }
+}
+.body {
+  text-align: justify;
+  margin-top: 10px;
+  vertical-align:top;
+}
+.Edit{
+  margin-top:50px;
+  background-color: #092F5E;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+ 
+}
+
+.Edit:hover {
+  background-color: #0B5ED7;
+}
+
+.Edit.large {
+  font-size: 20px;
+  padding: 12px 24px;
+}
+
+.Edit.large:hover {
+  background-color: #0A50B5;
+}
 
 </style>
   <body>
@@ -374,30 +445,35 @@ logout</span>Logout</a>
                     </div>
                 </div>
             </div>
-<table class="table table-striped table-hover">
-   <thead>
-      <tr>
-      </tr>
-   </thead>
-   <tbody>
+           <table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
     @foreach($announcement as $announcement)
-      <tr>
-         <td rowspan="2"><img src="{{ Storage::disk('s3')->url($announcement->image) }}" class="img-fluid"></td>
-         <td>
-            {{ $announcement->title }}
-            <br>
-            {{ $announcement->body }}
-        </td>
-         <td>
-            <div class="btn-group">
-                <a href="/update/{{ $announcement->id }}/edit_announcement" class="btn btn-primary">Edit</a>
-            </div>            
-         </td>
-      </tr>
-      <tr>
+    <tr>
+      <td>
+        <div class="container">
+          <div class="title1">
+            <h3>{{ $announcement->title }}</h3>
+          </div>
+          <p class="body">{{ $announcement->body }}</p>
+          <div class="Edit1">
+            <a href="/update/{{ $announcement->id }}/edit_announcement" class="Edit">Edit</a>
+          </div>
+        </div>
+      </td>
+      <td>
+        <img src="{{ Storage::disk('s3')->url($announcement->image) }}" class="img-fluid">
+      </td>
+    </tr>
     @endforeach
-   </tbody>
+  </tbody>
 </table>
+
 
     
                        </div>

@@ -56,13 +56,11 @@ padding: 3px 8px;
 .btn-info:hover {
   background-color: sky;
   color: #fff;
-}
-.accept-btn, .deny-btn {
+
   display: inline-block;
   padding: 3px 8px;
   border-radius: 10px;
-  font-size: 14px;
-/*  font-weight: bold;*/
+  font-size: 14px
   color: #fff;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
   background-color: #2ecc71;
@@ -153,7 +151,52 @@ padding: 3px 8px;
     max-width: 100%;
   }
 }
+.action{
+  display:flex;
+  color:white;
+  position:relative;
+}
+.button1{
+  margin-right:6px;
+   margin-top:10px;
+    height:24px;
+    text-transform:uppercase;
+    padding-top: 0px ;
+    border-radius: 15px;
+    padding-bottom:0px;
+    padding-right:25px;
+    padding-left:25px;
+    font-size: 14px;
+    font-weight:normal;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    background-color: #198754;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
 
+.button2{
+   margin-top:10px;
+    height:24px;
+    text-transform:uppercase;
+    padding-top: 0px ;
+    border-radius: 15px;
+    padding-bottom:0px;
+    padding-right:17px;
+    padding-left:17px;
+    font-size: 14px;
+    font-weight:normal;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    background-color: #E90C0C;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+th {
+      border-right: 1px solid #ccc;
+   }
 </style>
   <body>
   
@@ -412,7 +455,7 @@ logout</span>Logout</a>
             @endif
          </td>
          <td>
-            {{-- <div class="btn-group">
+            {{-- <div class="action1">
                 <form>
                     @csrf
                     <button type="button" class="btn btn-success accept-btn" data-toggle="modal" data-target="#acceptModal">Edit</button>
@@ -422,12 +465,12 @@ logout</span>Logout</a>
                     <button type="button" class="btn btn-danger deny-btn" data-toggle="modal" data-target="#denyModal">Delete</button>
                 </form>
             </div> --}}
-            <div class="btn-group">
-                <a href="/user/{{ $user->id }}/edit" class="btn btn-primary">Edit</a>
+            <div class="action">
+                <a href="/user/{{ $user->id }}/edit" class="button1">Edit</a>
                 <form action="{{ route('user_account.delete', $user->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger deny-btn" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
+                    <button type="submit" class="button2" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
                 </form>
             </div>            
          </td>
