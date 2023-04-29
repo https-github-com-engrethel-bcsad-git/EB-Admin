@@ -303,30 +303,34 @@ logout</span>Logout</a>
         
         <div class="main-content">
             <div class="row">
-            
-</div><section class="boxes">
-<div class="box">
-<img src="img/resident.png" alt="Image 1">
-<div class="caption">User Counts</div>
-<button class="button1">87</button>
-</div>
-<div class="box">
-<img src="img/Group1.png" alt="Image 2">
-<div class="caption">Appointments</div>
-<button class="button1">12</button>
-</div>
-<div class="box">
-<img src="img/Group2.png" alt="Image 3">
-<div class="caption">Complaints</div>
-<button class="button1">5</button>
-</div>
-<div class="box">
-<img src="img/Group3.png" alt="Image 4">
-<div class="caption">Posted Announcements</div>
-<button class="button1">3</button>
-</div>
-</section>
+<?php
+    $userCount = DB::table('users')->count();
+    $announcementCount = DB::table('announcement')->count();
+?>
 
+</div>
+    <section class="boxes">
+        <div class="box">
+            <img src="img/resident.png" alt="Image 1">
+            <div class="caption">User Counts</div>
+            <button class="button1"><?php echo $userCount; ?></button>
+        </div>
+        <div class="box">
+            <img src="img/Group1.png" alt="Image 2">
+            <div class="caption">Appointments</div>
+            <button class="button1"><?php echo $announcementCount; ?></button>
+        </div>
+            <div class="box">
+            <img src="img/Group2.png" alt="Image 3">
+            <div class="caption">Complaints</div>
+            <button class="button1">5</button>
+        </div>
+            <div class="box">
+            <img src="img/Group3.png" alt="Image 4">
+            <div class="caption">Posted Announcements</div>
+            <button class="button1">3</button>
+        </div>
+    </section>
 </div>
 
 
