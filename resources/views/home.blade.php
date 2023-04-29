@@ -318,17 +318,17 @@ logout</span>Logout</a>
         <div class="box">
             <img src="img/Group1.png" alt="Image 2">
             <div class="caption">Appointments</div>
-            <button class="button1"><?php echo $announcementCount; ?></button>
+            <button class="button1">0</button>
         </div>
             <div class="box">
             <img src="img/Group2.png" alt="Image 3">
             <div class="caption">Complaints</div>
-            <button class="button1">5</button>
+            <button class="button1">0</button>
         </div>
             <div class="box">
             <img src="img/Group3.png" alt="Image 4">
             <div class="caption">Posted Announcements</div>
-            <button class="button1">3</button>
+            <button class="button1"><?php echo $announcementCount; ?></button>
         </div>
     </section>
 </div>
