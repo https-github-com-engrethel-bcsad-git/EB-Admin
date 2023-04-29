@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\DocuRequestController;
 use App\Models\DocuRequest;
 use App\Models\User;
 use App\Models\Announcement;
@@ -12,9 +13,10 @@ Route::get('/', function () {
   return view('home');
 })->name('home');
 
-Route::get('/welcome', function () {
+//Docuument Request Route
+Route::get('/docu_request', function () {
     $docuRequests = DocuRequest::all();
-    return view('welcome', compact('docuRequests'));
+    return view('docu_request', compact('docuRequests'));
 });
 
 Route::post('/docurequests/{id}/update-status', function($id) {
@@ -27,6 +29,7 @@ Route::post('/docurequests/{id}/update-status', function($id) {
     ]);
   });
 
+Route::get('/pdf/{docuRequest}/docu_request_pdf.blade', [DocuRequestController::class, 'print']);
 
 //User Approval Route
 Route::get('/user_approval', function () {

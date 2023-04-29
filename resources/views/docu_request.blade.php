@@ -35,7 +35,8 @@
         <td>{{ $docuRequest->rhowner }}</td>
         <td>{{ $docuRequest->roa }}</td>
         <td>
-          <p><a href="{{ asset('storage/' . $docuRequest->signature) }}">HIDDEN</a></p>
+          <p><a href="{{ Storage::disk('s3')->url($docuRequest->image) }}">HIDDEN</a></p>
+          {{-- <img src="{{ Storage::disk('s3')->url($docuRequest->image) }}" class="img-thumbnail"> --}}
         </td>
         <td>
           @if ($docuRequest->status == 'Pending')
@@ -47,7 +48,7 @@
         <td class="text-center">
           <button type="button" class="btn btn-link">Approved</button>
           <br>
-          <button type="button" class="btn btn-link">Print</button>
+          <a href="/pdf/{{ $docuRequest->id }}/docu_request_pdf.blade" class="button1">Print</a>
         </td>
       </tr>
       @endforeach
