@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en">
+<htm llang="en">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
+     <eta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-        <title>EBarangay</title>
+        <title>EBarangay</tile>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <!----css3---->
@@ -468,9 +468,7 @@ logout</span>Logout</a>
          <td>johndoe@gmail.com</td>
          <td>4-30-2023</td>
          <td>
-         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#viewImageModal">
-    View
-  </button>
+         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#viewImageModal">View</button>
 </td>
 <td>
    <div class="btn-group">
