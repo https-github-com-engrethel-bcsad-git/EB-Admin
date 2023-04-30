@@ -108,12 +108,30 @@ max-width: 100%;
             <h3><img src="img/logo.png" class="img-fluid"/><span>EBarangay</span></h3>
         </div>
         <ul class="list-unstyled components">
-        <li  class="active">
-                <a href="/" class="dashboard"><i class="material-icons">home</i>
-                <span>Dashboard</span></a>
-            </li>
-    
+        <li>
+              <a href="{{ route('home') }}" class="dashboard"><i class="material-icons">home</i>
+                  <span>Dashboard</span></a>
+              </li>
+                 
+            <li class="dropdown">
+                <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" 
+                class="dropdown-toggle">
+                <i class="material-icons">send</i><span>Document Request</span></a>
+                <ul class="collapse list-unstyled menu" id="pageSubmenu2">
+                    <li>
+                    <a href="{{ route('documentapproval') }}">Pending</a>
 
+                    </li>
+                    <li>
+                        <a href="#">Approve</a>
+                    </li>
+                    <li>
+                        <a href="#">History</a>
+                </li>
+                    
+                </ul>
+            </li>
+            
             <li class="dropdown">
                 <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" 
                 class="dropdown-toggle">

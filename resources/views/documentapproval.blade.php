@@ -25,24 +25,6 @@
   </head>
 
   <style> 
-.online-dot {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  background-color: #4CAF50; /* green */
-  border-radius: 50%;
-  vertical-align: middle;
-
-}
-
-.offline-dot {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  background-color: #F44336; /* red */
-  border-radius: 50%;
-  vertical-align: middle;
-}
 
 
     .btn-info {
@@ -56,18 +38,8 @@ padding: 3px 8px;
 .btn-info:hover {
   background-color: sky;
   color: #fff;
-
-  display: inline-block;
-  padding: 3px 8px;
-  border-radius: 10px;
-  font-size: 14px
-  color: #fff;
-  text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
-  background-color: #2ecc71;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
 }
+
 
 .accept-btn:hover, .deny-btn:hover {
   background-color: #27ae60;
@@ -151,14 +123,9 @@ padding: 3px 8px;
     max-width: 100%;
   }
 }
-.action{
-  display:flex;
-  color:white;
-  position:relative;
-}
 .button1{
   margin-right:6px;
-   margin-top:10px;
+   margin-top:0px;
     height:24px;
     text-transform:uppercase;
     padding-top: 0px ;
@@ -177,7 +144,7 @@ padding: 3px 8px;
 }
 
 .button2{
-   margin-top:10px;
+   margin-top:0px;
     height:24px;
     text-transform:uppercase;
     padding-top: 0px ;
@@ -194,9 +161,19 @@ padding: 3px 8px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
-th {
-      border-right: 1px solid #ccc;
-   }
+.button1:hover{
+    background-color: #27ae60;
+}
+.button2:hover{
+    background-color: #27ae60;
+}
+.table td{
+  
+    padding: 0.75rem;
+    /* vertical-align:normal; */
+    border-top: 1px solid #dee2e6;
+
+}
 </style>
   <body>
   
@@ -217,16 +194,18 @@ th {
               <a href="{{ route('home') }}" class="dashboard"><i class="material-icons">home</i>
                   <span>Dashboard</span></a>
               </li>
-              <li class="dropdown">
-                    <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" 
+                 
+                <li class="dropdown">
+                    <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" 
                     class="dropdown-toggle">
-                    <i class="material-icons">send</i><span>Document Requests</span></a>
-                    <ul class="collapse list-unstyled menu" id="pageSubmenu3">
-                        <li>
+                    <i class="material-icons">send</i>Document request</a>
+                    <ul id="homeSubmenu1">
+                        <li class="active">
                         <a href="{{ route('documentapproval') }}">Pending</a>
+
                         </li>
                         <li>
-                            <a href="#">Approved</a>
+                            <a href="UserAccount.html">Approve</a>
                         </li>
                         <li>
                             <a href="#">History</a>
@@ -235,22 +214,21 @@ th {
                 </li>
 
                 <li class="dropdown">
-                    <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" 
-                    class="dropdown-toggle">
-                    <i class="material-icons">people</i>User Management</a>
-                    <ul id="homeSubmenu1">
-                        <li >
-                          <a href="{{ route('user_approval')}}">User Approval</a>
-                        </li>
-                        <li class="active">
-                          <a href="{{ route('user_account')}}">User Account</a>
-                        </li>
-                        <li>
-                            <a href="#">Admin Account</a>
-                        </li>
-                    </ul>
-                </li>
-                
+                <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" 
+                class="dropdown-toggle">
+                <i class="material-icons">people</i>User Management</a>
+                <ul class="collapse list-unstyled menu" id="homeSubmenu1">
+                    <li>
+                        <a href="{{ route('user_approval') }}">User Approval</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('user_account') }}">User Account</a>
+                    </li>
+                    <li>
+                        <a href="#">Admin Account</a>
+                    </li>
+                </ul>
+            </li>
                 <li class="dropdown">
                     <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" 
                     class="dropdown-toggle">
@@ -288,8 +266,8 @@ th {
                 
                 
                  <li  class="">
-                  <a href="{{ route('announcement')}}"><i class="material-icons">edit</i><span>News and Announcements
-                  </span></a>
+                    <a href="#"><i class="material-icons">edit</i><span>News and Announcements
+                    </span></a>
                 </li>
                 <li  class="">
                     <a href="#"><i class="material-icons">settings</i><span>Settings
@@ -419,20 +397,28 @@ logout</span>Logout</a>
            
            
            
-<!--------main-content------------->
-
-<div class="main-content">
-        <div class="row">
-        <div class="col-md-12">
-            <div class="table-wrapper">
-                
-            <div class="table-title">
-                <div class="row">
-                    <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
-                    <h2 class="ml-lg-2">User Account</h2>
-                    </div>
-                </div>
-            </div>
+           <!--------main-content------------->
+           
+           <div class="main-content">
+                 <div class="row">
+                    <div class="col-md-12">
+                       <div class="table-wrapper">
+                         
+                       <div class="table-title">
+                         <div class="row">
+                             <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
+                                <h2 class="ml-lg-2">Documents Approval</h2>
+                             </div>
+                             <!-- <div class="col-sm-6 p-0 flex justify-content-lg-end justify-content-center">
+                               <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">
+                               <i class="material-icons">&#xE147;</i>
+                               <span>Add New User</span>
+                               </a>
+                               
+                             </div> -->
+                         </div>
+                       </div>
+                       
 <table class="table table-striped table-hover">
    <thead>
       <tr>
@@ -442,60 +428,102 @@ logout</span>Logout</a>
          </th>
          <th>ID</th>
          <th>Full Name</th>
-         <th>Address</th>
+         <th>Type of Document</th>
          <th>Contact</th>
          <th>Email Address</th>
-         <th>Status</th>
+         <th>Date Request</th>
+         <th>View</th>
          <th>Actions</th>
       </tr>
    </thead>
    <tbody>
-    @foreach($users as $user)
-    @if ($user->account_status == 1)
       <tr>
          <td><span class="custom-checkbox">
             <input type="checkbox" id="checkbox1" name="option[]" value="1">
             <label for="checkbox1"></label>
          </td>
-         <td>{{ $user->id }}</td>
-         <td>{{ $user->firstname }} {{ $user->middlename }} {{ $user->lastname }}</td>
-         <td>{{ $user->house_number }} {{ $user->street }} , {{ $user->brgy }} {{ $user->zip }} , {{ $user->city }}</td>
-         <td>{{ $user->phone }}</td>
-         <td>{{ $user->email }}</td>
+         <td>1</td>
+         <td>John Doe</td>
+         <td>  Barangay Clearance  </td>
+
+
+  <!-- View Image Modal -->
+  <div class="modal modal1 fade" id="viewImageModal" tabindex="-1" role="dialog" aria-labelledby="viewImageModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="viewImageModalLabel">Sitio Image</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img src="path/to/sitio/image.jpg" class="img-fluid" alt="Sitio Image">
+        </div>
+      </div>
+    </div>
+  </div>
+</td>
+         <td>123 Main St, Anytown USA</td>
+         <td>johndoe@gmail.com</td>
+         <td>4-30-2023</td>
          <td>
-            @if ($user->active_status == 0)
-                <span class="online-dot"></span> Online
-            @else
-                <span class="offline-dot"></span> Offline
-            @endif
-         </td>
-         <td>
-            {{-- <div class="action1">
-                <form>
-                    @csrf
-                    <button type="button" class="btn btn-success accept-btn" data-toggle="modal" data-target="#acceptModal">Edit</button>
-                </form>
-                <form>
-                    @csrf
-                    <button type="button" class="btn btn-danger deny-btn" data-toggle="modal" data-target="#denyModal">Delete</button>
-                </form>
-            </div> --}}
-            <div class="action">
-                <a href="/user/{{ $user->id }}/edit" class="button1">Edit</a>
-                <form action="{{ route('user_account.delete', $user->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="button2" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
-                </form>
-            </div>            
-         </td>
+         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#viewImageModal">
+    View
+  </button>
+</td>
+<td>
+   <div class="btn-group">
+      <button type="button" class="button1" data-toggle="modal" data-target="#acceptModal">Approve</button>
+      <button type="button" class="button2" data-toggle="modal" data-target="#denyModal">Deny</button>
+   </div>
+</td>
       </tr>
       <tr>
-    @endif
-    @endforeach
+         <td><span class="custom-checkbox">
+            <input type="checkbox" id="checkbox2" name="option[]" value="1">
+            <label for="checkbox2"></label>
+         </td>
+         <td>2</td>
+         <td>Jane Smith</td>
+         <td>Barangay ID  </td>
+
+  <!-- View Image Modal -->
+  <div class="modal modal1 fade" id="viewImageModal" tabindex="-1" role="dialog" aria-labelledby="viewImageModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+  <h5 class="modal-title" id="viewImageModalLabel">Sitio Clearance imgae</h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+        <div class="modal-body">
+          <img src="path/to/sitio/image.jpg" class="img-fluid" alt="Sitio Image">
+        </div>
+      </div>
+    </div>
+  </div>
+</td>
+         <td>456 Oak Ave, Anytown USA</td>
+         <td>johndoe@gmail.com</td>
+         <td>4-30-2023</td>
+
+         <td>
+         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#viewImageModal">
+    View
+  </button>
+</td>
+<td>
+   <div class="btn-group">
+      <button type="button" class="button1" data-toggle="modal" data-target="#acceptModal">Approve</button>
+      <button type="button" class="button2" data-toggle="modal" data-target="#denyModal">Deny</button>
+   </div>
+</td>
+
+      </tr>
    </tbody>
 </table>
-
     
                        </div>
                     </div>
@@ -626,48 +654,54 @@ logout</span>Logout</a>
   </div>
 </div>
 
-<!----edit-modal end--------->   
+                       <!----edit-modal end--------->   
                        
+                    
+                    
+                 
+                 </div>
+              </div>
+
 <!----------html code compleate----------->
 
-<script src="js/jquery-3.3.1.slim.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-        $(".xp-menubar").on('click',function(){
-        $('#sidebar').toggleClass('active');
-        $('#content').toggleClass('active');
+
+
+
+
+
+
+
+  
+     <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   <script src="js/jquery-3.3.1.slim.min.js"></script>
+   <script src="js/popper.min.js"></script>
+   <script src="js/bootstrap.min.js"></script>
+   <script src="js/jquery-3.3.1.min.js"></script>
+  
+  
+  <script type="text/javascript">
+        
+        $(document).ready(function(){
+          $(".xp-menubar").on('click',function(){
+            $('#sidebar').toggleClass('active');
+            $('#content').toggleClass('active');
+          });
+          
+           $(".xp-menubar,.body-overlay").on('click',function(){
+             $('#sidebar,.body-overlay').toggleClass('show-nav');
+           });
+          
         });
         
-        $(".xp-menubar,.body-overlay").on('click',function(){
-            $('#sidebar,.body-overlay').toggleClass('show-nav');
-        });
-    });
-    $(document).ready(function() {
-  (function() {
-    function showOffline() {
-      $('.indicator').removeClass('online').addClass('offline');
-      $('.message').text('Offline');
-    }
-    function showOnline() {
-      $('.indicator').removeClass('offline').addClass('online');
-      $('.message').text('Online');
-    }
-    
-    window.addEventListener('offline', function () {
-     showOffline(); 
-    });
-    window.addEventListener('online', function () {
-      showOnline();
-    });
-    
-    if(window.navigator.onLine) {
-      showOnline();
-    }else {
-      showOffline();
-    }
-  })();
-});    
 </script>
+  
+  
+
+
+
+  </body>
+  
+  </html>
+
+

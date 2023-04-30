@@ -66,6 +66,10 @@ Route::put('/update/{announcement}', [AnnouncementController::class, 'update']);
 
 
 
+Route::view('/documentapproval', 'documentapproval')->name('documentapproval');
+
+
+
 
   
 

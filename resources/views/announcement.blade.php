@@ -240,11 +240,11 @@ img {
             <div class="sidebar-header">
                 <h3><img src="img/logo.png" class="img-fluid"/><span>EBarangay</span></h3>
             </div>
-            <ul class="list-unstyled components">
-                <li  >
-                    <a href="/" class="dashboard"><i class="material-icons">home</i>
-                    <span>Dashboard</span></a>
-                </li>
+            <li>
+              <a href="{{ route('home') }}" class="dashboard"><i class="material-icons">home</i>
+                  <span>Dashboard</span></a>
+              </li>
+                 
         
                 <li class="dropdown">
                   <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" 
