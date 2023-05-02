@@ -1,148 +1,113 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400&display=swap" rel="stylesheet">
-<title>My Webpage</title>
-<style>
-body {
-  font-family: 'Nunito', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-}
-.container {
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-max-width: 800px;
-width: 90%;
-border: 2px solid #ccc;
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-padding: 40px;
-border-radius: 25px;
-margin: 20px;
-}
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>EBarangay Registration Denied</title>
+	<style>
+		.container {
+			margin: 0 auto;
+			max-width: 600px;
+			padding: 20px;
+			background-color: #fff;
+			font-family: Arial, sans-serif;
+			color: #333;
+			border-radius: 5px;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+		}
 
-.logo {
-max-width: 200px;
-margin-bottom: 20px;
-}
+		.logo {
+			display: block;
+			margin: 0 auto;
+			width: 150px;
+			height: auto;
+			margin-bottom: 20px;
+		}
 
-.name {
-font-size: 30px;
-font-weight: bold;
-text-align: center;
-margin-bottom: 10px;
-}
+		.name {
+			font-size: 24px;
+			font-weight: bold;
+			text-align: center;
+			margin-bottom: 20px;
+		}
 
-.content {
-text-align: center;
-font-size: 18px;
-line-height: 1.5;
-margin: 0px;
-width:90%;
-}
+		.inner {
+			padding: 20px;
+			background-color: #f8f8f8;
+			border-radius: 5px;
+		}
 
-.inner {
-height: 250px;
-border-radius: 25px;
-background-color: whitesmoke;
-margin-bottom: 20px;
-padding-bottom: 50px;
-}
+		h1 {
+			font-size: 24px;
+			font-weight: bold;
+			margin-bottom: 20px;
+		}
 
-.footer {
-margin-top: 40px;
-background-color: #031C30;
-color: #fff;
-padding: 20px;
-text-align: center;
-width: 90%;
-max-width: 900px;
-margin-bottom: 20px;
-}
+		p {
+			font-size: 18px;
+			margin-bottom: 20px;
+			line-height: 1.5;
+		}
 
-button {
-margin-top: 50px;
-background-color: #031C30;
-border: none;
-color: white;
-padding: 15px 32px;
-text-align: center;
-text-decoration: none;
-display: inline-block;
-font-size: 16px;
-margin: 4px 2px;
-cursor: pointer;
-border-radius: 25px;
-}
+		button {
+			display: block;
+			margin: 0 auto;
+			padding: 10px 20px;
+			background-color: #1abc9c;
+			color: #fff;
+			font-size: 18px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: all 0.2s ease-in-out;
+		}
 
-button:hover {
-background-color: #1c3550;
-}
+		button:hover {
+			background-color: #16a085;
+		}
 
-/* Media queries */
+		@media screen and (max-width: 500px) {
+			.container {
+				max-width: 100%;
+				padding: 10px;
+			}
 
-/* For screens smaller than 600px */
-@media (max-width: 600px) {
-.container {
-padding: 20px;
-}
-.name {
-font-size: 20px;
-}
-.content {
-font-size: 16px;
-}
-.inner {
-height: 200px;
-}
-button {
-margin-top: 30px;
-}
-}
+			.logo {
+				width: 100%;
+				height: auto;
+				margin-bottom: 10px;
+			}
 
-/* For screens between 600px and 900px */
-@media (min-width: 600px) and (max-width: 900px) {
-.container {
-padding: 30px;
-}
-.name {
-font-size: 22px;
-}
-.content {
-font-size: 17px;
-}
-.inner {
-height: 225px;
-}
-button {
-margin-top: 40px;
-}
-}
-</style>
+			.name {
+				font-size: 20px;
+				margin-bottom: 10px;
+			}
+
+			h1 {
+				font-size: 20px;
+				margin-bottom: 10px;
+			}
+
+			p {
+				font-size: 16px;
+				margin-bottom: 10px;
+			}
+
+			button {
+				font-size: 16px;
+			}
+		}
+	</style>
 </head>
 <body>
-<div class="container">
-<img src="https://e-barangay-files.s3.ap-southeast-1.amazonaws.com/public/image/EB-logo-mail.png" alt="Logo" class="logo">
-<h1 class="name">EBarangay</h1>
-<div class="content">
-<br>
-<div class="inner">
-    <br>
-<h1 style="font-size:25px";>Hello {{ $user->firstname }},</h1>
-<p>We regret to inform you that your registration has been denied as you failed to upload a sitio clearance.</p>
-<button>Sign Up</button>
-</div>
-</div>
-</div>
-
+	<div class="container">
+		<img src="https://e-barangay-files.s3.ap-southeast-1.amazonaws.com/public/image/EB-logo-mail.png" alt="Logo" class="logo">
+		<h1 class="name">EBarangay</h1>
+		<div class="inner">
+			<h1>Hello {{ $user->firstname }},</h1>
+			<p>We regret to inform you that your registration has been denied as you failed to upload a sitio clearance.</p>
+			<button>Sign Up</button>
+		</div>
+	</div>
 </body>
 </html>
