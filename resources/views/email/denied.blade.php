@@ -131,7 +131,8 @@ margin-top: 40px;
 </head>
 <body>
 <div class="container">
-{{-- <h1 class="name">EBarangay</h1> --}}
+<img src="https://e-barangay-files.s3.ap-southeast-1.amazonaws.com/public/image/EB-logo-mail.png" alt="Logo" class="logo">
+<h1 class="name">EBarangay</h1>
 <div class="content">
 <br>
 <div class="inner">
