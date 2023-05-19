@@ -9,7 +9,13 @@ use App\Models\DocuRequest;
 use App\Models\User;
 use App\Models\Announcement;
 
+//Login Route
 Route::get('/', function () {
+  return view('login');
+})->name('login');
+
+//Home Route
+Route::get('home', function () {
   return view('home');
 })->name('home');
 
