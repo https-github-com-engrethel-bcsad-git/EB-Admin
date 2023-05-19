@@ -377,16 +377,21 @@ logout</span>Logout</a>
            
 <!--------main-content------------->
 <div class="main-content">
-<div class="row">
-    <div class="col-md-12">
-        <div class="table-wrapper">
-            <div class="table-title">
-                <div class="row">
-                    <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
-                        <h2 class="ml-lg-2">User Approval</h2>
-                    </div>
-                </div>
-            </div>
+  <div class="row">
+      <div class="col-md-12">
+          <div class="table-wrapper">
+              <div class="table-title">
+                  <div class="row">
+                      <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
+                          <h2 class="ml-lg-2">User Account</h2>
+                      </div>
+                      {{-- <div class="col-sm-6 p-0 d-flex justify-content-lg-end justify-content-center">
+                        <a class="btn btn-success" data-toggle="modal" data-target="#newuser">
+                            <i class="material-icons">&#xE147;</i> <span>New</span>
+                        </a>
+                      </div> --}}
+                  </div>
+              </div>
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
@@ -447,42 +452,9 @@ logout</span>Logout</a>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->created_at }}</td>
                         <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-info" data-toggle="modal"
-                                    data-target="#viewInformationModal{{ $user->id }}">View</button>
-                                <!-- START View Modal -->
-                                <div class="modal modal1 fade" id="viewInformationModal{{ $user->id }}"
-                                    tabindex="-1" role="dialog"
-                                    aria-labelledby="viewInformationModalLabel{{ $user->id }}"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title"
-                                                    id="viewInformationModalLabel{{ $user->id }}">User
-                                                    Information</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Fullname : {{ $user->firstname }} {{ $user->middlename }}
-                                                    {{ $user->lastname }}</p>
-                                                <p>Contact : {{ $user->phone }}</p>
-                                                <p>Birthday : {{ $user->bday }}</p>
-                                                <p>Gender : {{ $user->gender }}</p>
-                                                <p>Address : {{ $user->house_number }} {{ $user->street }}
-                                                    {{ $user->brgy }} {{ $user->zip }} {{ $user->sitio }}
-                                                    {{ $user->city }}</p>
-                                                <p>Username : {{ $user->username }}</p>
-                                                <p>Email : {{ $user->email }}</p>
-                                                <p>Date Created : {{ $user->created_at }}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- END View Modal -->
+                            <div class="btn-group action">
+                                {{-- <button type="button" class="btn btn-info" data-toggle="modal"data-target="#viewInformationModal{{ $user->id }}">View</button> --}}
+                                <a data-toggle="modal" data-target="#viewuser{{ $user->id }}" class="btn btn-info">View</a>
                                 <form action="{{ route('user_approval.accept', $user->id) }}" method="POST">
                                     @csrf
                                     <button type="submit" class="btn btn-success accept-btn"
@@ -503,109 +475,39 @@ logout</span>Logout</a>
         </div>
     </div>
 </div>
-</div>         
-  <!----add-modal start--------->
-        <div class="modal fade" tabindex="-1" id="addEmployeeModal" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Add Employees</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-            <label>Name</label>
-            <input type="text" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label>Email</label>
-            <input type="emil" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label>Address</label>
-            <textarea class="form-control" required></textarea>
-        </div>
-        <div class="form-group">
-            <label>Phone</label>
-            <input type="text" class="form-control" required>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-success">Add</button>
-      </div>
-    </div>
-  </div>
-</div>
+</div>   
 
-                       <!----edit-modal end--------->
-                       
-                       
-                       
-                       
-                       
-                   <!----edit-modal start--------->
-        <div class="modal fade" tabindex="-1" id="editEmployeeModal" role="dialog">
+<!-- Modal -->
+<!-- VIEW POP UP FORM (Bootstrap MODAL) -->
+@foreach($users as $user)
+<div class="modal fade" id="viewuser{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Edit Employees</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-            <label>Name</label>
-            <input type="text" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label>Email</label>
-            <input type="emil" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label>Address</label>
-            <textarea class="form-control" required></textarea>
-        </div>
-        <div class="form-group">
-            <label>Phone</label>
-            <input type="text" class="form-control" required>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-success">Save</button>
-      </div>
-    </div>
-  </div>
-</div>
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">User Data</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
 
-                       <!----edit-modal end--------->      
-                       
-                       
-                     <!----delete-modal start--------->
-        <div class="modal fade" tabindex="-1" id="deleteEmployeeModal" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Delete Employees</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+          <div class="modal-body">
+              <p>Fullname: {{ $user->firstname }} {{ $user->middlename }} {{ $user->lastname }}</p>
+              <p>Contact: {{ $user->phone }}</p>
+              <p>Birthday: {{ $user->bday }}</p>
+              <p>Gender: {{ $user->gender }}</p>
+              <p>Address: {{ $user->house_number }} {{ $user->street }} {{ $user->brgy }} {{ $user->zip }} {{ $user->sitio }} {{ $user->city }}</p>
+              <p>Username: {{ $user->username }}</p>
+              <p>Email: {{ $user->email }}</p>
+              <p>Date Created: {{ $user->created_at }}</p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
       </div>
-      <div class="modal-body">
-        <p>Are you sure you want to delete this Records</p>
-        <p class="text-warning"><small>this action Cannot be Undone,</small></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-success">Delete</button>
-      </div>
-    </div>
   </div>
 </div>
+@endforeach
+
 
 <!----------html code compleate----------->
 
