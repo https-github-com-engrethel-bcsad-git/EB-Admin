@@ -309,7 +309,7 @@ logout</span>Logout</a>
             <div class="row">
 <?php
     $userCount = DB::table('users')->count();
-    $announcementCount = DB::table('announcement')->count();
+    $announcementCount = DB::table('announcements')->count();
 ?>
 
 </div>
