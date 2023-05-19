@@ -201,7 +201,8 @@ th {
         </li>
         <li class="dropdown">
           <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-            <i class="material-icons">people</i>User Management
+            <i class="material-icons">people</i>
+            <span>User Management</span>
           </a>
           <ul id="homeSubmenu1">
             <li class="active">
