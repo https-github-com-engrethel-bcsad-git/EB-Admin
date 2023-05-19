@@ -440,20 +440,22 @@ logout</span>Logout</a>
            
            
            
-<!--------main-content------------->
-
-<div class="main-content">
-        <div class="row">
-        <div class="col-md-12">
-            <div class="table-wrapper">
-                
-            <div class="table-title">
-                <div class="row">
-                    <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
-                    <h2 class="ml-lg-2">News and Announcements</h2>
-                    </div>
-                </div>
-            </div>
+		   <!--------main-content------------->
+		   
+		   <div class="main-content">
+			  <div class="row">
+    <div class="table-title">
+      <div class="row">
+        <div class="col-sm-6 p-0 d-flex justify-content-lg-start justify-content-center">
+          <h2 class="ml-lg-2">Manage News and Announcement</h2>
+        </div>
+        <div class="col-sm-6 p-0 d-flex justify-content-lg-end justify-content-center">
+          <a class="btn btn-success" data-toggle="modal" data-target="#newannouncement">
+		  <i class="material-icons">&#xE147;</i> <span>New Announcement</span></a>
+         
+        </div>
+      </div>
+    </div>
            <table class="table table-striped table-hover">
   <thead>
     <tr>
@@ -482,140 +484,44 @@ logout</span>Logout</a>
     @endforeach
   </tbody>
 </table>
-
-
-    
-                       </div>
+                
+<!-- Modal -->
+<!-- NEW POP UP FORM (Bootstrap MODAL) -->
+<div class="modal fade" id="newannouncement" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add News and Announcement Data</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{ route('announcement.insert') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Image</label>
+                        <input type="file" name="image" accept=".jpg, .jpeg, .png" required>
                     </div>
-
-
-                       
-                    <!--    <div class="clearfix">
-                         <div class="hint-text">showing <b>5</b> out of <b>25</b></div>
-                         <ul class="pagination">
-                            <li class="page-item disabled"><a href="#">Previous</a></li>
-                            <li class="page-item "><a href="#"class="page-link">1</a></li>
-                            <li class="page-item "><a href="#"class="page-link">2</a></li>
-                            <li class="page-item active"><a href="#"class="page-link">3</a></li>
-                            <li class="page-item "><a href="#"class="page-link">4</a></li>
-                            <li class="page-item "><a href="#"class="page-link">5</a></li>
-                            <li class="page-item "><a href="#" class="page-link">Next</a></li>
-                         </ul>
-                       </div> -->
-                       
-                       
-                       
-                       
-    
-                       
-        
-                    
-                    
-                                       <!----add-modal start--------->
-        <div class="modal fade" tabindex="-1" id="addEmployeeModal" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Add Employees</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-            <label>Name</label>
-            <input type="text" class="form-control" required>
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" name="title" class="form-control" placeholder="Enter Title" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Body</label>
+                        <textarea name="body" class="form-control" rows="10" placeholder="Enter Message" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save Data</button>
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <label>Email</label>
-            <input type="emil" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label>Address</label>
-            <textarea class="form-control" required></textarea>
-        </div>
-        <div class="form-group">
-            <label>Phone</label>
-            <input type="text" class="form-control" required>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-success">Add</button>
-      </div>
     </div>
-  </div>
 </div>
-
-                       <!----edit-modal end--------->
-                       
-                       
-                       
-                       
-                       
-                   <!----edit-modal start--------->
-        <div class="modal fade" tabindex="-1" id="editEmployeeModal" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Edit Employees</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-            <label>Name</label>
-            <input type="text" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label>Email</label>
-            <input type="emil" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label>Address</label>
-            <textarea class="form-control" required></textarea>
-        </div>
-        <div class="form-group">
-            <label>Phone</label>
-            <input type="text" class="form-control" required>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-success">Save</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-                       <!----edit-modal end--------->      
-                       
-                       
-                     <!----delete-modal start--------->
-<div class="modal fade" tabindex="-1" id="deleteEmployeeModal" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Delete Employees</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Are you sure you want to delete this Records</p>
-        <p class="text-warning"><small>this action Cannot be Undone,</small></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-success">Delete</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!----edit-modal end--------->   
-                       
+                
 <!----------html code compleate----------->
 
 <script src="js/jquery-3.3.1.slim.min.js"></script>

@@ -8,6 +8,20 @@ use Illuminate\Support\Facades\Storage;
 
 class AnnouncementController extends Controller
 {
+    public function insert(Request $request, Announcement $announcement)
+    {
+        $data['title'] = $request->title;
+        $data['body'] = $request->body;
+        
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $path = Storage::disk('s3')->put('/images/sitio_clearance', $image);
+            $data['image'] = $path;
+        }  
+        $announcement->create($data);
+        return redirect()->back();
+    }
+
     public function edit(Announcement $announcement)
     {
         return view('/update/edit_announcement', compact('announcement'));

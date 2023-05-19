@@ -70,6 +70,9 @@ Route::get('/announcement', function () {
 Route::get('/update/{announcement}/edit_announcement', [AnnouncementController::class, 'edit']);
 Route::put('/update/{announcement}', [AnnouncementController::class, 'update']);
 
+Route::post('/announcement/insert', [AnnouncementController::class, 'insert'])->name('announcement.insert');
+
+
 
 
 Route::view('/documentapproval', 'documentapproval')->name('documentapproval');
