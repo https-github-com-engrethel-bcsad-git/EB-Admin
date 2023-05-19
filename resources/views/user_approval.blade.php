@@ -387,140 +387,136 @@ logout</span>Logout</a>
            
            
            
-           <!--------main-content------------->
-           
-           <div class="main-content">
-                 <div class="row">
-                    <div class="col-md-12">
-                       <div class="table-wrapper">
-                         
-                       <div class="table-title">
-                         <div class="row">
-                             <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
-                                <h2 class="ml-lg-2">User Approval</h2>
-                             </div>
-                         </div>
-                       </div>
-                       
-<table class="table table-striped table-hover">
-   <thead>
-      <tr>
-         <th><span class="custom-checkbox">
-            <input type="checkbox" id="selectAll">
-            <label for="selectAll"></label>
-         </th>
-         <th>ID</th>
-         <th>Full Name</th>
-         <th>Sitio Clearance</th>
-         <th>Contact</th>
-         <th>Email Address</th>
-         <th>Date Created</th>
-         <th>Actions</th>
-      </tr>
-   </thead>
-   <tbody>
-    @foreach($users as $user)
-    @if ($user->account_status == 0)
-      <tr>
-         <td><span class="custom-checkbox">
-            <input type="checkbox" id="checkbox{{ $user->id }}" name="option[]" value="1">
-            <label for="checkbox{{ $user->id }}"></label>
-         </td>
-         <td>{{ $user->id }}</td>
-         <td>{{ $user->firstname }} {{ $user->middlename }} {{ $user->lastname }}</td>
-         <td>
-            <!-- START Image Modal -->
-            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#viewImageModal{{ $user->id }}">View</button>
-            <div class="modal modal1 fade" id="viewImageModal{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="viewImageModalLabel{{ $user->id }}" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="viewImageModalLabel{{ $user->id }}">Sitio Image</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+<!--------main-content------------->
+<div class="main-content">
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
+                        <h2 class="ml-lg-2">User Approval</h2>
                     </div>
-                    <div class="modal-body">
-                      <img src="{{ Storage::disk('s3')->url($user->image) }}" class="img-fluid">
-                    </div>
-                </div>
                 </div>
             </div>
-            <!-- END View Modal -->
-        </td>
-        <td>{{ $user->phone }}</td>
-        <td>{{ $user->email }}</td>
-        <td>{{ $user->created_at }}</td>
-        <td>
-        <div class="btn-group">
-          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#viewInformationModal{{ $user->id }}">View</button>
-            <!-- START View Modal -->
-            <div class="modal modal1 fade" id="viewInformationModal{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="viewInformationModalLabel{{ $user->id }}" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="viewInformationModalLabel{{ $user->id }}">User Information</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                    <div class="modal-body">
-                      <p>Fullname : {{ $user->firstname }} {{ $user->middlename }} {{ $user->lastname }}</p>
-                      <p>Contact : {{ $user->phone }}</p>
-                      <p>Birthday : {{ $user->bday }}</p>
-                      <p>Gender : {{ $user->gender }}</p>
-                      <p>Address : {{ $user->house_number }} {{ $user->street }} {{ $user->brgy }} {{ $user->zip }} {{ $user->sitio }} {{ $user->city }}</p>
-                      <p>Username : {{ $user->username }}</p>
-                      <p>Email : {{ $user->email }}</p>
-                      <p>Date Created : {{ $user->created_at }}</p>
-                    </div>
-                </div>
-                </div>
-            </div>
-            <!-- END View Modal -->
-            <form action="{{ route('user_approval.accept', $user->id) }}" method="POST">
-                @csrf
-                <button type="submit" class="btn btn-success accept-btn" data-toggle="modal" data-target="#acceptModal{{ $user->id }}">Accept</button>
-            </form>
-            <form action="{{ route('user_approval.deny', $user->id) }}" method="POST">
-                @csrf
-                <button type="submit" class="btn btn-danger deny-btn" data-toggle="modal" data-target="#denyModal{{ $user->id }}">Deny</button>
-            </form>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            <span class="custom-checkbox">
+                                <input type="checkbox" id="selectAll">
+                                <label for="selectAll"></label>
+                            </span>
+                        </th>
+                        <th>ID</th>
+                        <th>Full Name</th>
+                        <th>Sitio Clearance</th>
+                        <th>Contact</th>
+                        <th>Email Address</th>
+                        <th>Date Created</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($users as $user)
+                    @if ($user->account_status == 0)
+                    <tr>
+                        <td>
+                            <span class="custom-checkbox">
+                                <input type="checkbox" id="checkbox{{ $user->id }}" name="option[]" value="1">
+                                <label for="checkbox{{ $user->id }}"></label>
+                            </span>
+                        </td>
+                        <td>{{ $user->id }}</td>
+                        <td>{{ $user->firstname }} {{ $user->middlename }} {{ $user->lastname }}</td>
+                        <td>
+                            <!-- START Image Modal -->
+                            <button type="button" class="btn btn-info" data-toggle="modal"
+                                data-target="#viewImageModal{{ $user->id }}">View</button>
+                            <div class="modal modal1 fade" id="viewImageModal{{ $user->id }}" tabindex="-1"
+                                role="dialog" aria-labelledby="viewImageModalLabel{{ $user->id }}"
+                                aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title"
+                                                id="viewImageModalLabel{{ $user->id }}">Sitio Image</h5>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img src="{{ Storage::disk('s3')->url($user->image) }}"
+                                                class="img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END View Modal -->
+                        </td>
+                        <td>{{ $user->phone }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->created_at }}</td>
+                        <td>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-info" data-toggle="modal"
+                                    data-target="#viewInformationModal{{ $user->id }}">View</button>
+                                <!-- START View Modal -->
+                                <div class="modal modal1 fade" id="viewInformationModal{{ $user->id }}"
+                                    tabindex="-1" role="dialog"
+                                    aria-labelledby="viewInformationModalLabel{{ $user->id }}"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title"
+                                                    id="viewInformationModalLabel{{ $user->id }}">User
+                                                    Information</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Fullname : {{ $user->firstname }} {{ $user->middlename }}
+                                                    {{ $user->lastname }}</p>
+                                                <p>Contact : {{ $user->phone }}</p>
+                                                <p>Birthday : {{ $user->bday }}</p>
+                                                <p>Gender : {{ $user->gender }}</p>
+                                                <p>Address : {{ $user->house_number }} {{ $user->street }}
+                                                    {{ $user->brgy }} {{ $user->zip }} {{ $user->sitio }}
+                                                    {{ $user->city }}</p>
+                                                <p>Username : {{ $user->username }}</p>
+                                                <p>Email : {{ $user->email }}</p>
+                                                <p>Date Created : {{ $user->created_at }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END View Modal -->
+                                <form action="{{ route('user_approval.accept', $user->id) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-success accept-btn"
+                                        data-toggle="modal" data-target="#acceptModal{{ $user->id }}">Accept</button>
+                                </form>
+                                <form action="{{ route('user_approval.deny', $user->id) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger deny-btn" data-toggle="modal"
+                                        data-target="#denyModal{{ $user->id }}">Deny</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    @endif
+                    @endforeach
+                </tbody>
+            </table>
         </div>
-        </td>
-      </tr>
-    @endif
-    @endforeach
-   </tbody>
-</table>
-    
-                       </div>
-                    </div>
-
-
-                       
-                    <!--    <div class="clearfix">
-                         <div class="hint-text">showing <b>5</b> out of <b>25</b></div>
-                         <ul class="pagination">
-                            <li class="page-item disabled"><a href="#">Previous</a></li>
-                            <li class="page-item "><a href="#"class="page-link">1</a></li>
-                            <li class="page-item "><a href="#"class="page-link">2</a></li>
-                            <li class="page-item active"><a href="#"class="page-link">3</a></li>
-                            <li class="page-item "><a href="#"class="page-link">4</a></li>
-                            <li class="page-item "><a href="#"class="page-link">5</a></li>
-                            <li class="page-item "><a href="#" class="page-link">Next</a></li>
-                         </ul>
-                       </div> -->
-                       
-                       
-                       
-                       
-    
-                       
-        
-                    
-                    
-                                       <!----add-modal start--------->
+    </div>
+</div>
+</div>         
+  <!----add-modal start--------->
         <div class="modal fade" tabindex="-1" id="addEmployeeModal" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
