@@ -420,85 +420,77 @@ logout</span>Logout</a>
            
            
 <!--------main-content------------->
-
 <div class="main-content">
-        <div class="row">
-        <div class="col-md-12">
-            <div class="table-wrapper">
-                
-            <div class="table-title">
-                <div class="row">
-                    <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
-                    <h2 class="ml-lg-2">User Account</h2>
-                    </div>
-                </div>
-            </div>
-<table class="table table-striped table-hover">
-   <thead>
-      <tr>
-         <th><span class="custom-checkbox">
-            <input type="checkbox" id="selectAll">
-            <label for="selectAll"></label>
-         </th>
-         <th>ID</th>
-         <th>Full Name</th>
-         <th>Address</th>
-         <th>Contact</th>
-         <th>Email Address</th>
-         <th>Status</th>
-         <th>Actions</th>
-      </tr>
-   </thead>
-   <tbody>
-    @foreach($users as $user)
-    @if ($user->account_status == 1)
-      <tr>
-         <td><span class="custom-checkbox">
-            <input type="checkbox" id="checkbox1" name="option[]" value="1">
-            <label for="checkbox1"></label>
-         </td>
-         <td>{{ $user->id }}</td>
-         <td>{{ $user->firstname }} {{ $user->middlename }} {{ $user->lastname }}</td>
-         <td>{{ $user->house_number }} {{ $user->street }} , {{ $user->brgy }} {{ $user->zip }} , {{ $user->city }}</td>
-         <td>{{ $user->phone }}</td>
-         <td>{{ $user->email }}</td>
-         <td>
-            @if ($user->active_status == 0)
-                <span class="online-dot"></span> Online
-            @else
-                <span class="offline-dot"></span> Offline
-            @endif
-         </td>
-         <td>
-            {{-- <div class="action1">
-                <form>
-                    @csrf
-                    <button type="button" class="btn btn-success accept-btn" data-toggle="modal" data-target="#acceptModal">Edit</button>
-                </form>
-                <form>
-                    @csrf
-                    <button type="button" class="btn btn-danger deny-btn" data-toggle="modal" data-target="#denyModal">Delete</button>
-                </form>
-            </div> --}}
-            <div class="action">
-                <a href="/user/{{ $user->id }}/edit" class="button1">Edit</a>
-                <form action="{{ route('user_account.delete', $user->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="button2" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
-                </form>
-            </div>            
-         </td>
-      </tr>
-      <tr>
-    @endif
-    @endforeach
-   </tbody>
-</table>
+  <div class="row">
+      <div class="col-md-12">
+          <div class="table-wrapper">
+              <div class="table-title">
+                  <div class="row">
+                      <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
+                          <h2 class="ml-lg-2">User Account</h2>
+                      </div>
+                  </div>
+              </div>
+              <table class="table table-striped table-hover">
+                  <thead>
+                      <tr>
+                          <th>
+                              <span class="custom-checkbox">
+                                  <input type="checkbox" id="selectAll">
+                                  <label for="selectAll"></label>
+                              </span>
+                          </th>
+                          <th>ID</th>
+                          <th>Full Name</th>
+                          <th>Address</th>
+                          <th>Contact</th>
+                          <th>Email Address</th>
+                          <th>Status</th>
+                          <th>Actions</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      @foreach($users as $user)
+                      @if ($user->account_status == 1)
+                      <tr>
+                          <td>
+                              <span class="custom-checkbox">
+                                  <input type="checkbox" id="checkbox1" name="option[]" value="1">
+                                  <label for="checkbox1"></label>
+                              </span>
+                          </td>
+                          <td>{{ $user->id }}</td>
+                          <td>{{ $user->firstname }} {{ $user->middlename }} {{ $user->lastname }}</td>
+                          <td>{{ $user->house_number }} {{ $user->street }}, {{ $user->brgy }} {{ $user->zip }}, {{ $user->city }}</td>
+                          <td>{{ $user->phone }}</td>
+                          <td>{{ $user->email }}</td>
+                          <td>
+                              @if ($user->active_status == 0)
+                              <span class="online-dot"></span> Online
+                              @else
+                              <span class="offline-dot"></span> Offline
+                              @endif
+                          </td>
+                          <td>
+                              <div class="action">
+                                  <a href="/user/{{ $user->id }}/edit" class="button1">Edit</a>
+                                  <form action="{{ route('user_account.delete', $user->id) }}" method="POST">
+                                      @csrf
+                                      @method('DELETE')
+                                      <button type="submit" class="button2" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
+                                  </form>
+                              </div>
+                          </td>
+                      </tr>
+                      @endif
+                      @endforeach
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>
 
-    
-                       </div>
-                    </div>
 
 
                        
