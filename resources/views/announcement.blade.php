@@ -437,123 +437,163 @@ logout</span>Logout</a>
         
           
          </div>
-           
+
 <!-- main-content -->
 <div class="main-content">
-	<div class="row">
-		<div class="table-title">
-			<div class="row">
-				<div class="col-sm-6 p-0 d-flex justify-content-lg-start justify-content-center">
-					<h2 class="ml-lg-2">Manage News and Announcement</h2>
-				</div>
-				<div class="col-sm-6 p-0 d-flex justify-content-lg-end justify-content-center">
-					<a class="btn btn-success" data-toggle="modal" data-target="#newannouncement">
-						<i class="material-icons">&#xE147;</i> <span>New Announcement</span>
-					</a>
-				</div>
-			</div>
-		</div>
-		<table class="table table-striped table-hover">
-			<thead>
-				<tr>
-					<th></th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				@foreach($announcement as $announcement)
-				<tr>
-					<td>
-						<div class="container">
-							<div class="title1">
-								<h3>{{ $announcement->title }}</h3>
-							</div>
-							<p class="body">{{ $announcement->body }}</p>
-							<div class="Edit1">
-								<a href="/update/{{ $announcement->id }}/edit_announcement" class="Edit">Edit</a>
-                {{-- <a data-toggle="modal" data-target="#destroyannouncement" class="Edit">Delete</a> --}}
-                <a data-toggle="modal" data-target="#destroyannouncement" class="Edit">Delete</a>
-							</div>
-						</div>
-					</td>
-					<td>
-						<img src="{{ Storage::disk('s3')->url($announcement->image) }}" class="img-fluid">
-					</td>
-				</tr>
-				@endforeach
-			</tbody>
-		</table>
-	</div>
+  <div class="row">
+      <div class="table-title">
+          <div class="row">
+              <div class="col-sm-6 p-0 d-flex justify-content-lg-start justify-content-center">
+                  <h2 class="ml-lg-2">Manage News and Announcement</h2>
+              </div>
+              <div class="col-sm-6 p-0 d-flex justify-content-lg-end justify-content-center">
+                  <a class="btn btn-success" data-toggle="modal" data-target="#newannouncement">
+                      <i class="material-icons">&#xE147;</i> <span>New Announcement</span>
+                  </a>
+              </div>
+          </div>
+      </div>
+      <table class="table table-striped table-hover">
+          <thead>
+              <tr>
+                  <th></th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody>
+              @foreach($announcements as $announcement)
+              <tr>
+                  <td>
+                      <div class="container">
+                          <div class="title1">
+                              <h3>{{ $announcement->title }}</h3>
+                          </div>
+                          <p class="body">{{ $announcement->body }}</p>
+                          <div class="Edit1">
+                              <a href="" class="Edit">Edit</a>
+                              <a data-toggle="modal" data-target="#editannouncement{{ $announcement->id }}" class="Edit">Edit</a>
+                              <a data-toggle="modal" data-target="#destroyannouncement{{ $announcement->id }}" class="Edit">Delete</a>
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                      <img src="{{ Storage::disk('s3')->url($announcement->image) }}" class="img-fluid">
+                  </td>
+              </tr>
+              @endforeach
+          </tbody>
+      </table>
+  </div>
 </div>
-          
+
+
 <!-- Modal -->
 <!-- NEW POP UP FORM (Bootstrap MODAL) -->
-<div class="modal fade" id="newannouncement" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add News and Announcement Data</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form action="{{ route('announcement.insert') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Image</label>
-                        <input type="file" name="image" accept=".jpg, .jpeg, .png" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Title</label>
-                        <input type="text" name="title" class="form-control" placeholder="Enter Title" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Body</label>
-                        <textarea name="body" class="form-control" rows="10" placeholder="Enter Message" required></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save Data</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- DELETE POP UP FORM (Bootstrap MODAL) -->
-<div class="modal fade" id="destroyannouncement" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel"> Delete Announcement </h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-            <form action="{{ route('announcement.destroy', ['announcement' => $announcement->id]) }}" method="POST">
+<div class="modal fade" id="newannouncement" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add News and Announcement Data</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <form action="{{ route('announcement.store') }}" method="POST" enctype="multipart/form-data">
               @csrf
-              @method('DELETE')
-                <div class="modal-body">
-
-                    <input type="hidden" name="delete_id" id="delete_id">
-
-                    <p>Do you want to delete this announcement?</p>
-                    <p class="text-warning"><small>This action cannot be undone.</small></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="submit" name="deletedata" class="btn btn-danger">Delete</button>
-                </div>
-            </form>
-
-        </div>
-    </div>
+              <div class="modal-body">
+                  <div class="form-group">
+                      <label>Image</label>
+                      <input type="file" name="image" accept=".jpg, .jpeg, .png" required>
+                  </div>
+                  <div class="form-group">
+                      <label>Title</label>
+                      <input type="text" name="title" class="form-control" placeholder="Enter Title" required>
+                  </div>
+                  <div class="form-group">
+                      <label>Body</label>
+                      <textarea name="body" class="form-control" rows="10" placeholder="Enter Message" required></textarea>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Save Data</button>
+              </div>
+          </form>
+      </div>
+  </div>
 </div>
+<!-- EDIT POP UP FORM (Bootstrap MODAL) -->
+@foreach($announcements as $announcement)
+<div class="modal fade" id="editannouncement{{ $announcement->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit Announcement Data</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+
+          <form action="{{ route('announcement.update', ['announcement' => $announcement->id]) }}" method="POST" enctype="multipart/form-data">
+              @csrf
+              @method('PUT')
+
+              <div class="modal-body">
+                  <input type="hidden" name="update_id" id="update_id">
+                  <div class="form-group">
+                      <label>Image</label>
+                      <input type="file" name="image" accept=".jpg, .jpeg, .png">
+                  </div>
+
+                  <div class="form-group">
+                      <label>Title</label>
+                      <input type="text" name="title" id="title" class="form-control" value="{{ $announcement->title }}" placeholder="Enter Title">
+                  </div>
+
+                  <div class="form-group">
+                      <label>Body</label>
+                      <textarea name="body" id="body" class="form-control" rows="10" placeholder="Enter Message">{{ $announcement->body }}</textarea>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  <button type="submit" name="updatedata" class="btn btn-primary">Update</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+@endforeach
+<!-- DELETE POP UP FORM (Bootstrap MODAL) -->
+@foreach($announcements as $announcement)
+<div class="modal fade" id="destroyannouncement{{ $announcement->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="exampleModalLabel">Delete Announcement</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+
+          <form action="{{ route('announcement.destroy', ['announcement' => $announcement->id]) }}" method="POST">
+            @csrf
+            @method('DELETE')
+              <div class="modal-body">
+                  <input type="hidden" name="delete_id" id="delete_id">
+                  <p>Do you want to delete this announcement?</p>
+                  <p class="text-warning"><small>This action cannot be undone.</small></p>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  <button type="submit" name="deletedata" class="btn btn-danger">Delete</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+@endforeach
+
 
                 
 <!----------html code compleate----------->

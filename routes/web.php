@@ -63,14 +63,13 @@ Route::get('/certificate/bcf', function () {
 
 //Announcement Route
 Route::get('/announcement', function () {
-  $announcement = announcement::all();
-  return view('announcement', compact('announcement'));
+  $announcements = announcement::all();
+  return view('announcement', compact('announcements'));
 })->name('announcement');
 
-Route::get('/update/{announcement}/edit_announcement', [AnnouncementController::class, 'edit']);
-Route::put('/update/{announcement}', [AnnouncementController::class, 'update']);
 
-Route::post('/announcement/insert', [AnnouncementController::class, 'insert'])->name('announcement.insert');
+Route::post('/announcement/store', [AnnouncementController::class, 'store'])->name('announcement.store');
+Route::put('/announcement/{announcement}', [AnnouncementController::class, 'update'])->name('announcement.update');
 Route::delete('/announcement/{announcement}', [AnnouncementController::class, 'destroy'])->name('announcement.destroy');
 
 Route::view('/documentapproval', 'documentapproval')->name('documentapproval');
