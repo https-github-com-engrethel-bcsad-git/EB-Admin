@@ -417,6 +417,11 @@ logout</span>Logout</a>
                       <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
                           <h2 class="ml-lg-2">User Account</h2>
                       </div>
+                      <div class="col-sm-6 p-0 d-flex justify-content-lg-end justify-content-center">
+                        <a class="btn btn-success" data-toggle="modal" data-target="#newuser">
+                            <i class="material-icons">&#xE147;</i> <span>New</span>
+                        </a>
+                      </div>
                   </div>
               </div>
               <table class="table table-striped table-hover">
@@ -461,7 +466,8 @@ logout</span>Logout</a>
                           </td>
                           <td>
                               <div class="action">
-                                  <a href="/user/{{ $user->id }}/edit" class="button1">Edit</a>
+                                  {{-- <a href="/user/{{ $user->id }}/edit" class="button1">Edit</a> --}}
+                                  <a data-toggle="modal" data-target="#editannouncement{{ $user->id }}" class="button1">Edit</a>
                                   <form action="{{ route('user_account.delete', $user->id) }}" method="POST">
                                       @csrf
                                       @method('DELETE')
@@ -479,134 +485,227 @@ logout</span>Logout</a>
   </div>
 </div>
 
-
-
-                       
-                    <!--    <div class="clearfix">
-                         <div class="hint-text">showing <b>5</b> out of <b>25</b></div>
-                         <ul class="pagination">
-                            <li class="page-item disabled"><a href="#">Previous</a></li>
-                            <li class="page-item "><a href="#"class="page-link">1</a></li>
-                            <li class="page-item "><a href="#"class="page-link">2</a></li>
-                            <li class="page-item active"><a href="#"class="page-link">3</a></li>
-                            <li class="page-item "><a href="#"class="page-link">4</a></li>
-                            <li class="page-item "><a href="#"class="page-link">5</a></li>
-                            <li class="page-item "><a href="#" class="page-link">Next</a></li>
-                         </ul>
-                       </div> -->
-                       
-                       
-                       
-                       
-    
-                       
-        
-                    
-                    
-                                       <!----add-modal start--------->
-        <div class="modal fade" tabindex="-1" id="addEmployeeModal" role="dialog">
+<!-- Modal -->
+<!-- NEW POP UP FORM (Bootstrap MODAL) -->
+<div class="modal fade" id="newuser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Add Employees</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add User Data</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <form action="{{ route('announcement.store') }}" method="POST" enctype="multipart/form-data">
+              @csrf
+
+              <div class="modal-body">
+                <div class="form-group">
+                  <label>Firstname</label>
+                  <input type="text" name="firstname" class="form-control" placeholder="Enter Firstname">
+                </div>
+                <div class="form-group">
+                  <label>Middlename</label>
+                  <input type="text" name="middlename" class="form-control" placeholder="Enter Middlename">
+                </div>
+                <div class="form-group">
+                  <label>Lastname</label>
+                  <input type="text" name="lastname" class="form-control" placeholder="Enter Lastname">
+                </div>
+                <div class="form-group">
+                  <label>Contact Number</label>
+                  <input type="tel" name="phone" pattern="[0-9]{11}" class="form-control" placeholder="Enter Contact Number">
+                </div>
+                <div class="form-group">
+                  <label>Birthday</label>
+                  <input type="date" name="bday" class="form-control" placeholder="Enter Birthday">
+                </div>
+                <div class="form-group">
+                  <label>Gender</label><br>
+                  <label for="male">
+                    <input type="radio" name="gender" id="male" value="male">
+                    Male
+                  </label><br>
+                  <label for="female">
+                    <input type="radio" name="gender" id="female" value="female">
+                    Female
+                  </label>
+                </div>  
+                <div class="form-group">
+                  <label>House Number</label>
+                  <input type="text" name="house_number" class="form-control" placeholder="Enter House Number">
+                </div>
+                <div class="form-group">
+                  @php
+                    $filePath = public_path('streets.txt');
+                    $streets = file($filePath, FILE_IGNORE_NEW_LINES);
+                  @endphp
+                  <label for="street">Street Name</label>
+                  <select id="street" name="street" class="form-control" placeholder="Select a street">
+                    <option disabled selected>Select a street</option>
+                    @foreach($streets as $street)
+                      <option value="{{ $street }}">{{ $street }}</option>
+                    @endforeach
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Barangay</label>
+                  <input type="text" name="brgy" class="form-control" placeholder="Enter Barangay">
+                </div>
+                <div class="form-group">
+                  <label>City</label>
+                  <input type="text" name="city" class="form-control" placeholder="Enter City">
+                </div>
+                <div class="form-group">
+                  <label>Zip Code</label>
+                  <input type="text" name="zip" class="form-control" placeholder="Enter Zip Code">
+                </div>
+                <div class="form-group">
+                  <label>username</label>
+                  <input type="text" id="username" name="username" class="form-control" placeholder="Enter Username">
+                </div>
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email">
+                </div>
+                <div class="form-group">
+                  <label>Password</label>
+                  <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password">
+                </div>
+                <div class="form-group">
+                  <label>Confirm Password</label>
+                  <input type="password" id="password" name="password_confirmation" class="form-control" placeholder="Confirm Password">
+                </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Save Data</button>
+              </div>
+          </form>
       </div>
-      <div class="modal-body">
-        <div class="form-group">
-            <label>Name</label>
-            <input type="text" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label>Email</label>
-            <input type="emil" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label>Address</label>
-            <textarea class="form-control" required></textarea>
-        </div>
-        <div class="form-group">
-            <label>Phone</label>
-            <input type="text" class="form-control" required>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-success">Add</button>
-      </div>
-    </div>
   </div>
 </div>
-
-                       <!----edit-modal end--------->
-                       
-                       
-                       
-                       
-                       
-                   <!----edit-modal start--------->
-        <div class="modal fade" tabindex="-1" id="editEmployeeModal" role="dialog">
+<!-- EDIT POP UP FORM (Bootstrap MODAL) -->
+@foreach($users as $user)
+<div class="modal fade" id="editannouncement{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Edit Employees</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit User Data</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+
+          <form action="{{ route('announcement.update', ['announcement' => $user->id]) }}" method="POST" enctype="multipart/form-data">
+              @csrf
+              @method('PUT')
+
+              <div class="modal-body">
+                  <input type="hidden" name="update_id" id="update_id">
+                  <div class="form-group">
+                      <label>ID</label>
+                      <input type="text" class="form-control" value="{{ $user->id }}" disabled>
+                  </div>
+                  <div class="form-group">
+                    <label>Firstname</label>
+                    <input type="text" name="firstname" class="form-control" value="{{ $user->firstname }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Middlename</label>
+                    <input type="text" name="middlename" class="form-control" value="{{ $user->middlename }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Lastname</label>
+                    <input type="text" name="lastname" class="form-control" value="{{ $user->lastname }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Contact Number</label>
+                    <input type="tel" name="phone" pattern="[0-9]{11}" class="form-control" value="{{ $user->phone }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Birthday</label>
+                    <input type="date" name="bday" class="form-control" value="{{ $user->bday }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Gender</label><br>
+                    <label for="  male">
+                      <input type="radio" name="gender" id="male" value="male" {{ $user->gender === 'Male' ? 'checked' : '' }}>
+                      Male
+                    </label><br>
+                    <label for="female">
+                      <input type="radio" name="gender" id="female "value="female" {{ $user->gender === 'Female' ? 'checked' : '' }}>
+                      Female
+                    </label>
+                  </div>
+                  <div class="form-group">
+                    <label>House Number</label>
+                    <input type="text" name="house_number" class="form-control" value="{{ $user->house_number }}">
+                  </div>
+                  <div class="form-group">
+                    @php
+                      $filePath = public_path('streets.txt');
+                      $streets = file($filePath, FILE_IGNORE_NEW_LINES);
+                    @endphp
+                    <label for="street">Street Name</label>
+                    <select id="street" name="street" class="form-control">
+                      <option value="">Select a street</option>
+                      @foreach($streets as $street)
+                        <option value="{{ $street }}" {{ $user->street == $street ? 'selected' : '' }}>{{ $street }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="sitio">Sitio</label>
+                    <select id="sitio" name="sitio" class="form-control">
+                      <option value="">Select a Sitio</option>
+                      <option value="Sitio1" {{ $user->sitio === 'Sitio 1' ? 'selected' : '' }}>Sitio 1</option>
+                      <option value="Sitio2" {{ $user->sitio === 'Sitio 2' ? 'selected' : '' }}>Sitio 2</option>
+                      <option value="Sitio3" {{ $user->sitio === 'Sitio 3' ? 'selected' : '' }}>Sitio 3</option>
+                      <option value="Sitio4" {{ $user->sitio === 'Sitio 4' ? 'selected' : '' }}>Sitio 4</option>
+                      <option value="Sitio5" {{ $user->sitio === 'Sitio 5' ? 'selected' : '' }}>Sitio 5</option>
+                      <option value="Sitio6" {{ $user->sitio === 'Sitio 6' ? 'selected' : '' }}>Sitio 6</option>
+                      <option value="Sitio7" {{ $user->sitio === 'Sitio 7' ? 'selected' : '' }}>Sitio 7</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Barangay</label>
+                    <input type="text" name="brgy" class="form-control" value="{{ $user->brgy }}">
+                  </div>
+                  <div class="form-group">
+                    <label>City</label>
+                    <input type="text" name="city" class="form-control" value="{{ $user->city  }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Zip Code</label>
+                    <input type="text" name="zip" class="form-control" value="{{ $user->zip }}">
+                  </div>
+                  <div class="form-group">
+                    <label>username</label>
+                    <input type="text" id="username" name="username" class="form-control" value="{{ $user->username }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="email" name="email" class="form-control" value="{{ $user->email }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="password" name="password" class="form-control" value="*****">
+                  </div>
+                  <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" id="password" name="password_confirmation" class="form-control" value="*****">
+                  </div>                        
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  <button type="submit" name="updatedata" class="btn btn-primary">Update</button>
+              </div>
+          </form>
       </div>
-      <div class="modal-body">
-        <div class="form-group">
-            <label>Name</label>
-            <input type="text" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label>Email</label>
-            <input type="emil" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label>Address</label>
-            <textarea class="form-control" required></textarea>
-        </div>
-        <div class="form-group">
-            <label>Phone</label>
-            <input type="text" class="form-control" required>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-success">Save</button>
-      </div>
-    </div>
   </div>
 </div>
-
-                       <!----edit-modal end--------->      
-                       
-                       
-                     <!----delete-modal start--------->
-        <div class="modal fade" tabindex="-1" id="deleteEmployeeModal" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Delete Employees</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Are you sure you want to delete this Records</p>
-        <p class="text-warning"><small>this action Cannot be Undone,</small></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-success">Delete</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!----edit-modal end--------->   
+@endforeach
                        
 <!----------html code compleate----------->
 

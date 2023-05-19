@@ -52,8 +52,6 @@ Route::get('/user_account', function () {
   return view('user_account', compact('users'));
 })->name('user_account');
 
-Route::get('/user/{user}/edit', [UserController::class, 'edit']);
-Route::put('/user/{user}', [UserController::class, 'update']);
 Route::delete('/user_account/{id}', [UserController::class, 'delete'])->name('user_account.delete');
 
 //Certifacate Route

@@ -448,7 +448,7 @@ logout</span>Logout</a>
               </div>
               <div class="col-sm-6 p-0 d-flex justify-content-lg-end justify-content-center">
                   <a class="btn btn-success" data-toggle="modal" data-target="#newannouncement">
-                      <i class="material-icons">&#xE147;</i> <span>New Announcement</span>
+                      <i class="material-icons">&#xE147;</i> <span>New</span>
                   </a>
               </div>
           </div>
