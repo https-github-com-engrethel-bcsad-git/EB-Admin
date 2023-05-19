@@ -226,208 +226,217 @@ img {
 }
 
 </style>
-  <body>
-  
-
-<div class="wrapper">
-
-
-        <div class="body-overlay"></div>
-        
-        <!-------------------------sidebar------------>
-             <!-- Sidebar  -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <h3><img src="img/logo.png" class="img-fluid"/><span>EBarangay</span></h3>
-            </div>
+<body>
+  <div class="wrapper">
+    <div class="body-overlay"></div>
+    
+    <!-- Sidebar -->
+    <nav id="sidebar">
+      <div class="sidebar-header">
+        <h3><img src="img/logo.png" class="img-fluid"/><span>EBarangay</span></h3>
+      </div>
+      <ul class="list-unstyled components">
+        <li>
+          <a href="{{ route('home') }}" class="dashboard">
+            <i class="material-icons">home</i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <i class="material-icons">send</i>
+            <span>Document Requests</span>
+          </a>
+          <ul class="collapse list-unstyled menu" id="pageSubmenu3">
             <li>
-              <a href="{{ route('home') }}" class="dashboard"><i class="material-icons">home</i>
-                  <span>Dashboard</span></a>
-              </li>
-                 
-        
-                <li class="dropdown">
-                  <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" 
-                  class="dropdown-toggle">
-                  <i class="material-icons">people</i>User Management</a>
-                  <ul class="collapse list-unstyled menu" id="homeSubmenu1">
-                      <li>
-                          <a href="{{ route('user_approval') }}">User Approval</a>
-                      </li>
-                      <li>
-                          <a href="{{ route('user_account') }}">User Account</a>
-                      </li>
-                      <li>
-                          <a href="#">Admin Account</a>
-                      </li>
-                  </ul>
-              </li>
-                
-                <li class="dropdown">
-                    <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" 
-                    class="dropdown-toggle">
-                    <i class="material-icons">description</i><span>Appointments</span></a>
-                    <ul class="collapse list-unstyled menu" id="pageSubmenu2">
-                        <li>
-                            <a href="#">Pening</a>
-                        </li>
-                        <li>
-                            <a href="#">Approve</a>
-                        </li>
-                      
-                    </ul>
-                </li>
-                
-                 <li class="dropdown">
-                    <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" 
-                    class="dropdown-toggle">
-                    <i class="material-icons">textsms</i>
-                
-                    
-                    <span>Complaints</span></a>
-                    <ul class="collapse list-unstyled menu" id="pageSubmenu3">
-                        <li>
-                            <a href="#">Pending</a>
-                        </li>
-                        <li>
-                            <a href="#">Ongoing</a>
-                        </li>
-                        <li>
-                            <a href="#">Settled</a>
-                        </li>
-                    </ul>
-                </li>
-                
-                
-                 <li  class="active">
-                  <a href="{{ route('announcement')}}"><i class="material-icons">edit</i><span>News and Announcements
-                  </span></a>
-                </li>
-                <li  class="">
-                    <a href="#"><i class="material-icons">settings</i><span>Settings
-                    </span></a>
-                </li>
-               
-               
-               
-            </ul>
+              <a href="{{ route('documentapproval') }}">Pending</a>
+            </li>
+            <li>
+              <a href="#">Approved</a>
+            </li>
+            <li>
+              <a href="#">History</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <i class="material-icons">people</i>
+            <span>User Management</span>
+          </a>
+          <ul class="collapse list-unstyled menu" id="homeSubmenu1">
+            <li>
+              <a href="{{ route('user_approval') }}">User Approval</a>
+            </li>
+            <li>
+              <a href="{{ route('user_account') }}">User Account</a>
+            </li>
+            <li>
+              <a href="#">Admin Account</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <i class="material-icons">description</i>
+            <span>Appointments</span>
+          </a>
+          <ul class="collapse list-unstyled menu" id="pageSubmenu2">
+            <li>
+              <a href="#">Pending</a>
+            </li>
+            <li>
+              <a href="#">Approve</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <i class="material-icons">textsms</i>
+            <span>Complaints</span>
+          </a>
+          <ul class="collapse list-unstyled menu" id="pageSubmenu3">
+            <li>
+              <a href="#">Pending</a>
+            </li>
+            <li>
+              <a href="#">Ongoing</a>
+            </li>
+            <li>
+              <a href="#">Settled</a>
+            </li>
+          </ul>
+        </li>
+        <li class="active">
+          <a href="{{ route('announcement')}}">
+            <i class="material-icons">edit</i>
+            <span>News and Announcements</span>
+          </a>
+        </li>
+        <li class="">
+          <a href="#">
+            <i class="material-icons">settings</i>
+            <span>Settings</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+    
+    
+      
+      
+      
+      <!--------page-content---------------->
+      
+      <div id="content">
+         
+         <!--top--navbar----design--------->
+         
+         <div class="top-navbar">
+            <div class="xp-topbar">
 
-           
-        </nav>
-        
-        
-        
-        
-        <!--------page-content---------------->
-        
-        <div id="content">
-           
-           <!--top--navbar----design--------->
-           
-           <div class="top-navbar">
-              <div class="xp-topbar">
+              <!-- Start XP Row -->
+              <div class="row"> 
+                  <!-- Start XP Col -->
+                  <div class="col-2 col-md-1 col-lg-1 order-2 order-md-1 align-self-center">
+                      <div class="xp-menubar">
+                             <span class="material-icons text-white">signal_cellular_alt
+                             </span>
+                       </div>
+                  </div> 
+                  <!-- End XP Col -->
 
-                <!-- Start XP Row -->
-                <div class="row"> 
-                    <!-- Start XP Col -->
-                    <div class="col-2 col-md-1 col-lg-1 order-2 order-md-1 align-self-center">
-                        <div class="xp-menubar">
-                               <span class="material-icons text-white">signal_cellular_alt
-                               </span>
-                         </div>
-                    </div> 
-                    <!-- End XP Col -->
-
-                    <!-- Start XP Col -->
-                    <div class="col-md-5 col-lg-3 order-3 order-md-2">
-                        <div class="xp-searchbar">
-                            <form>
-                                <div class="input-group">
-                                  <input type="search" class="form-control" 
-                                  placeholder="Search">
-                                  <div class="input-group-append">
-                                    <button class="btn" type="submit" 
-                                    id="button-addon2">GO</button>
-                                  </div>
+                  <!-- Start XP Col -->
+                  <div class="col-md-5 col-lg-3 order-3 order-md-2">
+                      <div class="xp-searchbar">
+                          <form>
+                              <div class="input-group">
+                                <input type="search" class="form-control" 
+                                placeholder="Search">
+                                <div class="input-group-append">
+                                  <button class="btn" type="submit" 
+                                  id="button-addon2">GO</button>
                                 </div>
-                            </form>
-                        </div>
-                    </div>
-                    <!-- End XP Col -->
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+                  <!-- End XP Col -->
 
-                    <!-- Start XP Col -->
-                    <div class="col-10 col-md-6 col-lg-8 order-1 order-md-3">
-                        <div class="xp-profilebar text-right">
-                             <nav class="navbar p-0">
-                        <ul class="nav navbar-nav flex-row ml-auto">   
-                            <li class="dropdown nav-item active">
-                                <a href="#" class="nav-link" data-toggle="dropdown">
-                                   <span class="material-icons">notifications</span>
-                                   <span class="notification">4</span>
-                               </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="#">You have 5 new messages</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">You're now friend with Mike</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wish Mary on her birthday!</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">5 warnings in Server Console</a>
-                                    </li>
-                                  
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                <span class="material-icons">question_answer</span>
+                  <!-- Start XP Col -->
+                  <div class="col-10 col-md-6 col-lg-8 order-1 order-md-3">
+                      <div class="xp-profilebar text-right">
+                           <nav class="navbar p-0">
+                      <ul class="nav navbar-nav flex-row ml-auto">   
+                          <li class="dropdown nav-item active">
+                              <a href="#" class="nav-link" data-toggle="dropdown">
+                                 <span class="material-icons">notifications</span>
+                                 <span class="notification">4</span>
+                             </a>
+                              <ul class="dropdown-menu">
+                                  <li>
+                                      <a href="#">You have 5 new messages</a>
+                                  </li>
+                                  <li>
+                                      <a href="#">You're now friend with Mike</a>
+                                  </li>
+                                  <li>
+                                      <a href="#">Wish Mary on her birthday!</a>
+                                  </li>
+                                  <li>
+                                      <a href="#">5 warnings in Server Console</a>
+                                  </li>
+                                
+                              </ul>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="#">
+                              <span class="material-icons">question_answer</span>
 
-                                </a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" href="#" data-toggle="dropdown">
-                                <img src="img/user.png" style="width:40px; border-radius:50%;"/>
-                                <span class="xp-user-live"></span>
-                                </a>
-                                <ul class="dropdown-menu small-menu">
-                                    <li>
-                                        <a href="#">
-                                          <span class="material-icons">
+                              </a>
+                          </li>
+                          <li class="nav-item dropdown">
+                              <a class="nav-link" href="#" data-toggle="dropdown">
+                              <img src="img/user.png" style="width:40px; border-radius:50%;"/>
+                              <span class="xp-user-live"></span>
+                              </a>
+                              <ul class="dropdown-menu small-menu">
+                                  <li>
+                                      <a href="#">
+                                        <span class="material-icons">
 person_outline
 </span>Profile
 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span class="material-icons">
+                                      </a>
+                                  </li>
+                                  <li>
+                                      <a href="#"><span class="material-icons">
 settings
 </span>Settings</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span class="material-icons">
+                                  </li>
+                                  <li>
+                                      <a href="#"><span class="material-icons">
 logout</span>Logout</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    
-               
-            </nav>
-                            
-                        </div>
-                    </div>
-                    <!-- End XP Col -->
+                                  </li>
+                              </ul>
+                          </li>
+                      </ul>
+                  
+             
+          </nav>
+                          
+                      </div>
+                  </div>
+                  <!-- End XP Col -->
 
-                </div> 
-                <!-- End XP Row -->
+              </div> 
+              <!-- End XP Row -->
 
-            </div>
+          </div>
+        
           
-            
-           </div>
+         </div>
            
            
            

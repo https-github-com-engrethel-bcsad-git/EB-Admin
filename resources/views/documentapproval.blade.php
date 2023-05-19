@@ -175,114 +175,101 @@ padding: 3px 8px;
 
 }
 </style>
-  <body>
+<body>
+  <div class="wrapper">
+    <div class="body-overlay"></div>
   
-
-<div class="wrapper">
-
-
-        <div class="body-overlay"></div>
-        
-        <!-------------------------sidebar------------>
-             <!-- Sidebar  -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <h3><img src="img/logo.png" class="img-fluid"/><span>EBarangay</span></h3>
-            </div>
-            <ul class="list-unstyled components">
-            <li>
-              <a href="{{ route('home') }}" class="dashboard"><i class="material-icons">home</i>
-                  <span>Dashboard</span></a>
-              </li>
-                 
-                <li class="dropdown">
-                    <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" 
-                    class="dropdown-toggle">
-                    <i class="material-icons">send</i>Document request</a>
-                    <ul id="homeSubmenu1">
-                        <li class="active">
-                        <a href="{{ route('documentapproval') }}">Pending</a>
-
-                        </li>
-                        <li>
-                            <a href="UserAccount.html">Approve</a>
-                        </li>
-                        <li>
-                            <a href="#">History</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="dropdown">
-                <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" 
-                class="dropdown-toggle">
-                <i class="material-icons">people</i>User Management</a>
-                <ul class="collapse list-unstyled menu" id="homeSubmenu1">
-                    <li>
-                        <a href="{{ route('user_approval') }}">User Approval</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('user_account') }}">User Account</a>
-                    </li>
-                    <li>
-                        <a href="#">Admin Account</a>
-                    </li>
-                </ul>
+    <!-- Sidebar -->
+    <nav id="sidebar">
+      <div class="sidebar-header">
+        <h3><img src="img/logo.png" class="img-fluid"/><span>EBarangay</span></h3>
+      </div>
+      <ul class="list-unstyled components">
+        <li>
+          <a href="{{ route('home') }}" class="dashboard">
+            <i class="material-icons">home</i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <i class="material-icons">send</i>
+            <span>Document Requests</span>
+          </a>
+          <ul  id="pageSubmenu3">
+            <li class="active">
+              <a href="{{ route('documentapproval') }}">Pending</a>
             </li>
-                <li class="dropdown">
-                    <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" 
-                    class="dropdown-toggle">
-                    <i class="material-icons">description</i><span>Appointments</span></a>
-                    <ul class="collapse list-unstyled menu" id="pageSubmenu2">
-                        <li>
-                            <a href="#">Pening</a>
-                        </li>
-                        <li>
-                            <a href="#">Approve</a>
-                        </li>
-                      
-                    </ul>
-                </li>
-                
-                 <li class="dropdown">
-                    <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" 
-                    class="dropdown-toggle">
-                    <i class="material-icons">textsms</i>
-                
-                    
-                    <span>Complaints</span></a>
-                    <ul class="collapse list-unstyled menu" id="pageSubmenu3">
-                        <li>
-                            <a href="#">Pending</a>
-                        </li>
-                        <li>
-                            <a href="#">Ongoing</a>
-                        </li>
-                        <li>
-                            <a href="#">Settled</a>
-                        </li>
-                    </ul>
-                </li>
-                
-                
-                 <li  class="">
-                    <a href="#"><i class="material-icons">edit</i><span>News and Announcements
-                    </span></a>
-                </li>
-                <li  class="">
-                    <a href="#"><i class="material-icons">settings</i><span>Settings
-                    </span></a>
-                </li>
-               
-               
-               
-            </ul>
-
-           
-        </nav>
-        
-        
-        
+            <li>
+              <a href="#">Approved</a>
+            </li>
+            <li>
+              <a href="#">History</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <i class="material-icons">people</i>User Management
+          </a>
+          <ul class="collapse list-unstyled menu" id="homeSubmenu1">
+            <li>
+              <a href="{{ route('user_approval')}}">User Approval</a>
+            </li>
+            <li>
+              <a href="{{ route('user_account')}}">User Account</a>
+            </li>
+            <li>
+              <a href="#">Admin Account</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <i class="material-icons">description</i>
+            <span>Appointments</span>
+          </a>
+          <ul class="collapse list-unstyled menu" id="pageSubmenu2">
+            <li>
+              <a href="#">Pending</a>
+            </li>
+            <li>
+              <a href="#">Approve</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <i class="material-icons">textsms</i>
+            <span>Complaints</span>
+          </a>
+          <ul class="collapse list-unstyled menu" id="pageSubmenu4">
+            <li>
+              <a href="#">Pending</a>
+            </li>
+            <li>
+              <a href="#">Ongoing</a>
+            </li>
+            <li>
+              <a href="#">Settled</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="{{ route('announcement')}}">
+            <i class="material-icons">edit</i>
+            <span>News and Announcements</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="material-icons">settings</i>
+            <span>Settings</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
         
         <!--------page-content---------------->
         
