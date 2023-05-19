@@ -438,53 +438,54 @@ logout</span>Logout</a>
           
          </div>
            
-           
-           
-		   <!--------main-content------------->
-		   
-		   <div class="main-content">
-			  <div class="row">
-    <div class="table-title">
-      <div class="row">
-        <div class="col-sm-6 p-0 d-flex justify-content-lg-start justify-content-center">
-          <h2 class="ml-lg-2">Manage News and Announcement</h2>
-        </div>
-        <div class="col-sm-6 p-0 d-flex justify-content-lg-end justify-content-center">
-          <a class="btn btn-success" data-toggle="modal" data-target="#newannouncement">
-		  <i class="material-icons">&#xE147;</i> <span>New Announcement</span></a>
-         
-        </div>
-      </div>
-    </div>
-           <table class="table table-striped table-hover">
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach($announcement as $announcement)
-    <tr>
-      <td>
-        <div class="container">
-          <div class="title1">
-            <h3>{{ $announcement->title }}</h3>
-          </div>
-          <p class="body">{{ $announcement->body }}</p>
-          <div class="Edit1">
-            <a href="/update/{{ $announcement->id }}/edit_announcement" class="Edit">Edit</a>
-          </div>
-        </div>
-      </td>
-      <td>
-        <img src="{{ Storage::disk('s3')->url($announcement->image) }}" class="img-fluid">
-      </td>
-    </tr>
-    @endforeach
-  </tbody>
-</table>
-                
+<!-- main-content -->
+<div class="main-content">
+	<div class="row">
+		<div class="table-title">
+			<div class="row">
+				<div class="col-sm-6 p-0 d-flex justify-content-lg-start justify-content-center">
+					<h2 class="ml-lg-2">Manage News and Announcement</h2>
+				</div>
+				<div class="col-sm-6 p-0 d-flex justify-content-lg-end justify-content-center">
+					<a class="btn btn-success" data-toggle="modal" data-target="#newannouncement">
+						<i class="material-icons">&#xE147;</i> <span>New Announcement</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach($announcement as $announcement)
+				<tr>
+					<td>
+						<div class="container">
+							<div class="title1">
+								<h3>{{ $announcement->title }}</h3>
+							</div>
+							<p class="body">{{ $announcement->body }}</p>
+							<div class="Edit1">
+								<a href="/update/{{ $announcement->id }}/edit_announcement" class="Edit">Edit</a>
+                {{-- <a data-toggle="modal" data-target="#destroyannouncement" class="Edit">Delete</a> --}}
+                <a data-toggle="modal" data-target="#destroyannouncement" class="Edit">Delete</a>
+							</div>
+						</div>
+					</td>
+					<td>
+						<img src="{{ Storage::disk('s3')->url($announcement->image) }}" class="img-fluid">
+					</td>
+				</tr>
+				@endforeach
+			</tbody>
+		</table>
+	</div>
+</div>
+          
 <!-- Modal -->
 <!-- NEW POP UP FORM (Bootstrap MODAL) -->
 <div class="modal fade" id="newannouncement" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -521,6 +522,39 @@ logout</span>Logout</a>
         </div>
     </div>
 </div>
+
+<!-- DELETE POP UP FORM (Bootstrap MODAL) -->
+<div class="modal fade" id="destroyannouncement" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel"> Delete Announcement </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <form action="{{ route('announcement.destroy', ['announcement' => $announcement->id]) }}" method="POST">
+              @csrf
+              @method('DELETE')
+                <div class="modal-body">
+
+                    <input type="hidden" name="delete_id" id="delete_id">
+
+                    <p>Do you want to delete this announcement?</p>
+                    <p class="text-warning"><small>This action cannot be undone.</small></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" name="deletedata" class="btn btn-danger">Delete</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
                 
 <!----------html code compleate----------->
 

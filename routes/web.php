@@ -71,9 +71,7 @@ Route::get('/update/{announcement}/edit_announcement', [AnnouncementController::
 Route::put('/update/{announcement}', [AnnouncementController::class, 'update']);
 
 Route::post('/announcement/insert', [AnnouncementController::class, 'insert'])->name('announcement.insert');
-
-
-
+Route::delete('/announcement/{announcement}', [AnnouncementController::class, 'destroy'])->name('announcement.destroy');
 
 Route::view('/documentapproval', 'documentapproval')->name('documentapproval');
 
