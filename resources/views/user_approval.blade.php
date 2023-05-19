@@ -27,17 +27,48 @@
   <style> 
 
 
-    .btn-info {
+
+
+  .btn-group .btn.btn-info {
+
+
+  padding: 3px 5px;
+  text-shadow: 1px 1px 1px #808080;
+  border-radius: 15px;
+  padding-left:10px;
+  padding-right:10px;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-right: 7px;
+  margin-top: 7px;
+  color:white;
+  height: 30px; /* Adjust the height value as per your requirement */
+  border: 1px solid #808080;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5),
+              inset 0 -2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.btn-info {
+    color: #fff;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+.btn-info {
+ 
+  /* text-shadow: 1px 1px 1px #000; */
+  border-radius: 15px;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-right: 20px;
+  border: 1px solid #808080;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5),
+              inset 0 -2px 4px rgba(0, 0, 0, 0.5);
   
-  padding: 3px 8px;
-  text-shadow: 1px 1px 1px #000;
-   border-radius: 15px;
-   font-size: 12px;
-   text-transform:uppercase;
 }
 
 .btn-info:hover {
-  background-color: sky;
+  background-color:lightblue;
   color: #fff;
 }
 .accept-btn, .deny-btn {
@@ -49,16 +80,16 @@
 }
 
 .accept-btn {
-  margin-right:6px;
-   margin-top:10px;
-    height:24px;
+    margin-right:6px;
+    margin-top:7px;
+    height:30px;
     text-transform:uppercase;
     padding-top: 0px ;
     border-radius: 15px;
     padding-bottom:0px;
     padding-right:10px;
     padding-left:10px;
-    font-size: 14px;
+    font-size: 12px;
     font-weight:normal;
     color: #fff;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
@@ -66,19 +97,22 @@
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
+    border: 1px solid #808080;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5),
+              inset 0 -2px 4px rgba(0, 0, 0, 0.5);
 
 }
 
 .deny-btn {
-  margin-top:10px;
-    height:24px;
+  margin-top:7px;
+    height:30px;
     text-transform:uppercase;
     padding-top: 0px ;
     border-radius: 15px;
     padding-bottom:0px;
     padding-right:17px;
     padding-left:17px;
-    font-size: 14px;
+    font-size: 12px;
     font-weight:normal;
     color: #fff;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
@@ -86,6 +120,9 @@
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
+    border: 1px solid #808080;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5),
+              inset 0 -2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .deny-btn:hover {
@@ -159,11 +196,65 @@
   }
 }
 
-
-
 th {
       border-right: 1px solid #ccc;
    }
+/* MODAL DESIGN */
+
+/* modal-style.css */
+
+.modal-image {
+  width: 200px;
+  height: 200px;
+}
+
+.column1-bg  {
+  background: linear-gradient(180deg, #81CEF4 0%, rgba(129, 206, 244, 0) 100%);
+ /* Replace with your desired background color */
+}
+
+.modal-title {
+  text-align: center;
+  padding-left:220px;
+}
+.modal-content {
+  width:700px;
+ 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.modal-header {
+  text-align:center;
+  color:white;
+  border-radius:0px;
+  background: linear-gradient(90.55deg, #024AA2 53.38%, #024AA2 115.43%);
+
+}
+
+.modal-body p strong {
+  font-weight: bold;
+}
+
+.modal-footer {
+  justify-content: flex-end;
+}
+.modal-footer {
+  justify-content: center;
+}
+
+.modal-footer .btn-close {
+  border-radius: 25px;
+  background-color: #f44336;
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 6px 14px;
+  border: none;
+  cursor: pointer;
+  text-transform:uppercase;
+}
+
+.modal-footer .btn-close:hover {
+  background-color: #c62828;
+}
 
 </style>
 <body>
@@ -291,7 +382,7 @@ th {
                                   <input type="search" class="form-control" 
                                   placeholder="Search">
                                   <div class="input-group-append">
-                                    <button class="btn" type="submit" 
+                                    <button class="btn3" type="submit" 
                                     id="button-addon2">GO</button>
                                   </div>
                                 </div>
@@ -426,7 +517,7 @@ logout</span>Logout</a>
                         <td>
                             <!-- START Image Modal -->
                             <button type="button" class="btn btn-info" data-toggle="modal"
-                                data-target="#viewImageModal{{ $user->id }}">View</button>
+                                data-target="#viewImageModal{{ $user->id }}">Image</button>
                             <div class="modal modal1 fade" id="viewImageModal{{ $user->id }}" tabindex="-1"
                                 role="dialog" aria-labelledby="viewImageModalLabel{{ $user->id }}"
                                 aria-hidden="true">
@@ -454,7 +545,7 @@ logout</span>Logout</a>
                         <td>{{ $user->created_at }}</td>
                         <td>
                             <div class="btn-group action">
-                                {{-- <button type="button" class="btn btn-info" data-toggle="modal"data-target="#viewInformationModal{{ $user->id }}">View</button> --}}
+                                {{-- <button type="button" data-toggle="modal"data-target="#viewInformationModal{{ $user->id }}">View</button> --}}
                                 <a data-toggle="modal" data-target="#viewuser{{ $user->id }}" class="btn btn-info">View</a>
                                 <form action="{{ route('user_approval.accept', $user->id) }}" method="POST">
                                     @csrf
@@ -483,30 +574,41 @@ logout</span>Logout</a>
 @foreach($users as $user)
 <div class="modal fade" id="viewuser{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">User Data</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
-
-          <div class="modal-body">
-              <p>Fullname: {{ $user->firstname }} {{ $user->middlename }} {{ $user->lastname }}</p>
-              <p>Contact: {{ $user->phone }}</p>
-              <p>Birthday: {{ $user->bday }}</p>
-              <p>Gender: {{ $user->gender }}</p>
-              <p>Address: {{ $user->house_number }} {{ $user->street }} {{ $user->brgy }} {{ $user->zip }} {{ $user->sitio }} {{ $user->city }}</p>
-              <p>Username: {{ $user->username }}</p>
-              <p>Email: {{ $user->email }}</p>
-              <p>Date Created: {{ $user->created_at }}</p>
-          </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h5 class="modal-title text-center" id="exampleModalLabel">Resident Information</h5>
       </div>
+      
+      <div class="modal-body">
+  <div class="row">
+    <div class="col-md-6 d-flex align-items-center justify-content-center column1-bg">
+      <div class="text-center">
+        <img src="img/user1.jpg" alt="User Image" class="img-fluid modal-image">
+        <p>{{ $user->firstname }} {{ $user->middlename }} {{ $user->lastname }}</p>
+        <strong>Fullname</strong>
+      </div>
+    </div>
+          <div class="col-md-6">
+            <p><strong>Contact:</strong> {{ $user->phone }}</p>
+            <p><strong>Birthday:</strong> {{ $user->bday }}</p>
+            <p><strong>Gender:</strong> {{ $user->gender }}</p>
+            <p><strong>Address:</strong> {{ $user->house_number }} {{ $user->street }} {{ $user->brgy }} {{ $user->zip }} {{ $user->sitio }} {{ $user->city }}</p>
+            <p><strong>Username:</strong> {{ $user->username }}</p>
+            <p><strong>Email:</strong> {{ $user->email }}</p>
+            <p><strong>Date Created:</strong> {{ $user->created_at }}</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-close" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
   </div>
 </div>
+
+
 @endforeach
 
 

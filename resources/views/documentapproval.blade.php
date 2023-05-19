@@ -28,11 +28,21 @@
 
 
     .btn-info {
-  
-padding: 3px 8px;
-  text-shadow: 1px 1px 1px #000;
-   border-radius: 15px;
-   font-size: 14px;
+  background-color:#17a2b8;
+  padding: 3px 5px;
+  text-shadow: 1px 1px 1px #808080;
+  border-radius: 15px;
+  padding-left:10px;
+  padding-right:10px;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-right: 7px;
+  margin-top: 7px;
+  color:white;
+  height: 30px; /* Adjust the height value as per your requirement */
+  border: 1px solid #808080;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5),
+              inset 0 -2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .btn-info:hover {
@@ -125,15 +135,15 @@ padding: 3px 8px;
 }
 .button1{
   margin-right:6px;
-   margin-top:0px;
-    height:24px;
+    margin-top:7px;
+    height:30px;
     text-transform:uppercase;
     padding-top: 0px ;
     border-radius: 15px;
     padding-bottom:0px;
-    padding-right:25px;
-    padding-left:25px;
-    font-size: 14px;
+    padding-right:10px;
+    padding-left:10px;
+    font-size: 12px;
     font-weight:normal;
     color: #fff;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
@@ -141,18 +151,21 @@ padding: 3px 8px;
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
+    border: 1px solid #808080;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5),
+              inset 0 -2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .button2{
-   margin-top:0px;
-    height:24px;
+  margin-top:7px;
+    height:30px;
     text-transform:uppercase;
     padding-top: 0px ;
     border-radius: 15px;
     padding-bottom:0px;
     padding-right:17px;
     padding-left:17px;
-    font-size: 14px;
+    font-size: 12px;
     font-weight:normal;
     color: #fff;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
@@ -160,6 +173,9 @@ padding: 3px 8px;
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
+    border: 1px solid #808080;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5),
+              inset 0 -2px 4px rgba(0, 0, 0, 0.5);
 }
 .button1:hover{
     background-color: #27ae60;
@@ -198,7 +214,7 @@ padding: 3px 8px;
           </a>
           <ul  id="pageSubmenu3">
             <li class="active">
-              <a href="{{ route('documentapproval') }}">Pending</a>
+              <a href="{{ route('documentapproval') }}">Approval</a>
             </li>
             <li>
               <a href="#">Approved</a>
@@ -299,7 +315,7 @@ padding: 3px 8px;
                                   <input type="search" class="form-control" 
                                   placeholder="Search">
                                   <div class="input-group-append">
-                                    <button class="btn" type="submit" 
+                                    <button class="btn3" type="submit" 
                                     id="button-addon2">GO</button>
                                   </div>
                                 </div>
@@ -394,7 +410,7 @@ logout</span>Logout</a>
                        <div class="table-title">
                          <div class="row">
                              <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
-                                <h2 class="ml-lg-2">Documents Approval</h2>
+                                <h2 class="ml-lg-2">List of Document to Approve</h2>
                              </div>
                              <!-- <div class="col-sm-6 p-0 flex justify-content-lg-end justify-content-center">
                                <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">

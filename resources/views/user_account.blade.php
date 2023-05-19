@@ -158,15 +158,15 @@ padding: 3px 8px;
 }
 .button1{
   margin-right:6px;
-   margin-top:10px;
-    height:24px;
+    margin-top:7px;
+    height:30px;
     text-transform:uppercase;
-    padding-top: 0px ;
+    padding-top: 3px;
     border-radius: 15px;
     padding-bottom:0px;
-    padding-right:25px;
-    padding-left:25px;
-    font-size: 14px;
+    padding-right:10px;
+    padding-left:10px;
+    font-size: 12px;
     font-weight:normal;
     color: #fff;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
@@ -174,18 +174,21 @@ padding: 3px 8px;
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
+    border: 1px solid #808080;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5),
+              inset 0 -2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .button2{
-   margin-top:10px;
-    height:24px;
+  margin-top:7px;
+    height:30px;
     text-transform:uppercase;
     padding-top: 0px ;
     border-radius: 15px;
     padding-bottom:0px;
     padding-right:17px;
     padding-left:17px;
-    font-size: 14px;
+    font-size: 12px;
     font-weight:normal;
     color: #fff;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
@@ -193,10 +196,67 @@ padding: 3px 8px;
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
+    border: 1px solid #808080;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5),
+              inset 0 -2px 4px rgba(0, 0, 0, 0.5);
 }
 th {
       border-right: 1px solid #ccc;
    }
+   .btn btn-add{
+
+   }
+   .modal-content {
+    
+  width:800px;
+ 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.modal .modal-title {
+  padding-left:300px;
+}
+ 
+.modal-header {
+  color:white;
+  border-radius:0px;
+  background: linear-gradient(90.55deg, #024AA2 53.38%, #024AA2 115.43%);
+  }
+
+  .modal-body .form-group {
+    margin-bottom: 20px;
+  }
+
+  .modal-body label {
+    font-weight: bold;
+  }
+  .btnclose {
+    height: 40px;
+    background-color: #FF0000; /* Red background color */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .btnclose:hover {
+    background-color: #CC0000; /* Darker shade of red on hover */
+  }
+  .btnsave {
+    height: 40px;
+    background: linear-gradient(0deg, #024AA2, #024AA2),
+                linear-gradient(0deg, #43ABE0, #43ABE0);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .btnsave:hover {
+    background: linear-gradient(0deg, #87CEEB, #87CEEB),
+                linear-gradient(0deg, #87CEEB, #87CEEB);
+  }
 </style>
 <body>
   <div class="wrapper">
@@ -323,7 +383,7 @@ th {
                                   <input type="search" class="form-control" 
                                   placeholder="Search">
                                   <div class="input-group-append">
-                                    <button class="btn" type="submit" 
+                                    <button class="btn3" type="submit" 
                                     id="button-addon2">GO</button>
                                   </div>
                                 </div>
@@ -419,8 +479,8 @@ logout</span>Logout</a>
                           <h2 class="ml-lg-2">User Account</h2>
                       </div>
                       <div class="col-sm-6 p-0 d-flex justify-content-lg-end justify-content-center">
-                        <a class="btn btn-success" data-toggle="modal" data-target="#newuser">
-                            <i class="material-icons">&#xE147;</i> <span>New</span>
+                        <a class="btnadd" data-toggle="modal" data-target="#newuser">
+                          <i class="material-icons">&#xE147;</i> <span>New</span>
                         </a>
                       </div>
                   </div>
@@ -490,102 +550,114 @@ logout</span>Logout</a>
 <!-- NEW POP UP FORM (Bootstrap MODAL) -->
 <div class="modal fade" id="newuser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Add User Data</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
-          <form action="{{ route('announcement.store') }}" method="POST" enctype="multipart/form-data">
-              @csrf
-
-              <div class="modal-body">
-                <div class="form-group">
-                  <label>Firstname</label>
-                  <input type="text" name="firstname" class="form-control" placeholder="Enter Firstname">
-                </div>
-                <div class="form-group">
-                  <label>Middlename</label>
-                  <input type="text" name="middlename" class="form-control" placeholder="Enter Middlename">
-                </div>
-                <div class="form-group">
-                  <label>Lastname</label>
-                  <input type="text" name="lastname" class="form-control" placeholder="Enter Lastname">
-                </div>
-                <div class="form-group">
-                  <label>Contact Number</label>
-                  <input type="tel" name="phone" pattern="[0-9]{11}" class="form-control" placeholder="Enter Contact Number">
-                </div>
-                <div class="form-group">
-                  <label>Birthday</label>
-                  <input type="date" name="bday" class="form-control" placeholder="Enter Birthday">
-                </div>
-                <div class="form-group">
-                  <label>Gender</label><br>
-                  <label for="male">
-                    <input type="radio" name="gender" id="male" value="male">
-                    Male
-                  </label><br>
-                  <label for="female">
-                    <input type="radio" name="gender" id="female" value="female">
-                    Female
-                  </label>
-                </div>  
-                <div class="form-group">
-                  <label>House Number</label>
-                  <input type="text" name="house_number" class="form-control" placeholder="Enter House Number">
-                </div>
-                <div class="form-group">
-                  @php
-                    $filePath = public_path('streets.txt');
-                    $streets = file($filePath, FILE_IGNORE_NEW_LINES);
-                  @endphp
-                  <label for="street">Street Name</label>
-                  <select id="street" name="street" class="form-control" placeholder="Select a street">
-                    <option disabled selected>Select a street</option>
-                    @foreach($streets as $street)
-                      <option value="{{ $street }}">{{ $street }}</option>
-                    @endforeach
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label>Barangay</label>
-                  <input type="text" name="brgy" class="form-control" placeholder="Enter Barangay">
-                </div>
-                <div class="form-group">
-                  <label>City</label>
-                  <input type="text" name="city" class="form-control" placeholder="Enter City">
-                </div>
-                <div class="form-group">
-                  <label>Zip Code</label>
-                  <input type="text" name="zip" class="form-control" placeholder="Enter Zip Code">
-                </div>
-                <div class="form-group">
-                  <label>username</label>
-                  <input type="text" id="username" name="username" class="form-control" placeholder="Enter Username">
-                </div>
-                <div class="form-group">
-                  <label>Email</label>
-                  <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email">
-                </div>
-                <div class="form-group">
-                  <label>Password</label>
-                  <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password">
-                </div>
-                <div class="form-group">
-                  <label>Confirm Password</label>
-                  <input type="password" id="password" name="password_confirmation" class="form-control" placeholder="Confirm Password">
-                </div>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary">Save Data</button>
-              </div>
-          </form>
+    <div class="modal-content">
+      <div class="modal-header bg-light">
+        <h5 class="modal-title" id="exampleModalLabel">Add User Data</h5>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
       </div>
+      <form action="{{ route('announcement.store') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Firstname</label>
+                <input type="text" name="firstname" class="form-control" placeholder="Enter Firstname">
+              </div>
+             
+              <div class="form-group">
+                <label>Middlename</label>
+                <input type="text" name="middlename" class="form-control" placeholder="Enter Middle Name">
+              </div>
+              <div class="form-group">
+                <label>Lastname</label>
+                <input type="text" name="lastname" class="form-control" placeholder="Enter Lastname">
+              </div>
+              <div class="form-group">
+                <label>Contact Number</label>
+                <input type="tel" name="phone" pattern="[0-9]{11}" class="form-control" placeholder="Enter Contact Number">
+              </div>
+              <div class="form-group">
+                <label>Birthday</label>
+                <input type="date" name="bday" class="form-control" placeholder="Enter Birthday">
+              </div>
+             
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>House Number</label>
+                <input type="text" name="house_number" class="form-control" placeholder="Enter House Number">
+              </div>
+              <div class="form-group">
+                @php
+                  $filePath = public_path('streets.txt');
+                  $streets = file($filePath, FILE_IGNORE_NEW_LINES);
+                @endphp
+                <label for="street">Street Name</label>
+                <select id="street" name="street" class="form-control" placeholder="Select a street">
+                  <option disabled selected>Select a street</option>
+                  @foreach($streets as $street)
+                    <option value="{{ $street }}">{{ $street }}</option>
+                  @endforeach
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Barangay</label>
+                <input type="text" name="brgy" class="form-control" placeholder="Enter Barangay">
+              </div>
+              <div class="form-group">
+                <label>City</label>
+                <input type="text" name="city" class="form-control" placeholder="Enter City">
+              </div>
+              <div class="form-group">
+                <label>Zip Code</label>
+                <input type="text" name="zip" class="form-control" placeholder="Enter Zip Code">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label><strong>Username </strong></label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Enter Username">
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email">
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password">
+              </div>
+              <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" id="password" name="password_confirmation" class="form-control" placeholder="Confirm Password">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+                <label><strong>Select Gender </strong></label> &nbsp;
+                <label for="male" style="font-weight: normal;">
+                  <input type="radio" name="gender" id="male" value="male">
+                  Male
+                </label>
+                <label for="female"style="font-weight: normal;">
+                  <input type="radio" name="gender" id="female" value="female">
+                  Female
+                </label>
+              </div>  
+              <br>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btnclose" data-dismiss="modal">Close</button>
+          <button type="submit" class="btnsave">Save Data</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
+
 <!-- EDIT POP UP FORM (Bootstrap MODAL) -->
 @foreach($users as $user)
 <div class="modal fade" id="editannouncement{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

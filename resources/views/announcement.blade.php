@@ -355,7 +355,7 @@ img {
                                 <input type="search" class="form-control" 
                                 placeholder="Search">
                                 <div class="input-group-append">
-                                  <button class="btn" type="submit" 
+                                  <button class="btn3" type="submit" 
                                   id="button-addon2">GO</button>
                                 </div>
                               </div>

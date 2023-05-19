@@ -2341,7 +2341,7 @@ textarea.form-control {
     }
 }
 
-.btn {
+/* .btn {
     display: inline-block;
     font-weight: 400;
     text-align: center;
@@ -2363,7 +2363,7 @@ textarea.form-control {
     .btn {
         transition: none
     }
-}
+} */
 
 .btn:focus, .btn:hover {
     text-decoration: none
@@ -2482,11 +2482,11 @@ a.btn.disabled, fieldset:disabled a.btn {
     box-shadow: 0 0 0 .2rem rgba(40, 167, 69, .5)
 }
 
-.btn-info {
+/* .btn-info {
     color: #fff;
     background-color: #17a2b8;
     border-color: #17a2b8
-}
+} */
 
 .btn-info:hover {
     color: #fff;
@@ -3223,10 +3223,10 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     margin-left: 0
 }
 
-.btn-group>.btn-group:not(:last-child)>.btn, .btn-group>.btn:not(:last-child):not(.dropdown-toggle) {
+/* .btn-group>.btn-group:not(:last-child)>.btn, .btn-group>.btn:not(:last-child):not(.dropdown-toggle) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0
-}
+} */
 
 .btn-group>.btn-group:not(:first-child)>.btn, .btn-group>.btn:not(:first-child) {
     border-top-left-radius: 0;
