@@ -234,7 +234,7 @@ th {
     background-color: #FF0000; /* Red background color */
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 0px;
     cursor: pointer;
     transition: background-color 0.3s;
   }
@@ -244,16 +244,45 @@ th {
   }
   .btnsave {
     height: 40px;
-    background: linear-gradient(0deg, #024AA2, #024AA2),
+    background: linear-gradient(0deg, #007bff, #007bff),
                 linear-gradient(0deg, #43ABE0, #43ABE0);
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 0px;
     cursor: pointer;
     transition: background-color 0.3s;
   }
 
   .btnsave:hover {
+    background: linear-gradient(0deg, #87CEEB, #87CEEB),
+                linear-gradient(0deg, #87CEEB, #87CEEB);
+  }
+
+  .btncancel {
+    height: 40px;
+    background-color: #FF0000; /* Red background color */
+    color: #fff;
+    border: none;
+    border-radius: 0px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .btncancel:hover {
+    background-color: #CC0000; /* Darker shade of red on hover */
+  }
+  .btnupdate {
+    height: 40px;
+    background: linear-gradient(0deg, #007bff, #007bff),
+                linear-gradient(0deg, #43ABE0, #43ABE0);
+    color: #fff;
+    border: none;
+    border-radius: 0px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .btnupdate:hover {
     background: linear-gradient(0deg, #87CEEB, #87CEEB),
                 linear-gradient(0deg, #87CEEB, #87CEEB);
   }
@@ -660,7 +689,7 @@ logout</span>Logout</a>
 
 <!-- EDIT POP UP FORM (Bootstrap MODAL) -->
 @foreach($users as $user)
-<div class="modal fade" id="editannouncement{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<<div class="modal fade" id="editannouncement{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
       <div class="modal-content">
           <div class="modal-header">
@@ -676,108 +705,141 @@ logout</span>Logout</a>
 
               <div class="modal-body">
                   <input type="hidden" name="update_id" id="update_id">
-                  <div class="form-group">
-                      <label>ID</label>
-                      <input type="text" class="form-control" value="{{ $user->id }}" disabled>
+
+                  <div class="row">
+                      <div class="col-md-4">
+                      <!-- <div class="form-group">
+                              <label>ID</label>
+                              <input type="text" class="form-control" value="{{ $user->id }}" disabled>
+                          </div> -->
+                          <div class="form-group">
+                              <label>Firstname</label>
+                              <input type="text" name="firstname" class="form-control" value="{{ $user->firstname }}">
+                          </div>
+                          <div class="form-group">
+                              <label>Contact Number</label>
+                              <input type="tel" name="phone" pattern="[0-9]{11}" class="form-control" value="{{ $user->phone }}">
+                          </div>
+                          <div class="form-group">
+                              <label>House Number</label>
+                              <input type="text" name="house_number" class="form-control" value="{{ $user->house_number }}">
+                          </div>
+                      </div>
+
+                      <div class="col-md-4">
+                      <div class="form-group">
+                              <label>Middlename</label>
+                              <input type="text" name="middlename" class="form-control" value="{{ $user->middlename }}">
+                          </div>
+                          
+                          <div class="form-group">
+                              <label>Birthday</label>
+                              <input type="date" name="bday" class="form-control" value="{{ $user->bday }}">
+                          </div>
+                          <div class="form-group">
+                              <label>Gender</label><br>
+                              <label for="male">
+                                  <input type="radio" name="gender" id="male" value="male" {{ $user->gender === 'Male' ? 'checked' : '' }}>
+                                  Male
+                              </label><br>
+                              <label for="female">
+                                  <input type="radio" name="gender" id="female" value="female" {{ $user->gender === 'Female' ? 'checked' : '' }}>
+                                  Female
+                              </label>
+                          </div>
+                      </div>
+
+                      <div class="col-md-4">
+                      <div class="form-group">
+                              <label>Lastname</label>
+                              <input type="text" name="lastname" class="form-control" value="{{ $user->lastname }}">
+                          </div>
+                         
+                          <div class="form-group">
+                              <label for="street">Street Name</label>
+                              <select id="street" name="street" class="form-control">
+                                  <option value="">Select a street</option>
+                                  @foreach($streets as $street)
+                                      <option value="{{ $street }}" {{ $user->street == $street ? 'selected' : '' }}>{{ $street }}</option>
+                                  @endforeach
+                              </select>
+                          </div>
+                          <div class="form-group">
+                              <label for="sitio">Sitio</label>
+                              <select id="sitio" name="sitio" class="form-control">
+                                  <option value="">Select a Sitio</option>
+                                  <option value="Sitio1" {{ $user->sitio === 'Sitio 1' ? 'selected' : '' }}>Sitio 1</option>
+                                  <option value="Sitio2" {{ $user->sitio === 'Sitio 2' ? 'selected' : '' }}>Sitio 2</option>
+                                  <option value="Sitio3" {{ $user->sitio === 'Sitio 3' ? 'selected' : '' }}>Sitio 3</option>
+                                  <option value="Sitio4" {{ $user->sitio === 'Sitio 4' ? 'selected' : '' }}>Sitio 4</option>
+                                  <option value="Sitio5" {{ $user->sitio === 'Sitio 5' ? 'selected' : '' }}>Sitio 5</option>
+                                  <option value="Sitio6" {{ $user->sitio === 'Sitio 6' ? 'selected' : '' }}>Sitio 6</option>
+                                  <option value="Sitio7" {{ $user->sitio === 'Sitio 7' ? 'selected' : '' }}>Sitio 7</option>
+                              </select>
+                          </div>
+                      </div>
                   </div>
-                  <div class="form-group">
-                    <label>Firstname</label>
-                    <input type="text" name="firstname" class="form-control" value="{{ $user->firstname }}">
+
+                  <div class="row">
+                      <div class="col-md-4">
+                          <div class="form-group">
+                              <label>Barangay</label>
+                              <input type="text" name="brgy" class="form-control" value="{{ $user->brgy }}">
+                          </div>
+                      </div>
+
+                      <div class="col-md-4">
+                          <div class="form-group">
+                              <label>City</label>
+                              <input type="text" name="city" class="form-control" value="{{ $user->city }}">
+                          </div>
+                      </div>
+
+                      <div class="col-md-4">
+                          <div class="form-group">
+                              <label>Zip Code</label>
+                              <input type="text" name="zip" class="form-control" value="{{ $user->zip }}">
+                          </div>
+                      </div>
                   </div>
-                  <div class="form-group">
-                    <label>Middlename</label>
-                    <input type="text" name="middlename" class="form-control" value="{{ $user->middlename }}">
+
+                  <div class="row">
+                      <div class="col-md-4">
+                          <div class="form-group">
+                              <label>Username</label>
+                              <input type="text" id="username" name="username" class="form-control" value="{{ $user->username }}">
+                          </div>
+                      </div>
+
+                      <div class="col-md-4">
+                          <div class="form-group">
+                              <label>Email</label>
+                              <input type="email" id="email" name="email" class="form-control" value="{{ $user->email }}">
+                          </div>
+                      </div>
+
+                      <div class="col-md-4">
+                          <div class="form-group">
+                              <label>Password</label>
+                              <input type="password" id="password" name="password" class="form-control" value="*****">
+                          </div>
+                          <div class="form-group">
+                              <label>Confirm Password</label>
+                              <input type="password" id="password" name="password_confirmation" class="form-control" value="*****">
+                          </div>
+                      </div>
                   </div>
-                  <div class="form-group">
-                    <label>Lastname</label>
-                    <input type="text" name="lastname" class="form-control" value="{{ $user->lastname }}">
-                  </div>
-                  <div class="form-group">
-                    <label>Contact Number</label>
-                    <input type="tel" name="phone" pattern="[0-9]{11}" class="form-control" value="{{ $user->phone }}">
-                  </div>
-                  <div class="form-group">
-                    <label>Birthday</label>
-                    <input type="date" name="bday" class="form-control" value="{{ $user->bday }}">
-                  </div>
-                  <div class="form-group">
-                    <label>Gender</label><br>
-                    <label for="  male">
-                      <input type="radio" name="gender" id="male" value="male" {{ $user->gender === 'Male' ? 'checked' : '' }}>
-                      Male
-                    </label><br>
-                    <label for="female">
-                      <input type="radio" name="gender" id="female "value="female" {{ $user->gender === 'Female' ? 'checked' : '' }}>
-                      Female
-                    </label>
-                  </div>
-                  <div class="form-group">
-                    <label>House Number</label>
-                    <input type="text" name="house_number" class="form-control" value="{{ $user->house_number }}">
-                  </div>
-                  <div class="form-group">
-                    @php
-                      $filePath = public_path('streets.txt');
-                      $streets = file($filePath, FILE_IGNORE_NEW_LINES);
-                    @endphp
-                    <label for="street">Street Name</label>
-                    <select id="street" name="street" class="form-control">
-                      <option value="">Select a street</option>
-                      @foreach($streets as $street)
-                        <option value="{{ $street }}" {{ $user->street == $street ? 'selected' : '' }}>{{ $street }}</option>
-                      @endforeach
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="sitio">Sitio</label>
-                    <select id="sitio" name="sitio" class="form-control">
-                      <option value="">Select a Sitio</option>
-                      <option value="Sitio1" {{ $user->sitio === 'Sitio 1' ? 'selected' : '' }}>Sitio 1</option>
-                      <option value="Sitio2" {{ $user->sitio === 'Sitio 2' ? 'selected' : '' }}>Sitio 2</option>
-                      <option value="Sitio3" {{ $user->sitio === 'Sitio 3' ? 'selected' : '' }}>Sitio 3</option>
-                      <option value="Sitio4" {{ $user->sitio === 'Sitio 4' ? 'selected' : '' }}>Sitio 4</option>
-                      <option value="Sitio5" {{ $user->sitio === 'Sitio 5' ? 'selected' : '' }}>Sitio 5</option>
-                      <option value="Sitio6" {{ $user->sitio === 'Sitio 6' ? 'selected' : '' }}>Sitio 6</option>
-                      <option value="Sitio7" {{ $user->sitio === 'Sitio 7' ? 'selected' : '' }}>Sitio 7</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label>Barangay</label>
-                    <input type="text" name="brgy" class="form-control" value="{{ $user->brgy }}">
-                  </div>
-                  <div class="form-group">
-                    <label>City</label>
-                    <input type="text" name="city" class="form-control" value="{{ $user->city  }}">
-                  </div>
-                  <div class="form-group">
-                    <label>Zip Code</label>
-                    <input type="text" name="zip" class="form-control" value="{{ $user->zip }}">
-                  </div>
-                  <div class="form-group">
-                    <label>username</label>
-                    <input type="text" id="username" name="username" class="form-control" value="{{ $user->username }}">
-                  </div>
-                  <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" id="email" name="email" class="form-control" value="{{ $user->email }}">
-                  </div>
-                  <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" id="password" name="password" class="form-control" value="*****">
-                  </div>
-                  <div class="form-group">
-                    <label>Confirm Password</label>
-                    <input type="password" id="password" name="password_confirmation" class="form-control" value="*****">
-                  </div>                        
               </div>
+
               <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                  <button type="submit" name="updatedata" class="btn btn-primary">Update</button>
+                  <button type="button" class="btncancel" data-dismiss="modal">Cancel</button>
+                  <button type="submit" name="updatedata" class="btnupdate">Update</button>
               </div>
           </form>
       </div>
   </div>
 </div>
+
 @endforeach
                        
 <!----------html code compleate----------->
