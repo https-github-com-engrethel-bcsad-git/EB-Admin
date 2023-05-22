@@ -224,7 +224,197 @@ img {
 .Edit.large:hover {
   background-color: #0A50B5;
 }
+/* Announcement CONTENT */
 
+.title1{
+   padding-top: 30px;
+}
+tfoot {
+    background-color: white; /* Set background color */
+    position: sticky;
+    bottom: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0px;
+}
+
+.Edit1 {
+    margin-right: 70px;
+}
+.Edit1 button {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.Edit1 a {
+    color:white;
+}
+tbody {
+  background-color:none;
+  color: #333;
+}
+
+tbody tr:nth-child(even) {
+  background-color: white;
+}
+
+tbody td {
+  padding: 10px;
+}
+
+tbody td a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+tbody td a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+.btnedit {
+  height: 40px;
+  background-color: #20c997;
+  color: white;
+  border: none;
+  /* padding: 10px 20px; */
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.btnedit:hover {
+  background-color: #1a936f;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+
+.btndelete {
+  height: 40px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  /* padding: 10px 20px; */
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.btndelete:hover {
+  background-color: #c82333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+/* MODAL */
+.btncancel {
+  
+    height: 40px;
+    background-color: #FF0000; /* Red background color */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+ 
+  .btncancel:hover {
+    background-color: #CC0000; /* Darker shade of red on hover */
+  }
+  .btnupdate {
+    height: 40px;
+    background-color:#007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .btnupdate:hover {
+    background: linear-gradient(0deg, #87CEEB, #87CEEB),
+                linear-gradient(0deg, #87CEEB, #87CEEB);
+  }
+.btnnew{
+  border-radius:5px;
+  padding-top:3px;
+  padding-left:3px;
+  padding-right:5px;
+  height:40px;
+  color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+.btnnew:hover{
+  color: #fff;
+    background-color: darkgreen;
+   
+}
+/* MODAL 2 design */
+.modal-dialog {
+  max-width: 900px;
+}
+
+.modal-header {
+  border-radius:0px;
+  background: linear-gradient(90.55deg, #024AA2 53.38%, #024AA2 115.43%);
+
+}
+
+.modal-title {
+  color: #fff;
+}
+.modal-content {
+  width:700px;
+  
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* DELETE MODAL */
+
+
+.btncancel1 {
+  height: 40px;
+  background-color: #20c997;
+  color: white;
+  border: none;
+  /* padding: 10px 20px; */
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.btncancel1:hover {
+  background-color: #1a936f;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+
+.btndelete1 {
+  height: 40px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  /* padding: 10px 20px; */
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.btndelete1:hover {
+  background-color: #c82333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+.table-title {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: linear-gradient(90.55deg, #024AA2 53.38%, #024AA2 115.43%);
+
+  }
+  .table {
+    margin-top: 50px; /* Adjust this value as needed */
+  }
 </style>
 <body>
   <div class="wrapper">
@@ -441,50 +631,54 @@ logout</span>Logout</a>
 <!-- main-content -->
 <div class="main-content">
   <div class="row">
-      <div class="table-title">
-          <div class="row">
-              <div class="col-sm-6 p-0 d-flex justify-content-lg-start justify-content-center">
-                  <h2 class="ml-lg-2">Manage News and Announcement</h2>
-              </div>
-              <div class="col-sm-6 p-0 d-flex justify-content-lg-end justify-content-center">
-                  <a class="btn btn-success" data-toggle="modal" data-target="#newannouncement">
-                      <i class="material-icons">&#xE147;</i> <span>New</span>
-                  </a>
-              </div>
-          </div>
+    <div class="table-title">
+      <div class="row">
+        <div class="col-sm-6 p-0 d-flex justify-content-lg-start justify-content-center">
+          <h2 class="ml-lg-2">Manage News and Announcement</h2>
+        </div>
+        <div class="col-sm-6 p-0 d-flex justify-content-lg-end justify-content-center">
+          <a class="btnnew" data-toggle="modal" data-target="#newannouncement">
+            <i class="material-icons">&#xE147;</i> <span>New</span>
+          </a>
+        </div>
       </div>
-      <table class="table table-striped table-hover">
-          <thead>
-              <tr>
-                  <th></th>
-                  <th></th>
-              </tr>
-          </thead>
-          <tbody>
-              @foreach($announcements as $announcement)
-              <tr>
-                  <td>
-                      <div class="container">
-                          <div class="title1">
-                              <h3>{{ $announcement->title }}</h3>
-                          </div>
-                          <p class="body">{{ $announcement->body }}</p>
-                          <div class="Edit1">
-                              <a href="" class="Edit">Edit</a>
-                              <a data-toggle="modal" data-target="#editannouncement{{ $announcement->id }}" class="Edit">Edit</a>
-                              <a data-toggle="modal" data-target="#destroyannouncement{{ $announcement->id }}" class="Edit">Delete</a>
-                          </div>
-                      </div>
-                  </td>
-                  <td>
-                      <img src="{{ Storage::disk('s3')->url($announcement->image) }}" class="img-fluid">
-                  </td>
-              </tr>
-              @endforeach
-          </tbody>
-      </table>
+    </div>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($announcements as $announcement)
+        <tr>
+          <td>
+            <div class="container">
+              <div class="title1">
+                <h3>{{ $announcement->title }}</h3>
+              </div>
+              <p class="body">{{ $announcement->body }}</p>
+            </div>
+          </td>
+          <td>
+            <img src="{{ Storage::disk('s3')->url($announcement->image) }}" class="img-fluid">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <div class="Edit1">
+              <button data-toggle="modal" data-target="#editannouncement{{ $announcement->id }}" class="btnedit">Edit</button>
+              <button data-toggle="modal" data-target="#destroyannouncement{{ $announcement->id }}" class="btndelete">Delete</button>
+            </div>
+          </td>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
   </div>
 </div>
+
 
 
 <!-- Modal -->
@@ -494,9 +688,7 @@ logout</span>Logout</a>
       <div class="modal-content">
           <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Add News and Announcement Data</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-              </button>
+             
           </div>
           <form action="{{ route('announcement.store') }}" method="POST" enctype="multipart/form-data">
               @csrf
@@ -525,13 +717,11 @@ logout</span>Logout</a>
 <!-- EDIT POP UP FORM (Bootstrap MODAL) -->
 @foreach($announcements as $announcement)
 <div class="modal fade" id="editannouncement{{ $announcement->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog " role="document">
       <div class="modal-content">
           <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Edit Announcement Data</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-              </button>
+             
           </div>
 
           <form action="{{ route('announcement.update', ['announcement' => $announcement->id]) }}" method="POST" enctype="multipart/form-data">
@@ -540,29 +730,31 @@ logout</span>Logout</a>
 
               <div class="modal-body">
                   <input type="hidden" name="update_id" id="update_id">
-                  <div class="form-group">
-                      <label>Image</label>
-                      <input type="file" name="image" accept=".jpg, .jpeg, .png">
-                  </div>
+                  
 
                   <div class="form-group">
-                      <label>Title</label>
+                      <label><strong>Title</strong></label>
                       <input type="text" name="title" id="title" class="form-control" value="{{ $announcement->title }}" placeholder="Enter Title">
                   </div>
 
                   <div class="form-group">
-                      <label>Body</label>
+                      <label><strong>Body</strong></label>
                       <textarea name="body" id="body" class="form-control" rows="10" placeholder="Enter Message">{{ $announcement->body }}</textarea>
+                  </div>
+                  <div class="form-group">
+                      <label><strong>Image<strong></label>
+                      <input type="file" name="image" accept=".jpg, .jpeg, .png">
                   </div>
               </div>
               <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                  <button type="submit" name="updatedata" class="btn btn-primary">Update</button>
+                  <button type="button" class="btncancel" data-dismiss="modal">Cancel</button>
+                  <button type="submit" name="updatedata" class="btnupdate">Update</button>
               </div>
           </form>
       </div>
   </div>
 </div>
+
 @endforeach
 <!-- DELETE POP UP FORM (Bootstrap MODAL) -->
 @foreach($announcements as $announcement)
@@ -571,9 +763,7 @@ logout</span>Logout</a>
       <div class="modal-content">
           <div class="modal-header">
               <h4 class="modal-title" id="exampleModalLabel">Delete Announcement</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-              </button>
+              
           </div>
 
           <form action="{{ route('announcement.destroy', ['announcement' => $announcement->id]) }}" method="POST">
@@ -585,8 +775,8 @@ logout</span>Logout</a>
                   <p class="text-warning"><small>This action cannot be undone.</small></p>
               </div>
               <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                  <button type="submit" name="deletedata" class="btn btn-danger">Delete</button>
+                  <button type="button" class="btncancel1" data-dismiss="modal">Cancel</button>
+                  <button type="submit" name="deletedata" class="btndelete1">Delete</button>
               </div>
           </form>
       </div>

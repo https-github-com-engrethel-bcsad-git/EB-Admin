@@ -18,6 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js"></script>
 
 <!--google material icon-->
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons"rel="stylesheet">
@@ -212,19 +213,18 @@ max-width: 100%;
 
                 <!-- Start XP Col -->
                 <div class="col-md-5 col-lg-3 order-3 order-md-2">
-                    <div class="xp-searchbar">
-                        <form>
-                            <div class="input-group">
-                                <input type="search" class="form-control" 
-                                placeholder="Search">
-                                <div class="input-group-append">
-                                <button class="btn3" type="submit" 
-                                id="button-addon2">GO</button>
+                        <div class="xp-searchbar">
+                            <form id="search-form">
+                                <div class="input-group">
+                                <input type="search" class="form-control" id="search-input" placeholder="Search">
+                                    <div class="input-group-append">
+                                        <button class="btn3" type="submit" id="button-addon2">GO</button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
-                </div>
+
                 <!-- End XP Col -->
 
                 <!-- Start XP Col -->
@@ -356,4 +356,20 @@ $(".xp-menubar,.body-overlay").on('click',function(){
 });
 
 });
+$(document).ready(function() {
+  $('#search-input').on('input', function() {
+    var searchTerm = $(this).val().trim();
+    if (searchTerm !== '') {
+      var regex = new RegExp('(' + searchTerm + ')', 'gi');
+      $('.main-content').unmark().markRegExp(regex);
+    } else {
+      $('.main-content').unmark();
+    }
+  });
+});
+
+
+
+
+
 </script>

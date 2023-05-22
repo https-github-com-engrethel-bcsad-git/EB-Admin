@@ -689,7 +689,7 @@ logout</span>Logout</a>
 
 <!-- EDIT POP UP FORM (Bootstrap MODAL) -->
 @foreach($users as $user)
-<<div class="modal fade" id="editannouncement{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="editannouncement{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
       <div class="modal-content">
           <div class="modal-header">
@@ -708,10 +708,7 @@ logout</span>Logout</a>
 
                   <div class="row">
                       <div class="col-md-4">
-                      <!-- <div class="form-group">
-                              <label>ID</label>
-                              <input type="text" class="form-control" value="{{ $user->id }}" disabled>
-                          </div> -->
+                     
                           <div class="form-group">
                               <label>Firstname</label>
                               <input type="text" name="firstname" class="form-control" value="{{ $user->firstname }}">
