@@ -556,13 +556,9 @@ logout</span>Logout</a>
                           </td>
                           <td>
                               <div class="action">
-                                  {{-- <a href="/user/{{ $user->id }}/edit" class="button1">Edit</a> --}}
-                                  <a data-toggle="modal" data-target="#editannouncement{{ $user->id }}" class="button1">Edit</a>
-                                  <form action="{{ route('user_account.delete', $user->id) }}" method="POST">
-                                      @csrf
-                                      @method('DELETE')
-                                      <button type="submit" class="button2" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
-                                  </form>
+                                  <a data-toggle="modal" data-target="#viewuser{{ $user->id }}" class="btn btn-info">View</a>
+                                  <a data-toggle="modal" data-target="#edituser{{ $user->id }}" class="button1">Edit</a>
+                                  <a data-toggle="modal" data-target="#destroyuser{{ $user->id }}" class="button2">Delete</a>
                               </div>
                           </td>
                       </tr>
@@ -576,6 +572,47 @@ logout</span>Logout</a>
 </div>
 
 <!-- Modal -->
+<!-- VIEW POP UP FORM (Bootstrap MODAL) -->
+@foreach($users as $user)
+<div class="modal fade" id="viewuser{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h5 class="modal-title text-center" id="exampleModalLabel">Resident Information</h5>
+      </div>
+      
+      <div class="modal-body">
+  <div class="row">
+    <div class="col-md-6 d-flex align-items-center justify-content-center column1-bg">
+      <div class="text-center">
+        <img src="img/user1.jpg" alt="User Image" class="img-fluid modal-image">
+        <p>{{ $user->firstname }} {{ $user->middlename }} {{ $user->lastname }}</p>
+        <strong>Fullname</strong>
+      </div>
+    </div>
+          <div class="col-md-6">
+            <p><strong>Contact:</strong> {{ $user->phone }}</p>
+            <p><strong>Birthday:</strong> {{ $user->bday }}</p>
+            <p><strong>Gender:</strong> {{ $user->gender }}</p>
+            <p><strong>Address:</strong> {{ $user->house_number }} {{ $user->street }} {{ $user->brgy }} {{ $user->zip }} {{ $user->sitio }} {{ $user->city }}</p>
+            <p><strong>Username:</strong> {{ $user->username }}</p>
+            <p><strong>Email:</strong> {{ $user->email }}</p>
+            <p><strong>Date Created:</strong> {{ $user->created_at }}</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-close" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+@endforeach
+
 <!-- NEW POP UP FORM (Bootstrap MODAL) -->
 <div class="modal fade" id="newuser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -586,8 +623,10 @@ logout</span>Logout</a>
           <span aria-hidden="true">&times;</span>
         </button> -->
       </div>
-      <form action="{{ route('announcement.store') }}" method="POST" enctype="multipart/form-data">
+      <form action="{{ route('user_account.store') }}" method="POST">
         @csrf
+        <input type="text" id="active_status" name="active_status" value="1" hidden>
+        <input type="text" id="account_status" name="account_status" value="1"hidden>
 
         <div class="modal-body">
           <div class="row">
@@ -634,6 +673,19 @@ logout</span>Logout</a>
                 </select>
               </div>
               <div class="form-group">
+                <label for="sitio">Sitio</label>
+                <select id="sitio" name="sitio" class="form-control">
+                    <option value="">Select a Sitio</option>
+                    <option value="Sitio1" {{ $user->sitio === 'Sitio 1' ? 'selected' : '' }}>Sitio 1</option>
+                    <option value="Sitio2" {{ $user->sitio === 'Sitio 2' ? 'selected' : '' }}>Sitio 2</option>
+                    <option value="Sitio3" {{ $user->sitio === 'Sitio 3' ? 'selected' : '' }}>Sitio 3</option>
+                    <option value="Sitio4" {{ $user->sitio === 'Sitio 4' ? 'selected' : '' }}>Sitio 4</option>
+                    <option value="Sitio5" {{ $user->sitio === 'Sitio 5' ? 'selected' : '' }}>Sitio 5</option>
+                    <option value="Sitio6" {{ $user->sitio === 'Sitio 6' ? 'selected' : '' }}>Sitio 6</option>
+                    <option value="Sitio7" {{ $user->sitio === 'Sitio 7' ? 'selected' : '' }}>Sitio 7</option>
+                </select>
+            </div>
+              <div class="form-group">
                 <label>Barangay</label>
                 <input type="text" name="brgy" class="form-control" placeholder="Enter Barangay">
               </div>
@@ -659,10 +711,10 @@ logout</span>Logout</a>
                 <label>Password</label>
                 <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password">
               </div>
-              <div class="form-group">
+              {{-- <div class="form-group">
                 <label>Confirm Password</label>
                 <input type="password" id="password" name="password_confirmation" class="form-control" placeholder="Confirm Password">
-              </div>
+              </div> --}}
             </div>
           </div>
           <div class="form-group">
@@ -689,7 +741,7 @@ logout</span>Logout</a>
 
 <!-- EDIT POP UP FORM (Bootstrap MODAL) -->
 @foreach($users as $user)
-<div class="modal fade" id="editannouncement{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="edituser{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
       <div class="modal-content">
           <div class="modal-header">
@@ -699,7 +751,7 @@ logout</span>Logout</a>
               </button>
           </div>
 
-          <form action="{{ route('announcement.update', ['announcement' => $user->id]) }}" method="POST" enctype="multipart/form-data">
+          <form action="{{ route('user_account.update', ['user' => $user->id]) }}" method="POST" enctype="multipart/form-data">
               @csrf
               @method('PUT')
 
@@ -818,25 +870,52 @@ logout</span>Logout</a>
                       <div class="col-md-4">
                           <div class="form-group">
                               <label>Password</label>
-                              <input type="password" id="password" name="password" class="form-control" value="*****">
+                              <input type="password" id="password" name="password" class="form-control" placeholder="*****">
                           </div>
-                          <div class="form-group">
+                          {{-- <div class="form-group">
                               <label>Confirm Password</label>
-                              <input type="password" id="password" name="password_confirmation" class="form-control" value="*****">
-                          </div>
+                              <input type="password" id="password" name="password_confirmation" class="form-control" placeholder="*****">
+                          </div> --}}
                       </div>
                   </div>
               </div>
 
               <div class="modal-footer">
                   <button type="button" class="btncancel" data-dismiss="modal">Cancel</button>
-                  <button type="submit" name="updatedata" class="btnupdate">Update</button>
+                  <button type="submit" class="btnupdate">Update</button>
               </div>
           </form>
       </div>
   </div>
 </div>
 
+@endforeach
+<!-- DELETE POP UP FORM (Bootstrap MODAL) -->
+@foreach($users as $user)
+<div class="modal fade" id="destroyuser{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="exampleModalLabel">Delete User</h4>
+              
+          </div>
+
+          <form action="{{ route('user_account.destroy', ['user' => $user->id]) }}" method="POST">
+            @csrf
+            @method('DELETE')
+              <div class="modal-body">
+                  <input type="hidden" name="delete_id" id="delete_id">
+                  <p>Do you want to delete this user?</p>
+                  <p class="text-warning"><small>This action cannot be undone.</small></p>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btncancel1" data-dismiss="modal">Cancel</button>
+                  <button type="submit" name="deletedata" class="btndelete1">Delete</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
 @endforeach
                        
 <!----------html code compleate----------->

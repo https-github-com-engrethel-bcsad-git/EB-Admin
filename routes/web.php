@@ -52,7 +52,9 @@ Route::get('/user_account', function () {
   return view('user_account', compact('users'));
 })->name('user_account');
 
-Route::delete('/user_account/{id}', [UserController::class, 'delete'])->name('user_account.delete');
+Route::post('/user_account/store', [UserController::class, 'store'])->name('user_account.store');
+Route::put('/user_account/{user}', [UserController::class, 'update'])->name('user_account.update');
+Route::delete('/user_account/{user}', [UserController::class, 'destroy'])->name('user_account.destroy');
 
 //Certifacate Route
 Route::get('/certificate/bcf', function () {
@@ -64,7 +66,6 @@ Route::get('/announcement', function () {
   $announcements = announcement::all();
   return view('announcement', compact('announcements'));
 })->name('announcement');
-
 
 Route::post('/announcement/store', [AnnouncementController::class, 'store'])->name('announcement.store');
 Route::put('/announcement/{announcement}', [AnnouncementController::class, 'update'])->name('announcement.update');
