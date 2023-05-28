@@ -748,7 +748,7 @@ logout</span>Logout</a>
               </div>
               <div class="modal-footer">
                   <button type="button" class="btncancel" data-dismiss="modal">Cancel</button>
-                  <button type="submit" name="updatedata" class="btnupdate">Update</button>
+                  <button type="submit" class="btnupdate">Update</button>
               </div>
           </form>
       </div>
