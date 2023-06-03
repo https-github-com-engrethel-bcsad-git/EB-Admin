@@ -1,52 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Login Form</title>
-    <!-- Include Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <style>
-        body {
-            background-color: #222;
-        }
-
-        .container {
-            height: 100vh;
-        }
-
-        .dark-card {
-            background-color: #333;
-            color: #fff;
-        }
-
-        .dark-card .card-body {
-            background-color: #333;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>admin log in</title>
+  <link rel="stylesheet" href="css/login.css">
+  <!-- https://bytewebster.com/ -->
+  <!-- https://bytewebster.com/ -->
+  <!-- https://bytewebster.com/ -->
 </head>
-<body>
-    <div class="container d-flex justify-content-center align-items-center">
-        <div class="card dark-card">
-            <div class="card-body">
-                <h2 class="card-title">Login Form</h2>
-                <form action="{{ route('home') }}">
-                    @csrf
-                    <div class="form-group">
-                        <label for="username">Username:</label>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" value="admin">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" value="admin">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Login</button>
-                </form>
-            </div>
+<body  style="background-image: url('img/bg4.png');">
+<div class="container">
+      <div class="forms-container">
+        <div class="form-control signup-form">
         </div>
-    </div>
+        <div class="form-control signin-form">
+           <form action="{{ route('home') }}">
+              <img src="img/hero2.png" alt="Welcome back!" class="center-image2"/>
+             <div class="input-container">
+              <div class="icon">
+                  <i class="fas fa-user"></i>
+              </div>
+              <div class="input1">
+                   <input type="text" placeholder="Username" required />
+              </div>
+         
+         </div>
+         <div class="input-container">
+             <div class="icon">
+                  <i class="fas fa-lock"></i>
+              </div>
+               <div class="input1">
+            <input ztype="password" placeholder="Password" required />
+          </div>
+         </div>
+            <button>Sumbit</button>
+          </form>
+        
+        </div>
+      </div>
+              <div class="intros-container">
+               <div class="intro-control signin-intro">
+                  <div class="intro-control__inner">
+                     <!-- Replace text with image -->
+                     <img src="img/admin.png" alt="Welcome back!" class="center-image"/>
+                  </div>
+               </div>
+               <div class="intro-control signup-intro">
+                  <!-- Add your content here -->
+               </div>
+            </div>
 
-    <!-- Include Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script  src="./script.js">
+// https://bytewebster.com/
+// https://bytewebster.com/
+// https://bytewebster.com/
+      const signupBtn = document.getElementById("signup-btn");
+      const signinBtn = document.getElementById("signin-btn");
+      const mainContainer = document.querySelector(".container");
+
+      signupBtn.addEventListener("click", () => {
+        mainContainer.classList.toggle("change");
+      });
+      signinBtn.addEventListener("click", () => {
+        mainContainer.classList.toggle("change");
+      });
+      
+  </script>
 </body>
 </html>
