@@ -267,7 +267,7 @@ th {
     cursor: pointer;
     transition: background-color 0.3s;
   }
-
+ 
   .btncancel:hover {
     background-color: #CC0000; /* Darker shade of red on hover */
   }
