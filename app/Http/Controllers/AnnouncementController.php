@@ -15,7 +15,7 @@ class AnnouncementController extends Controller
         
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $path = Storage::disk('s3')->put('public/images/announcement', $image);
+            $path = Storage::disk('s3')->put('public/img/announcement', $image);
             $data['image'] = $path;
         }  
 
@@ -30,7 +30,7 @@ class AnnouncementController extends Controller
     
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $path = Storage::disk('s3')->put('public/images/announcement', $image);
+            $path = Storage::disk('s3')->put('public/img/announcement', $image);
             $data['image'] = $path;
             Storage::disk('s3')->delete($announcement->image);
         }

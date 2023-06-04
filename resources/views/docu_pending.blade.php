@@ -214,7 +214,7 @@
           </a>
           <ul  id="pageSubmenu3">
             <li class="active">
-              <a href="{{ route('documentapproval') }}">Approval</a>
+              <a href="{{ route('docu_pending') }}">Pending</a>
             </li>
             <li>
               <a href="#">Approved</a>
@@ -430,6 +430,7 @@ logout</span>Logout</a>
             <label for="selectAll"></label>
          </th>
          <th>ID</th>
+         <th>RID</th>
          <th>Full Name</th>
          <th>Type of Document</th>
          <th>Contact</th>
@@ -445,10 +446,11 @@ logout</span>Logout</a>
             <input type="checkbox" id="checkbox1" name="option[]" value="1">
             <label for="checkbox1"></label>
          </td>
-         <td>1</td>
-         <td>John Doe</td>
-         <td>  Barangay Clearance  </td>
-
+         @foreach($docu_pending as $docuRequest)
+         <td>{{ $docuRequest->id }}</td>
+         <td>{{ $docuRequest->user_id }}</td>
+         <td>{{ $docuRequest->firstname }} {{ $docuRequest->middlename }} {{ $docuRequest->lastname }}</td>
+         <td>{{ $docuRequest->type }}</td>
 
   <!-- View Image Modal -->
   <div class="modal modal1 fade" id="viewImageModal" tabindex="-1" role="dialog" aria-labelledby="viewImageModalLabel" aria-hidden="true">
@@ -461,15 +463,16 @@ logout</span>Logout</a>
           </button>
         </div>
         <div class="modal-body">
-          <img src="path/to/sitio/image.jpg" class="img-fluid" alt="Sitio Image">
+          <img src="{{ Storage::disk('s3')->url($docuRequest->user->image) }}" class="img-fluid" alt="Sitio Image">
         </div>
       </div>
     </div>
   </div>
 </td>
-         <td>123 Main St, Anytown USA</td>
-         <td>johndoe@gmail.com</td>
-         <td>4-30-2023</td>
+        <td>{{ $docuRequest->user->phone }}</td></td>
+        <td>{{ $docuRequest->user->email }}</td>
+        <td>{{ $docuRequest->created_at }}</td>
+         @endforeach
          <td>
          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#viewImageModal">View</button>
 </td>
@@ -481,48 +484,6 @@ logout</span>Logout</a>
 </td>
       </tr>
       <tr>
-         <td><span class="custom-checkbox">
-            <input type="checkbox" id="checkbox2" name="option[]" value="1">
-            <label for="checkbox2"></label>
-         </td>
-         <td>2</td>
-         <td>Jane Smith</td>
-         <td>Barangay ID  </td>
-
-  <!-- View Image Modal -->
-  <div class="modal modal1 fade" id="viewImageModal" tabindex="-1" role="dialog" aria-labelledby="viewImageModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header text-center">
-  <h5 class="modal-title" id="viewImageModalLabel">Sitio Clearance imgae</h5>
-  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-        <div class="modal-body">
-          <img src="path/to/sitio/image.jpg" class="img-fluid" alt="Sitio Image">
-        </div>
-      </div>
-    </div>
-  </div>
-</td>
-         <td>456 Oak Ave, Anytown USA</td>
-         <td>johndoe@gmail.com</td>
-         <td>4-30-2023</td>
-
-         <td>
-         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#viewImageModal">
-    View
-  </button>
-</td>
-<td>
-   <div class="btn-group">
-      <button type="button" class="button1" data-toggle="modal" data-target="#acceptModal">Approve</button>
-      <button type="button" class="button2" data-toggle="modal" data-target="#denyModal">Deny</button>
-   </div>
-</td>
-
-      </tr>
    </tbody>
 </table>
     

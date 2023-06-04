@@ -20,10 +20,11 @@ Route::get('home', function () {
 })->name('home');
 
 //Docuument Request Route
-Route::get('/docu_request', function () {
-    $docuRequests = DocuRequest::all();
-    return view('docu_request', compact('docuRequests'));
-});
+Route::get('/docu_pending', function () {
+    $docu_pending = DocuRequest::all();
+    return view('docu_pending', compact('docu_pending'));
+})->name('docu_pending');
+
 
 Route::post('/docurequests/{id}/update-status', function($id) {
     $docuRequest = DocuRequest::findOrFail($id);
@@ -34,6 +35,8 @@ Route::post('/docurequests/{id}/update-status', function($id) {
       'message' => 'Status updated successfully'
     ]);
   });
+
+Route::view('/documentapproval', 'documentapproval')->name('documentapproval');
 
 Route::get('/pdf/{docuRequest}/docu_request_pdf.blade', [DocuRequestController::class, 'print']);
 

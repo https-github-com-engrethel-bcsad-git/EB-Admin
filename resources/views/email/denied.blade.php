@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>EBarangay Registration Denied</title>
+	<title>EBarangay User Denied</title>
 	<style>
 		.container {
 			margin: 0 auto;
@@ -101,13 +101,12 @@
 </head>
 <body>
 	<div class="container">
-		<img src="https://e-barangay-files.s3.ap-southeast-1.amazonaws.com/public/image/EB-logo-mail.png" alt="Logo" class="logo">
-		<h1 class="name">EBarangay</h1>
+		<img src="{{ $message->embed(public_path('img/erlogo_mail.png')) }}" alt="Logo" class="logo">
+		{{-- <h1 class="name">EBarangay</h1> --}}
 		<div class="inner">
 			<h1>Hello {{ $user->firstname }},</h1>
 			<p>We regret to inform you that your registration has been denied as you failed to upload a sitio clearance.</p>
-			<button>Sign Up</button>
-		</div>
+		</div>		
 	</div>
 </body>
 </html>

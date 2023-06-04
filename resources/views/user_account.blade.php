@@ -585,7 +585,7 @@ logout</span>Logout</a>
   <div class="row">
     <div class="col-md-6 d-flex align-items-center justify-content-center column1-bg">
       <div class="text-center">
-        <img src="img/user1.jpg" alt="User Image" class="img-fluid modal-image">
+        <img src="{{ $user->avatar ?: 'img/user1.jpg' }}" alt="User Image" class="img-fluid modal-image">
         <p>{{ $user->firstname }} {{ $user->middlename }} {{ $user->lastname }}</p>
         <strong>Fullname</strong>
       </div>
@@ -676,13 +676,13 @@ logout</span>Logout</a>
                 <label for="sitio">Sitio</label>
                 <select id="sitio" name="sitio" class="form-control">
                     <option value="">Select a Sitio</option>
-                    <option value="Sitio1" {{ $user->sitio === 'Sitio 1' ? 'selected' : '' }}>Sitio 1</option>
-                    <option value="Sitio2" {{ $user->sitio === 'Sitio 2' ? 'selected' : '' }}>Sitio 2</option>
-                    <option value="Sitio3" {{ $user->sitio === 'Sitio 3' ? 'selected' : '' }}>Sitio 3</option>
-                    <option value="Sitio4" {{ $user->sitio === 'Sitio 4' ? 'selected' : '' }}>Sitio 4</option>
-                    <option value="Sitio5" {{ $user->sitio === 'Sitio 5' ? 'selected' : '' }}>Sitio 5</option>
-                    <option value="Sitio6" {{ $user->sitio === 'Sitio 6' ? 'selected' : '' }}>Sitio 6</option>
-                    <option value="Sitio7" {{ $user->sitio === 'Sitio 7' ? 'selected' : '' }}>Sitio 7</option>
+                    <option value="1" {{ $user->sitio === 'Sitio 1' ? 'selected' : '' }}>Sitio 1</option>
+                    <option value="2" {{ $user->sitio === 'Sitio 2' ? 'selected' : '' }}>Sitio 2</option>
+                    <option value="3" {{ $user->sitio === 'Sitio 3' ? 'selected' : '' }}>Sitio 3</option>
+                    <option value="4" {{ $user->sitio === 'Sitio 4' ? 'selected' : '' }}>Sitio 4</option>
+                    <option value="5" {{ $user->sitio === 'Sitio 5' ? 'selected' : '' }}>Sitio 5</option>
+                    <option value="6" {{ $user->sitio === 'Sitio 6' ? 'selected' : '' }}>Sitio 6</option>
+                    <option value="7" {{ $user->sitio === 'Sitio 7' ? 'selected' : '' }}>Sitio 7</option>
                 </select>
             </div>
               <div class="form-group">
@@ -817,13 +817,13 @@ logout</span>Logout</a>
                               <label for="sitio">Sitio</label>
                               <select id="sitio" name="sitio" class="form-control">
                                   <option value="">Select a Sitio</option>
-                                  <option value="Sitio1" {{ $user->sitio === 'Sitio 1' ? 'selected' : '' }}>Sitio 1</option>
-                                  <option value="Sitio2" {{ $user->sitio === 'Sitio 2' ? 'selected' : '' }}>Sitio 2</option>
-                                  <option value="Sitio3" {{ $user->sitio === 'Sitio 3' ? 'selected' : '' }}>Sitio 3</option>
-                                  <option value="Sitio4" {{ $user->sitio === 'Sitio 4' ? 'selected' : '' }}>Sitio 4</option>
-                                  <option value="Sitio5" {{ $user->sitio === 'Sitio 5' ? 'selected' : '' }}>Sitio 5</option>
-                                  <option value="Sitio6" {{ $user->sitio === 'Sitio 6' ? 'selected' : '' }}>Sitio 6</option>
-                                  <option value="Sitio7" {{ $user->sitio === 'Sitio 7' ? 'selected' : '' }}>Sitio 7</option>
+                                  <option value="1" {{ $user->sitio === '1' ? 'selected' : '' }}>Sitio 1</option>
+                                  <option value="2" {{ $user->sitio === '2' ? 'selected' : '' }}>Sitio 2</option>
+                                  <option value="3" {{ $user->sitio === '3' ? 'selected' : '' }}>Sitio 3</option>
+                                  <option value="4" {{ $user->sitio === '4' ? 'selected' : '' }}>Sitio 4</option>
+                                  <option value="5" {{ $user->sitio === '5' ? 'selected' : '' }}>Sitio 5</option>
+                                  <option value="6" {{ $user->sitio === '6' ? 'selected' : '' }}>Sitio 6</option>
+                                  <option value="7" {{ $user->sitio === '7' ? 'selected' : '' }}>Sitio 7</option>
                               </select>
                           </div>
                       </div>

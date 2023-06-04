@@ -117,13 +117,13 @@ max-width: 100%;
             </a>
             <ul class="collapse list-unstyled menu" id="pageSubmenu3">
                 <li>
-                <a href="{{ route('documentapproval') }}">Pending</a>
+                    <a href="{{ route('docu_pending') }}">Pending</a>
                 </li>
                 <li>
-                <a href="#">Approved</a>
+                    <a href="#">Approved</a>
                 </li>
                 <li>
-                <a href="#">History</a>
+                    <a href="#">History</a>
                 </li>
             </ul>
             </li>
