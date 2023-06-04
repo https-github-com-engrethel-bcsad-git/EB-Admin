@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Welcome to EBarangay</title>
+	<title>EBarangay User Accepted</title>
 	<style>
 		.container {
 			margin: 0 auto;
@@ -101,13 +101,12 @@
 </head>
 <body>
 	<div class="container">
-		<img src="https://e-barangay-files.s3.ap-southeast-1.amazonaws.com/public/image/EB-logo-mail.png" alt="Logo" class="logo">
-		<h1 class="name">EBarangay</h1>
+		<img src="{{ $message->embed(public_path('img/erlogo_mail.png')) }}" alt="Logo" class="logo">
+		{{-- <h1 class="name">EBarangay</h1> --}}
 		<div class="inner">
 			<h1>Hello {{ $user->firstname }},</h1>
 			<p>Your registration has been approved. Welcome to EBarangay!</p>
-			<button>Sign in</button>
-		</div>
+		</div>		
 	</div>
 </body>
 </html>

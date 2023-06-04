@@ -532,8 +532,8 @@ logout</span>Logout</a>
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <img src="{{ Storage::disk('s3')->url($user->image) }}"
-                                                class="img-fluid">
+                                            {{-- <img src="{{ Storage::disk('s3')->url($user->image) }}" class="img-fluid"> --}}
+                                            <img src="{{ $user->avatar ?: Storage::disk('s3')->url($user->image) }}" class="img-fluid">
                                         </div>
                                     </div>
                                 </div>
@@ -583,7 +583,7 @@ logout</span>Logout</a>
   <div class="row">
     <div class="col-md-6 d-flex align-items-center justify-content-center column1-bg">
       <div class="text-center">
-        <img src="img/user1.jpg" alt="User Image" class="img-fluid modal-image">
+        <img src="{{ $user->avatar }}" alt="User Image" class="img-fluid modal-image">
         <p>{{ $user->firstname }} {{ $user->middlename }} {{ $user->lastname }}</p>
         <strong>Fullname</strong>
       </div>
