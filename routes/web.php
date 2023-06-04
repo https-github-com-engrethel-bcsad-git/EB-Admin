@@ -76,8 +76,5 @@ Route::delete('/announcement/{announcement}', [AnnouncementController::class, 'd
 
 Route::view('/documentapproval', 'documentapproval')->name('documentapproval');
 
-
-
-
-  
-
+Route::view('/docu_approved', 'docu_approved')->name('docu_approved');
+Route::view('/docu_history', 'docu_history')->name('docu_history');
