@@ -57,17 +57,6 @@ Route::get('/docu_pending', function () {
 Route::post('/docu_pending/{docuRequest}/accept', [DocuRequestController::class, 'accept'])->name('docu_pending.accept');
 Route::post('/docu_pending/{docuRequest}/destroy', [DocuRequestController::class, 'destroy'])->name('docu_pending.destroy');
 
-<<<<<<< HEAD
-Route::view('/docu_approved', 'docu_approved')->name('docu_approved');
-Route::view('/docu_printed', 'docu_printed')->name('docu_printed');
-Route::view('/docu_recieving', 'docu_recieving')->name('docu_recieving');
-Route::view('/docu_history', 'docu_history')->name('docu_history');
-
-Route::view('/comp_pending', 'comp_pending')->name('comp_pending');
-Route::view('/comp_ongoing', 'comp_ongoing')->name('comp_ongoing');
-Route::view('/comp_settled', 'comp_settled')->name ('comp_settled');
-Route::view('/admin_acc', 'admin_acc')->name ('admin_acc');
-=======
 //Approved
 Route::get('/docu_approved', function () {
 $docu_approved = DocuRequest::all();
@@ -112,4 +101,3 @@ Route::post('/docu_printed/{docuRequest}/destroy', [DocuRequestController::class
 Route::view('/comp_pending', 'comp_pending')->name('comp_pending');
 Route::view('/comp_ongoing', 'comp_ongoing')->name('comp_ongoing');
 Route::view('/comp_settled', 'comp_settled')->name ('comp_settled');
->>>>>>> 4b6deb2025224c45495cae704adfda22d311bde1
