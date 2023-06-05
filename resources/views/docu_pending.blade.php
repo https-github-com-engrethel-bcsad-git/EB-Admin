@@ -269,7 +269,7 @@
               <a href="{{ route('docu_approved') }}">Approved</a>
             </li>
             <li>
-              <a href="{{ route('docu_recieving') }}">For Pickup</a>
+              <a href="{{ route('docu_receiving') }}">For Pickup</a>
             </li>
             <li>
               <a href="{{ route('docu_printed') }}">History</a>
@@ -495,11 +495,12 @@ logout</span>Logout</a>
    </thead>
    <tbody>
       <tr>
+        @foreach($docu_pending as $docuRequest)
+        @if ($docuRequest->status == 0)
          <td><span class="custom-checkbox">
             <input type="checkbox" id="checkbox1" name="option[]" value="1">
             <label for="checkbox1"></label>
          </td>
-         @foreach($docu_pending as $docuRequest)
          <td>{{ $docuRequest->id }}</td>
          <td>{{ $docuRequest->user_id }}</td>
          <td>{{ $docuRequest->firstname }} {{ $docuRequest->middlename }} {{ $docuRequest->lastname }}</td>
@@ -514,24 +515,24 @@ logout</span>Logout</a>
       </div>
       <div class="modal-body">
         <div class="info-row">
-          <p><strong>Date of Birth:</strong> 07-22-2000</p>
-          <p><strong>Period of Residency:</strong> 1-5 years</p>
+          <p><strong>Date of Birth:</strong> {{ $docuRequest->bday }}</p>
+          <p><strong>Period of Residency:</strong> {{ $docuRequest->por }}</p>
         </div>
         <div class="info-row">
-          <p><strong>East Rembo Voter:</strong> Yes</p>
-          <p><strong>House Owner:</strong> Liza Scantopay</p>
+          <p><strong>East Rembo Voter:</strong> {{ $docuRequest->voter === 'yes' ? 'Yes' : 'No' }}</p>
+          <p><strong>House Owner:</strong> {{ $docuRequest->howner }}</p>
         </div>
         <div class="info-row">
-          <p><strong>Relationship to House Owner:</strong> Mother</p>
+          <p><strong>Relationship to House Owner:</strong> {{ $docuRequest->rhowner }}</p>
        
         </div>
       
-        <p><strong>Address:</strong> 7th Avenue J. P. Rizal Extension, East Rembo, Makati City 1215 Metro Manila</p>
+        <p><strong>Address:</strong> {{ $docuRequest->address }}</p>
         
-        <p><strong>Place of Birth:</strong> 7th Avenue J. P. Rizal Extension, East Rembo, Makati City 1215 Metro Manila</p>
+        <p><strong>Place of Birth:</strong> {{ $docuRequest->pob }}</p>
 
         <p> <strong>Reason for Application:</strong> <br>
-          It is a valid supporting document that can be used for several situations. For example, getting a job, applying for a business permit, opening a bank account, and applying for another ID among many others! It has a validity of 6 months.
+          {{ $docuRequest->roa }}
         </p>
       </div>
       <div class="modal-footer">
@@ -544,7 +545,6 @@ logout</span>Logout</a>
         <td>{{ $docuRequest->user->phone }}</td></td>
         <td>{{ $docuRequest->user->email }}</td>
         <td>{{ $docuRequest->created_at }}</td>
-         @endforeach
          <td>
          <div class="text-center">
   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#viewImageModal">View</button>
@@ -552,13 +552,21 @@ logout</span>Logout</a>
 
 </td>
 <td>
-   <div class="btn-group">
-      <button type="button" class="button1" data-toggle="modal" data-target="#acceptModal">Approve</button>
-      <button type="button" class="button2" data-toggle="modal" data-target="#denyModal">Deny</button>
+   <div class="btn-group action">
+    <form action="{{ route('docu_pending.accept', $docuRequest->id) }}" method="POST">
+      @csrf
+      <button type="submit" class="button1" data-toggle="modal" data-target="#acceptModal{{ $docuRequest->id }}">Approved</button>
+    </form>
+    <form action="{{ route('docu_pending.destroy', $docuRequest->id) }}" method="POST">
+      @csrf
+      <button type="submit" class="button2" data-toggle="modal" data-target="#denyModal{{ $docuRequest->id }}">Deny</button>
+    </form>
    </div>
 </td>
       </tr>
       <tr>
+        @endif
+        @endforeach
    </tbody>
 </table>
     

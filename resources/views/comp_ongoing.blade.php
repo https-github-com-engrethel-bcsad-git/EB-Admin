@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 
 <!Doctype html>
+=======
+fix code alignment,indentions and end tags
+<!doctype html>
+>>>>>>> 4b6deb2025224c45495cae704adfda22d311bde1
 <html llang="en">
 
 <head>
