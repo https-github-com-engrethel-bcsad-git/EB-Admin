@@ -243,7 +243,7 @@
               <a href="{{ route('docu_approved') }}">Approved</a>
             </li>
             <li>
-              <a href="{{ route('docu_recieving') }}">For Pickup</a>
+              <a href="{{ route('docu_receiving') }}">For Pickup</a>
             </li>
             <li class="active">
               <a href="{{ route('docu_printed') }}">History</a>
@@ -468,98 +468,53 @@ logout</span>Logout</a>
    </thead>
    <tbody>
       <tr>
+        @foreach($docu_printed as $docuRequest)
+        @if ($docuRequest->status == 3 || $docuRequest->status == 4)
          <td><span class="custom-checkbox">
             <input type="checkbox" id="checkbox1" name="option[]" value="1">
             <label for="checkbox1"></label>
          </td>
      
-         <td>1</td>
-         <td>101</td>
-         <td>Alejandro R Cerafica</td>
-         <td>Barangay Clearance</td>
+         <td>{{ $docuRequest->id }}</td>
+         <td>{{ $docuRequest->user_id }}</td>
+         <td>{{ $docuRequest->firstname }} {{ $docuRequest->middlename }} {{ $docuRequest->lastname }}</td>
+         <td>{{ $docuRequest->type }}</td>
 
   <!-- View Image Modal -->
  
 
 </td>
-        <td>09217488822</td></td>
-        <td>ceraficaalejandrojr@gmail.com</td>
-        <td>6-5-2023</td>
+        <td>{{ $docuRequest->user->phone }}</td></td>
+        <td>{{ $docuRequest->user->email }}</td>
+        <td>{{ $docuRequest->created_at }}</td>
      
          <td>
+          @if ($docuRequest->status == 3)
          <span class="ongoing-dot"></span> Completed
-</td>
-<td>
-   <div class="btn-group">
-      <!-- <button type="button" class="button1" data-toggle="modal" data-target="#acceptModal">Print</button> -->
-      <button type="button" class="button2" data-toggle="modal" data-target="#denyModal">Delete</button>
-   </div>
-</td>
-      </tr>
-      <tr>
-   </tbody>
-   <tbody>
-      <tr>
-         <td><span class="custom-checkbox">
-            <input type="checkbox" id="checkbox1" name="option[]" value="1">
-            <label for="checkbox1"></label>
-         </td>
-     
-         <td>1</td>
-         <td>101</td>
-         <td>Alejandro R Cerafica</td>
-         <td>Barangay Clearance</td>
-
-  <!-- View Image Modal -->
- 
-
-</td>
-        <td>09217488822</td></td>
-        <td>ceraficaalejandrojr@gmail.com</td>
-        <td>6-5-2023</td>
-     
-         <td>
+         @else
          <span class="ongoing-dot2"></span> Cancelled
+         @endif
 </td>
 <td>
    <div class="btn-group">
-      <!-- <button type="button" class="button1" data-toggle="modal" data-target="#acceptModal">Print</button> -->
-      <button type="button" class="button2" data-toggle="modal" data-target="#denyModal">Delete</button>
+    <form action="{{ route('docu_pending.destroy', $docuRequest->id) }}" method="POST">
+      @csrf
+      <button type="submit" class="button2" data-toggle="modal" data-target="#denyModal{{ $docuRequest->id }}"">Delete</button>
+    </form>
    </div>
 </td>
       </tr>
       <tr>
+        @endif
+        @endforeach
    </tbody>
 </table>
     
                        </div>
                     </div>
-
-
-        
-
-                       
-                       
-                       
-                
-            
-    
-                       
-                    
-                    
-                 
                  </div>
               </div>
 
-
-
-
-
-
-
-
-
-  
      <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
    <script src="js/jquery-3.3.1.slim.min.js"></script>

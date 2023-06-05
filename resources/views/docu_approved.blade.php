@@ -231,7 +231,7 @@
               <a href="{{ route('docu_approved') }}">Approved</a>
             </li>
             <li>
-              <a href="{{ route('docu_recieving') }}">For Pickup</a>
+              <a href="{{ route('docu_receiving') }}">For Pickup</a>
             </li>
             <li>
               <a href="{{ route('docu_printed') }}">History</a>
@@ -456,35 +456,43 @@ logout</span>Logout</a>
    </thead>
    <tbody>
       <tr>
+        @foreach($docu_approved as $docuRequest)
+        @if ($docuRequest->status == 1)
          <td><span class="custom-checkbox">
             <input type="checkbox" id="checkbox1" name="option[]" value="1">
             <label for="checkbox1"></label>
          </td>
-     
-         <td>1</td>
-         <td>101</td>
-         <td>Alejandro R Cerafica</td>
-         <td>Barangay Clearance</td>
+         <td>{{ $docuRequest->id }}</td>
+         <td>{{ $docuRequest->user_id }}</td>
+         <td>{{ $docuRequest->firstname }} {{ $docuRequest->middlename }} {{ $docuRequest->lastname }}</td>
+         <td>{{ $docuRequest->type }}</td>
 
   <!-- View Image Modal -->
  
 
 </td>
-        <td>09217488822</td></td>
-        <td>ceraficaalejandrojr@gmail.com</td>
-        <td>6-5-2023</td>
+        <td>{{ $docuRequest->user->phone }}</td></td>
+        <td>{{ $docuRequest->user->email }}</td>
+        <td>{{ $docuRequest->created_at }}</td>
      
          <td>
          <span class="ongoing-dot"></span> Ongoing
 </td>
 <td>
    <div class="btn-group">
-      <button type="button" class="button1" data-toggle="modal" data-target="#acceptModal">Print</button>
-      <button type="button" class="button2" data-toggle="modal" data-target="#denyModal">Cancel</button>
+      <a href="/pdf/{{ $docuRequest->id }}/docu_request_view" target="_blank" class="button1">View</a>
+      <a href="/pdf/{{ $docuRequest->id }}/docu_request_pdf" target="_blank" class="button1">Print</a>
+      {{-- <button href="/pdf/{{ $docuRequest->id }}/docu_request_pdf.blade" type="button" class="button1" data-toggle="modal" data-target="#acceptModal">Print</button> --}}
+      <form action="{{ route('docu_approved.cancel', $docuRequest->id) }}" method="POST">
+        @csrf
+      <button type="submit" class="button2" data-toggle="modal" data-target="#denyModal">Cancel</button>
+    </form>
    </div>
 </td>
       </tr>
       <tr>
+        @endif
+        @endforeach
    </tbody>
 </table>
     

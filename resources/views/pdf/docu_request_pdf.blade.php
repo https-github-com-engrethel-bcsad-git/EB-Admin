@@ -253,7 +253,7 @@
     <div class="content2">
     <br>
     <h4>OFFICE OF THE PUNONG BARANGAY</h4>
-           <p class="date1">____________________________________</p>
+           <p class="date1"><u>{{ $docuRequest->created_at }}</u><</p>
                        <p class="date"> Date</P>
                        <br>
          <h4 class="bar">BARANGAY CLEARANCE</h4>
@@ -268,14 +268,13 @@
             <h4>REMARKS:_________________________________________________</h4>
             <br>
             <div class="add">
-                <p> Name: _____________________________________________________</p>
-                <p> Address: ___________________________________________________</p>
-                <p>___________________________________________________________</p>
-                <p>Place of Bith:________________________________________________</p>
-                <p>Period of Residency in East Rembo______________________________</p>
-                <p>Registered West Rembo Voter:__________________________________</p>
-                <p>House Owner:_______________________________________________</p>
-                <p>Relation to House Owner:______________________________________</p>
+                <p> Name: <u>{{ $docuRequest->firstname }} {{ $docuRequest->middlename }} {{ $docuRequest->lastname }}</u></p>
+                <p>Address: <u>{{ $docuRequest->address }}</u></p>
+                <p>Place of Birth: <u>{{ $docuRequest->pob }}</u></p>
+                <p>Period of Residency in East Rembo: <u>{{ $docuRequest->por }}</u></p>
+                <p>Registered West Rembo Voter: <u>{{ $docuRequest->voter === 'yes' ? 'Yes' : 'No' }}</u></p>
+                <p>House Owner: <u>{{ $docuRequest->howner }}</u></p>
+                <p>Relation to House Owner: <u>{{ $docuRequest->rhowner }}</u></p>                
             </div>
             <br>
             <br>

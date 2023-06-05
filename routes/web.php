@@ -19,27 +19,6 @@ Route::get('home', function () {
   return view('home');
 })->name('home');
 
-//Docuument Request Route
-Route::get('/docu_pending', function () {
-    $docu_pending = DocuRequest::all();
-    return view('docu_pending', compact('docu_pending'));
-})->name('docu_pending');
-
-
-Route::post('/docurequests/{id}/update-status', function($id) {
-    $docuRequest = DocuRequest::findOrFail($id);
-    $docuRequest->status = request('status');
-    $docuRequest->save();
-  
-    return response()->json([
-      'message' => 'Status updated successfully'
-    ]);
-  });
-
-Route::view('/documentapproval', 'documentapproval')->name('documentapproval');
-
-Route::get('/pdf/{docuRequest}/docu_request_pdf.blade', [DocuRequestController::class, 'print']);
-
 //User Approval Route
 Route::get('/user_approval', function () {
   $users = user::all();
@@ -59,11 +38,6 @@ Route::post('/user_account/store', [UserController::class, 'store'])->name('user
 Route::put('/user_account/{user}', [UserController::class, 'update'])->name('user_account.update');
 Route::delete('/user_account/{user}', [UserController::class, 'destroy'])->name('user_account.destroy');
 
-//Certifacate Route
-Route::get('/certificate/bcf', function () {
-  return view('certificate/bcf');
-})->name('certificate/bcf');
-
 //Announcement Route
 Route::get('/announcement', function () {
   $announcements = announcement::all();
@@ -74,10 +48,56 @@ Route::post('/announcement/store', [AnnouncementController::class, 'store'])->na
 Route::put('/announcement/{announcement}', [AnnouncementController::class, 'update'])->name('announcement.update');
 Route::delete('/announcement/{announcement}', [AnnouncementController::class, 'destroy'])->name('announcement.destroy');
 
-Route::view('/documentapproval', 'documentapproval')->name('documentapproval');
+//Docuument Request Route
+//Pending
+Route::get('/docu_pending', function () {
+  $docu_pending = DocuRequest::all();
+  return view('docu_pending', compact('docu_pending'));
+})->name('docu_pending');
+Route::post('/docu_pending/{docuRequest}/accept', [DocuRequestController::class, 'accept'])->name('docu_pending.accept');
+Route::post('/docu_pending/{docuRequest}/destroy', [DocuRequestController::class, 'destroy'])->name('docu_pending.destroy');
 
-Route::view('/docu_approved', 'docu_approved')->name('docu_approved');
-Route::view('/docu_history', 'docu_history')->name('docu_history');
-Route::view('/docu_printed', 'docu_printed')->name('docu_printed');
+//Approved
+Route::get('/docu_approved', function () {
+$docu_approved = DocuRequest::all();
+return view('docu_approved', compact('docu_approved'));
+})->name('docu_approved');
+Route::get('/pdf/{docuRequest}/docu_request_view', function ($docuRequestId) {
+$docuRequest = DocuRequest::findOrFail($docuRequestId);
+return view('pdf.docu_request_view', ['docuRequest' => $docuRequest]);
+});
+Route::get('/pdf/{docuRequest}/docu_request_pdf', [DocuRequestController::class, 'print']);
+Route::post('/docu_approved/{docuRequest}/cancel', [DocuRequestController::class, 'cancel'])->name('docu_approved.cancel');
 
-Route::view('/docu_recieving', 'docu_recieving')->name('docu_recieving');
+//For Pickup
+Route::get('/docu_receiving', function () {
+$docu_receiving  = DocuRequest::all();
+return view('docu_receiving', compact('docu_receiving'));
+})->name('docu_receiving');
+Route::post('/docu_receiving/{docuRequest}/receive', [DocuRequestController::class, 'receive'])->name('docu_receiving.receive');
+Route::post('/docu_receiving/{docuRequest}/cancel', [DocuRequestController::class, 'cancel'])->name('docu_receiving.cancel');
+
+//History
+Route::get('/docu_printed', function () {
+$docu_printed  = DocuRequest::all();
+return view('docu_printed', compact('docu_printed'));
+})->name('docu_printed');
+Route::post('/docu_printed/{docuRequest}/destroy', [DocuRequestController::class, 'destroy'])->name('docu_printed.destroy');
+
+// Route::post('/docurequests/{id}/update-status', function($id) {
+//     $docuRequest = DocuRequest::findOrFail($id);
+//     $docuRequest->status = request('status');
+//     $docuRequest->save();
+
+//     return response()->json([
+//       'message' => 'Status updated successfully'
+//     ]);
+//   });
+
+// Route::view('/documentapproval', 'documentapproval')->name('documentapproval');
+// Route::view('/docu_history', 'docu_history')->name('docu_history');
+
+//Complain Route
+Route::view('/comp_pending', 'comp_pending')->name('comp_pending');
+Route::view('/comp_ongoing', 'comp_ongoing')->name('comp_ongoing');
+Route::view('/comp_settled', 'comp_settled')->name ('comp_settled');

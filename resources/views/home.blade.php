@@ -123,7 +123,7 @@ max-width: 100%;
                     <a href="{{ route('docu_approved') }}">Approved</a>
                 </li>
                 <li>
-                    <a href="{{ route('docu_recieving') }}">For Pickup</a>
+                    <a href="{{ route('docu_receiving') }}">For Pickup</a>
                 </li>
                 <li>
                     <a href="{{ route('docu_printed') }}">History</a>
