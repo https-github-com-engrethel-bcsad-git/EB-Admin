@@ -77,7 +77,11 @@ Route::delete('/announcement/{announcement}', [AnnouncementController::class, 'd
 Route::view('/documentapproval', 'documentapproval')->name('documentapproval');
 
 Route::view('/docu_approved', 'docu_approved')->name('docu_approved');
-Route::view('/docu_history', 'docu_history')->name('docu_history');
 Route::view('/docu_printed', 'docu_printed')->name('docu_printed');
-
 Route::view('/docu_recieving', 'docu_recieving')->name('docu_recieving');
+Route::view('/docu_history', 'docu_history')->name('docu_history');
+
+Route::view('/comp_pending', 'comp_pending')->name('comp_pending');
+Route::view('/comp_ongoing', 'comp_ongoing')->name('comp_ongoing');
+Route::view('/comp_settled', 'comp_settled')->name ('comp_settled');
+Route::view('/admin_acc', 'admin_acc')->name ('admin_acc');
