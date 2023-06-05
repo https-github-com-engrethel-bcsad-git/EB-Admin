@@ -31,7 +31,7 @@
  
   width: 10px;
   height: 10px;
-  background-color: #0047FF;
+  background-color: #2386FF;
   border-radius: 50%;
   vertical-align: middle;
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.4);
@@ -228,10 +228,13 @@
               <a href="{{ route('docu_pending') }}">Pending</a>
             </li>
             <li class="active">
-              <a href="">Approved</a>
+              <a href="{{ route('docu_approved') }}">Approved</a>
             </li>
             <li>
-              <a href="#">History</a>
+              <a href="{{ route('docu_recieving') }}">For Pickup</a>
+            </li>
+            <li>
+              <a href="{{ route('docu_printed') }}">History</a>
             </li>
           </ul>
         </li>
@@ -421,7 +424,7 @@ logout</span>Logout</a>
                        <div class="table-title">
                          <div class="row">
                              <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
-                                <h2 class="ml-lg-2">List of Document to Approve</h2>
+                                <h2 class="ml-lg-2">Approved Documents</h2>
                              </div>
                              <!-- <div class="col-sm-6 p-0 flex justify-content-lg-end justify-content-center">
                                <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">

@@ -27,13 +27,14 @@
          
          </div>
          <div class="input-container">
-             <div class="icon">
-                  <i class="fas fa-lock"></i>
+              <div class="icon">
+                <i class="fas fa-lock"></i>
               </div>
-               <div class="input1">
-            <input ztype="password" placeholder="Password" required />
-          </div>
-         </div>
+              <div class="input1">
+                <input id="passwordInput" type="password" placeholder="Password" required />
+               
+              </div>
+            </div>
             <button>Sumbit</button>
           </form>
         
@@ -66,6 +67,19 @@
         mainContainer.classList.toggle("change");
       });
       
+  function togglePasswordVisibility() {
+    var passwordInput = document.getElementById("passwordInput");
+    var toggleButton = document.getElementById("toggleButton");
+
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      toggleButton.textContent = "Hide";
+    } else {
+      passwordInput.type = "password";
+      toggleButton.textContent = "Show";
+    }
+  }
+
   </script>
 </body>
 </html>

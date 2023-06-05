@@ -25,62 +25,31 @@
   </head>
 
   <style> 
+
+.ongoing-dot {
+  display: inline-block;
  
- .custom-modal .modal-header  {
-    background-color: rgba(10, 68, 138, 1);
-    text-align: center;
-    border-radius:0px;
-  }
-  .custom-modal .modal-title {
-    margin-left:35%;
-    color: #ffffff;
-    text-align:center;
-  }
-  .custom-modal .modal-footer {
-    justify-content: center;
-  }
+  width: 10px;
+  height: 10px;
+  background-color: #31F49A;
+  border-radius: 50%;
+  vertical-align: middle;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.4);
+ 
 
-  .custom-modal .modal-footer .btn-secondary {
-    border-radius: 25px;
-    background-color: #f44336;
-    color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    padding: 6px 14px;
-    border: none;
-    cursor: pointer;
-    text-transform: uppercase;
-  }
-  .custom-modal .modal-dialog {
-    position: absolute;
-    top: 10%;
-    left: 40%;
-    transform: translate(-50%, -50%);
-    max-width: 800px; /* Specify the desired maximum width */
-    width: 90%; /* Adjust the width as needed */
-  }
+}
+.ongoing-dot2 {
+  display: inline-block;
+ 
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  vertical-align: middle;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.4);
+ 
 
-
-  .custom-modal .modal-body {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  .custom-modal .modal-content {
-    width: 100%;
-  }
-
-  .custom-modal .modal-body .info-row {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
-
-  .custom-modal .modal-body .info-row p {
-    flex-basis: 45%;
-    margin: 0;
-  }
-
-  
+}
     .btn-info {
   background-color:#17a2b8;
   padding: 3px 5px;
@@ -121,7 +90,12 @@
   background-color: #c0392b;
 }
 
-    
+    .modal1 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
     .boxes {
   display: flex;
   flex-wrap: wrap;
@@ -262,19 +236,18 @@
             <span>Document Requests</span>
           </a>
           <ul  id="pageSubmenu3">
-            <li class="active">
+            <li >
               <a href="{{ route('docu_pending') }}">Pending</a>
             </li>
-            <li>
+            <li >
               <a href="{{ route('docu_approved') }}">Approved</a>
             </li>
             <li>
               <a href="{{ route('docu_recieving') }}">For Pickup</a>
             </li>
-            <li>
+            <li class="active">
               <a href="{{ route('docu_printed') }}">History</a>
             </li>
-          
           </ul>
         </li>
         <li class="dropdown">
@@ -463,7 +436,7 @@ logout</span>Logout</a>
                        <div class="table-title">
                          <div class="row">
                              <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
-                                <h2 class="ml-lg-2">List of Document to Approve</h2>
+                                <h2 class="ml-lg-2">Document History</h2>
                              </div>
                              <!-- <div class="col-sm-6 p-0 flex justify-content-lg-end justify-content-center">
                                <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">
@@ -489,8 +462,8 @@ logout</span>Logout</a>
          <th>Contact</th>
          <th>Email Address</th>
          <th>Date Request</th>
-         <th class="text-center">Request Information</th>
-         <th class="text-center">Actions</th>
+         <th>Status</th>
+         <th>Actions</th>
       </tr>
    </thead>
    <tbody>
@@ -499,62 +472,59 @@ logout</span>Logout</a>
             <input type="checkbox" id="checkbox1" name="option[]" value="1">
             <label for="checkbox1"></label>
          </td>
-         @foreach($docu_pending as $docuRequest)
-         <td>{{ $docuRequest->id }}</td>
-         <td>{{ $docuRequest->user_id }}</td>
-         <td>{{ $docuRequest->firstname }} {{ $docuRequest->middlename }} {{ $docuRequest->lastname }}</td>
-         <td>{{ $docuRequest->type }}</td>
+     
+         <td>1</td>
+         <td>101</td>
+         <td>Alejandro R Cerafica</td>
+         <td>Barangay Clearance</td>
 
   <!-- View Image Modal -->
-  <div class="modal custom-modal fade" id="viewImageModal" tabindex="-1" role="dialog" aria-labelledby="viewImageModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="viewImageModalLabel">Request Information</h5>
-      </div>
-      <div class="modal-body">
-        <div class="info-row">
-          <p><strong>Date of Birth:</strong> 07-22-2000</p>
-          <p><strong>Period of Residency:</strong> 1-5 years</p>
-        </div>
-        <div class="info-row">
-          <p><strong>East Rembo Voter:</strong> Yes</p>
-          <p><strong>House Owner:</strong> Liza Scantopay</p>
-        </div>
-        <div class="info-row">
-          <p><strong>Relationship to House Owner:</strong> Mother</p>
-       
-        </div>
-      
-        <p><strong>Address:</strong> 7th Avenue J. P. Rizal Extension, East Rembo, Makati City 1215 Metro Manila</p>
-        
-        <p><strong>Place of Birth:</strong> 7th Avenue J. P. Rizal Extension, East Rembo, Makati City 1215 Metro Manila</p>
+ 
 
-        <p> <strong>Reason for Application:</strong> <br>
-          It is a valid supporting document that can be used for several situations. For example, getting a job, applying for a business permit, opening a bank account, and applying for another ID among many others! It has a validity of 6 months.
-        </p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
 </td>
-        <td>{{ $docuRequest->user->phone }}</td></td>
-        <td>{{ $docuRequest->user->email }}</td>
-        <td>{{ $docuRequest->created_at }}</td>
-         @endforeach
+        <td>09217488822</td></td>
+        <td>ceraficaalejandrojr@gmail.com</td>
+        <td>6-5-2023</td>
+     
          <td>
-         <div class="text-center">
-  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#viewImageModal">View</button>
-</div>
-
+         <span class="ongoing-dot"></span> Completed
 </td>
 <td>
    <div class="btn-group">
-      <button type="button" class="button1" data-toggle="modal" data-target="#acceptModal">Approve</button>
-      <button type="button" class="button2" data-toggle="modal" data-target="#denyModal">Deny</button>
+      <!-- <button type="button" class="button1" data-toggle="modal" data-target="#acceptModal">Print</button> -->
+      <button type="button" class="button2" data-toggle="modal" data-target="#denyModal">Delete</button>
+   </div>
+</td>
+      </tr>
+      <tr>
+   </tbody>
+   <tbody>
+      <tr>
+         <td><span class="custom-checkbox">
+            <input type="checkbox" id="checkbox1" name="option[]" value="1">
+            <label for="checkbox1"></label>
+         </td>
+     
+         <td>1</td>
+         <td>101</td>
+         <td>Alejandro R Cerafica</td>
+         <td>Barangay Clearance</td>
+
+  <!-- View Image Modal -->
+ 
+
+</td>
+        <td>09217488822</td></td>
+        <td>ceraficaalejandrojr@gmail.com</td>
+        <td>6-5-2023</td>
+     
+         <td>
+         <span class="ongoing-dot2"></span> Cancelled
+</td>
+<td>
+   <div class="btn-group">
+      <!-- <button type="button" class="button1" data-toggle="modal" data-target="#acceptModal">Print</button> -->
+      <button type="button" class="button2" data-toggle="modal" data-target="#denyModal">Delete</button>
    </div>
 </td>
       </tr>
@@ -566,132 +536,14 @@ logout</span>Logout</a>
                     </div>
 
 
-                       
-                    <!--    <div class="clearfix">
-                         <div class="hint-text">showing <b>5</b> out of <b>25</b></div>
-                         <ul class="pagination">
-                            <li class="page-item disabled"><a href="#">Previous</a></li>
-                            <li class="page-item "><a href="#"class="page-link">1</a></li>
-                            <li class="page-item "><a href="#"class="page-link">2</a></li>
-                            <li class="page-item active"><a href="#"class="page-link">3</a></li>
-                            <li class="page-item "><a href="#"class="page-link">4</a></li>
-                            <li class="page-item "><a href="#"class="page-link">5</a></li>
-                            <li class="page-item "><a href="#" class="page-link">Next</a></li>
-                         </ul>
-                       </div> -->
-                       
-                       
-                       
-                       
-    
-                       
         
-                    
-                    
-                                       <!----add-modal start--------->
-        <div class="modal fade" tabindex="-1" id="addEmployeeModal" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Add Employees</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-            <label>Name</label>
-            <input type="text" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label>Email</label>
-            <input type="emil" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label>Address</label>
-            <textarea class="form-control" required></textarea>
-        </div>
-        <div class="form-group">
-            <label>Phone</label>
-            <input type="text" class="form-control" required>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-success">Add</button>
-      </div>
-    </div>
-  </div>
-</div>
 
-                       <!----edit-modal end--------->
                        
                        
                        
-                       
-                       
-                   <!----edit-modal start--------->
-        <div class="modal fade" tabindex="-1" id="editEmployeeModal" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Edit Employees</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-            <label>Name</label>
-            <input type="text" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label>Email</label>
-            <input type="emil" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label>Address</label>
-            <textarea class="form-control" required></textarea>
-        </div>
-        <div class="form-group">
-            <label>Phone</label>
-            <input type="text" class="form-control" required>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-success">Save</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-                       <!----edit-modal end--------->      
-                       
-                       
-                     <!----delete-modal start--------->
-        <div class="modal fade" tabindex="-1" id="deleteEmployeeModal" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Delete Employees</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Are you sure you want to delete this Records</p>
-        <p class="text-warning"><small>this action Cannot be Undone,</small></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-success">Delete</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-                       <!----edit-modal end--------->   
+                
+            
+    
                        
                     
                     
@@ -699,7 +551,6 @@ logout</span>Logout</a>
                  </div>
               </div>
 
-<!----------html code compleate----------->
 
 
 
