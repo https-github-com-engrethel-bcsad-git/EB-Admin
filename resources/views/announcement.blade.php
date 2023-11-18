@@ -438,15 +438,20 @@ tbody td a:hover {
             <span>Document Requests</span>
           </a>
           <ul class="collapse list-unstyled menu" id="pageSubmenu3">
-            <li>
-              <a href="{{ route('documentapproval') }}">Pending</a>
-            </li>
-            <li>
-              <a href="#">Approved</a>
-            </li>
-            <li>
-              <a href="#">History</a>
-            </li>
+          <li>
+                    <a href="{{ route('docu_pending') }}">Pending</a>
+                </li>
+                <li>
+                    <a href="{{ route('docu_approved') }}">Approved</a>
+                </li>
+                <li>
+                    <a href="{{ route('docu_receiving') }}">For Pickup</a>
+                </li>
+                <li>
+                    <a href="{{ route('docu_printed') }}">History</a>
+                </li>
+         
+        </li>
           </ul>
         </li>
         <li class="dropdown">

@@ -47,26 +47,28 @@
 
     .btn-info {
   
-padding: 3px 8px;
-  text-shadow: 1px 1px 1px #000;
-   border-radius: 15px;
-   font-size: 14px;
+      padding: 3px 5px;
+  text-shadow: 1px 1px 1px #808080;
+  border-radius: 15px;
+  padding-left:10px;
+  padding-right:10px;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-right: 7px;
+  margin-top: 7px;
+  color:white;
+  height: 30px; /* Adjust the height value as per your requirement */
+  border: 1px solid #808080;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5),
+              inset 0 -2px 4px rgba(0, 0, 0, 0.5);
+              color: #fff;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
 }
 
 .btn-info:hover {
-  background-color: sky;
+  background-color:lightblue;
   color: #fff;
-
-  display: inline-block;
-  padding: 3px 8px;
-  border-radius: 10px;
-  font-size: 14px
-  color: #fff;
-  text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
-  background-color: #2ecc71;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
 }
 
 .accept-btn:hover, .deny-btn:hover {
@@ -309,15 +311,18 @@ th {
             <span>Document Requests</span>
           </a>
           <ul class="collapse list-unstyled menu" id="pageSubmenu3">
-            <li>
-              <a href="{{ route('documentapproval') }}">Pending</a>
-            </li>
-            <li>
-              <a href="#">Approved</a>
-            </li>
-            <li>
-              <a href="#">History</a>
-            </li>
+          <li>
+                    <a href="{{ route('docu_pending') }}">Pending</a>
+                </li>
+                <li>
+                    <a href="{{ route('docu_approved') }}">Approved</a>
+                </li>
+                <li>
+                    <a href="{{ route('docu_receiving') }}">For Pickup</a>
+                </li>
+                <li>
+                    <a href="{{ route('docu_printed') }}">History</a>
+                </li>
           </ul>
         </li>
         <li class="dropdown">

@@ -101,3 +101,8 @@ Route::post('/docu_printed/{docuRequest}/destroy', [DocuRequestController::class
 Route::view('/comp_pending', 'comp_pending')->name('comp_pending');
 Route::view('/comp_ongoing', 'comp_ongoing')->name('comp_ongoing');
 Route::view('/comp_settled', 'comp_settled')->name ('comp_settled');
+// User Approval Route
+Route::get('/user_approval', function () {
+  $users = User::all(); // Note: I corrected the case of the 'User' model
+  return view('user_approval', compact('users'));
+})->name('user_approval');
